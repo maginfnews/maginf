@@ -1,0 +1,11 @@
+<svg width="280" height="60" viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- M estilizado com formas geométricas -->
+  <path d="M5 10 L25 50 L35 10 Z" fill="#FF6B35"/>
+  <path d="M40 10 L50 50 L70 10 Z" fill="#FF6B35"/>
+  
+  <!-- MAGINF em cinza -->
+  <text x="85" y="30" font-family="Arial, sans-serif" font-size="24" font-weight="300" fill="#666666">MAGINF</text>
+  
+  <!-- TECNOLOGIA em laranja -->
+  <text x="85" y="48" font-family="Arial, sans-serif" font-size="10" font-weight="400" fill="#FF6B35" letter-spacing="1.5px">TECNOLOGIA</text>
+</svg>

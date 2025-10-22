@@ -1,0 +1,43 @@
+<svg width="400" height="250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grad4)"/>
+  
+  <!-- Nuvem -->
+  <path d="M200 80 Q180 60 160 80 Q140 70 130 90 Q120 100 140 110 L260 110 Q280 100 270 80 Q260 60 240 70 Q220 60 200 80 Z" fill="white" opacity="0.9"/>
+  
+  <!-- Setas de upload -->
+  <path d="M170 95 L170 85 L165 90 M170 85 L175 90" stroke="#059669" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M200 95 L200 85 L195 90 M200 85 L205 90" stroke="#059669" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M230 95 L230 85 L225 90 M230 85 L235 90" stroke="#059669" stroke-width="3" fill="none" stroke-linecap="round"/>
+  
+  <!-- Computador/servidor -->
+  <rect x="80" y="130" width="50" height="35" rx="4" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+  <rect x="85" y="135" width="40" height="4" rx="1" fill="white"/>
+  <rect x="85" y="142" width="30" height="3" rx="1" fill="rgba(255,255,255,0.7)"/>
+  <rect x="85" y="148" width="35" height="3" rx="1" fill="rgba(255,255,255,0.7)"/>
+  <rect x="85" y="154" width="25" height="3" rx="1" fill="rgba(255,255,255,0.7)"/>
+  
+  <!-- Arquivos -->
+  <rect x="270" y="130" width="50" height="35" rx="4" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+  <rect x="275" y="135" width="15" height="20" rx="2" fill="white"/>
+  <rect x="295" y="135" width="15" height="20" rx="2" fill="white"/>
+  <rect x="275" y="145" width="15" height="20" rx="2" fill="white"/>
+  <rect x="295" y="145" width="15" height="20" rx="2" fill="white"/>
+  
+  <!-- Setas conectoras -->
+  <path d="M130 140 Q150 120 180 100" stroke="white" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+  <path d="M220 100 Q250 120 270 140" stroke="white" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+  
+  <!-- Texto -->
+  <text x="50%" y="200" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">
+    Backup em Nuvem
+  </text>
+  <text x="50%" y="220" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.9)" text-anchor="middle">
+    Por que é essencial para seu negócio
+  </text>
+</svg>

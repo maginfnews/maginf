@@ -1,0 +1,30 @@
+{
+  "short_name": "MAGINF",
+  "name": "MAGINF Tecnologia - Soluções de TI Completas",
+  "description": "MSP e suporte técnico para empresas. Monitoramento 24/7, CFTV, cloud e infraestrutura com atendimento local.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#e35300",
+  "background_color": "#ffffff",
+  "categories": ["business", "productivity", "technology"],
+  "lang": "pt-BR",
+  "scope": "/",
+  "prefer_related_applications": false}

@@ -1,0 +1,12 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#1F2937"/>
+  <text x="50%" y="35%" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" dy=".3em">
+    INFRAESTRUTURA
+  </text>
+  <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="16" fill="#9CA3AF" text-anchor="middle" dy=".3em">
+    Modernização - Indústria Metalúrgica
+  </text>
+  <text x="50%" y="65%" font-family="Arial, sans-serif" font-size="14" fill="#6B7280" text-anchor="middle" dy=".3em">
+    Microsoft Azure • Windows Server • Backup Veeam
+  </text>
+</svg>

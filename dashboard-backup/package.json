@@ -1,0 +1,33 @@
+{
+  "name": "dashboard-backup-maginf",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "deploy": "node deploy-dashboard.js",
+    "deploy:prod": "NODE_ENV=production node deploy-dashboard.js"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.16",
+    "dotenv": "^17.2.3",
+    "next": "^14.0.0",
+    "postcss": "^8.4.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "swr": "^2.2.4",
+    "tailwindcss": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "basic-ftp": "^5.0.5",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "^14.0.0",
+    "typescript": "^5.2.0"
+  }
+}

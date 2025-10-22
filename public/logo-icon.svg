@@ -1,0 +1,7 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo circular -->
+  <circle cx="32" cy="32" r="30" fill="#FF6B35"/>
+  
+  <!-- M estilizado simplificado em branco -->
+  <path d="M16 20 L26 40 L32 28 L38 40 L48 20 L42 20 L38 30 L32 18 L26 30 L22 20 Z" fill="white"/>
+</svg>
