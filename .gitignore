@@ -45,3 +45,6 @@ portal-maginf/node_modules/
 senha*.txt
 *.zip
 credenciais*
+
+# Dashboard backup node_modules (muito grande para GitHub)
+dashboard-backup/node_modules/
