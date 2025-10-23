@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Shield, Clock, Users, Play } from 'lucide-react';
+import { ArrowRight, Shield, Clock, Users } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 
 const Hero = () => {

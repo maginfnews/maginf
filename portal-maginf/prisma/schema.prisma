@@ -14,12 +14,16 @@ model User {
   id        String   @id @default(cuid())
   email     String   @unique
   name      String?
+  password  String
   role      String   @default("user")
+  active    Boolean  @default(true)
+  lastLogin DateTime?
+  clientId  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
   // Relacionamentos
-  tickets   Ticket[]
+  client    Client?  @relation(fields: [clientId], references: [id])
   
   @@map("users")
 }
@@ -35,48 +39,10 @@ model Client {
   updatedAt   DateTime @updatedAt
   
   // Relacionamentos
-  tickets     Ticket[]
-  contracts   Contract[]
+  users       User[]
+  settings    Settings[]
   
   @@map("clients")
-}
-
-model Ticket {
-  id          String   @id @default(cuid())
-  title       String
-  description String?
-  status      String   @default("open")
-  priority    String   @default("medium")
-  category    String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  closedAt    DateTime?
-  
-  // Relacionamentos
-  clientId    String
-  client      Client   @relation(fields: [clientId], references: [id])
-  assignedId  String?
-  assigned    User?    @relation(fields: [assignedId], references: [id])
-  
-  @@map("tickets")
-}
-
-model Contract {
-  id          String   @id @default(cuid())
-  title       String
-  description String?
-  value       Float
-  status      String   @default("active")
-  startDate   DateTime
-  endDate     DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  
-  // Relacionamentos
-  clientId    String
-  client      Client   @relation(fields: [clientId], references: [id])
-  
-  @@map("contracts")
 }
 
 model Service {
@@ -96,8 +62,12 @@ model Settings {
   id        String   @id @default(cuid())
   key       String   @unique
   value     String
+  clientId  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  
+  // Relacionamentos
+  client    Client?  @relation(fields: [clientId], references: [id])
   
   @@map("settings")
 }
