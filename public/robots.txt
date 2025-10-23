@@ -1,0 +1,36 @@
+# Robots.txt otimizado para MAGINF Tecnologia
+
+User-agent: *
+Allow: /
+
+# Páginas importantes para SEO
+Allow: /servicos
+Allow: /planos
+Allow: /sobre
+Allow: /contato
+Allow: /blog
+Allow: /suporte-tecnico-ti
+Allow: /msp-brasil
+Allow: /backup-nuvem
+Allow: /monitoramento-ti
+
+# Bloquear páginas administrativas
+Disallow: /admin
+Disallow: /portal
+Disallow: /api
+Disallow: /_next
+Disallow: /static
+
+# Permitir bots específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap
+Sitemap: https://maginf.com.br/sitemap.xml
+Sitemap: https://maginf.com.br/sitemap-index.xml
+
+# Crawl-delay para não sobrecarregar o servidor
+Crawl-delay: 1

@@ -10,232 +10,94 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Modelo de Cliente (Empresa)
-model Client {
-  id          String   @id @default(cuid())
-  name        String   // Nome da empresa
-  slug        String   @unique // URL amigável (ex: empresa-abc)
-  email       String   @unique
-  phone       String?
-  address     String?
-  logo        String?  // URL do logo
-  domain      String?  // Domínio personalizado
-  active      Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  
-  // Configurações do cliente
-  settings    ClientSettings?
-  
-  // Usuários do cliente
-  users       User[]
-  
-  // Monitores associados
-  monitors    Monitor[]
-  
-  // Alertas
-  alerts      Alert[]
-  
-  @@map("clients")
-}
-
-// Configurações específicas do cliente
-model ClientSettings {
-  id                String  @id @default(cuid())
-  clientId          String  @unique
-  client            Client  @relation(fields: [clientId], references: [id], onDelete: Cascade)
-  
-  // Personalização visual
-  primaryColor      String  @default("#FF6B35")
-  secondaryColor    String  @default("#2D3748")
-  customLogo        String?
-  customFavicon     String?
-  
-  // Configurações de monitoramento
-  refreshInterval   Int     @default(30) // segundos
-  alertsEnabled     Boolean @default(true)
-  emailNotifications Boolean @default(true)
-  smsNotifications  Boolean @default(false)
-  
-  // Integrações
-  site24x7Enabled   Boolean @default(false)
-  site24x7ApiKey    String?
-  coveEnabled       Boolean @default(false)
-  coveApiKey        String?
-  
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  
-  @@map("client_settings")
-}
-
-// Modelo de Usuário
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
-  name          String
-  password      String    // Hash da senha
-  role          UserRole  @default(USER)
-  active        Boolean   @default(true)
-  lastLogin     DateTime?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   
-  // Cliente associado
-  clientId      String
-  client        Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
-  
-  // NextAuth
-  accounts      Account[]
-  sessions      Session[]
+  // Relacionamentos
+  tickets   Ticket[]
   
   @@map("users")
 }
 
-enum UserRole {
-  ADMIN     // Administrador MAGINF
-  CLIENT    // Administrador do cliente
-  USER      // Usuário comum do cliente
-  VIEWER    // Apenas visualização
+model Client {
+  id          String   @id @default(cuid())
+  name        String
+  email       String   @unique
+  phone       String?
+  company     String?
+  status      String   @default("active")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relacionamentos
+  tickets     Ticket[]
+  contracts   Contract[]
+  
+  @@map("clients")
 }
 
-// Modelo de Monitor
-model Monitor {
-  id            String      @id @default(cuid())
-  name          String
-  type          MonitorType
-  status        MonitorStatus @default(UNKNOWN)
-  url           String?
-  ip            String?
-  port          Int?
+model Ticket {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  status      String   @default("open")
+  priority    String   @default("medium")
+  category    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  closedAt    DateTime?
   
-  // Métricas
-  uptime        Float?      // Percentual de uptime
-  responseTime  Int?        // Tempo de resposta em ms
-  lastCheck     DateTime?
+  // Relacionamentos
+  clientId    String
+  client      Client   @relation(fields: [clientId], references: [id])
+  assignedId  String?
+  assigned    User?    @relation(fields: [assignedId], references: [id])
   
-  // Configurações
-  checkInterval Int         @default(300) // segundos
-  timeout       Int         @default(30)  // segundos
-  active        Boolean     @default(true)
-  
-  // Cliente associado
-  clientId      String
-  client        Client      @relation(fields: [clientId], references: [id], onDelete: Cascade)
-  
-  // Alertas relacionados
-  alerts        Alert[]
-  
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  
-  @@unique([name, clientId], name: "name_clientId")
-  @@map("monitors")
+  @@map("tickets")
 }
 
-enum MonitorType {
-  WEBSITE
-  SERVER
-  SERVICE
-  DATABASE
-  API
-}
-
-enum MonitorStatus {
-  ONLINE
-  OFFLINE
-  WARNING
-  UNKNOWN
-}
-
-// Modelo de Alerta
-model Alert {
-  id            String      @id @default(cuid())
-  type          AlertType
-  title         String
-  message       String
-  status        AlertStatus @default(OPEN)
-  severity      AlertSeverity
+model Contract {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  value       Float
+  status      String   @default("active")
+  startDate   DateTime
+  endDate     DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   
-  // Monitor relacionado
-  monitorId     String?
-  monitor       Monitor?    @relation(fields: [monitorId], references: [id], onDelete: SetNull)
+  // Relacionamentos
+  clientId    String
+  client      Client   @relation(fields: [clientId], references: [id])
   
-  // Cliente
-  clientId      String
-  client        Client      @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@map("contracts")
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  category    String?
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   
-  // Timestamps
-  triggeredAt   DateTime    @default(now())
-  acknowledgedAt DateTime?
-  resolvedAt    DateTime?
+  @@map("services")
+}
+
+model Settings {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  
-  @@map("alerts")
-}
-
-enum AlertType {
-  MONITOR_DOWN
-  MONITOR_UP
-  HIGH_RESPONSE_TIME
-  SSL_EXPIRING
-  DISK_SPACE
-  CPU_HIGH
-  MEMORY_HIGH
-  CUSTOM
-}
-
-enum AlertStatus {
-  OPEN
-  ACKNOWLEDGED
-  RESOLVED
-}
-
-enum AlertSeverity {
-  LOW
-  MEDIUM
-  HIGH
-  CRITICAL
-}
-
-// NextAuth Models
-model Account {
-  id                String  @id @default(cuid())
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String?
-  access_token      String?
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String?
-  session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-  @@map("accounts")
-}
-
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@map("sessions")
-}
-
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
-
-  @@unique([identifier, token])
-  @@map("verification_tokens")
+  @@map("settings")
 }
