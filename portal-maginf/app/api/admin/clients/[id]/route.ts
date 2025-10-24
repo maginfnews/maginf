@@ -79,13 +79,11 @@ export async function PUT(
     const data = await request.json()
     const {
       name,
-      slug,
       email,
       phone,
-      address,
+      company,
       primaryColor,
-      secondaryColor,
-      active
+      secondaryColor
     } = data
 
     // Verificar se cliente existe
@@ -137,7 +135,7 @@ export async function PUT(
 
     // Atualizar configurações se fornecidas
     if (primaryColor || secondaryColor) {
-      await prisma.clientSettings.upsert({
+      await prisma.settings.upsert({
         where: { clientId: params.id },
         update: {
           primaryColor: primaryColor || undefined,
@@ -199,11 +197,11 @@ export async function DELETE(
       }, { status: 404 })
     }
 
-    // Não permitir excluir cliente MAGINF
-    if (client.slug === 'maginf') {
+    // Não permitir excluir cliente principal
+    if (client.email === 'admin@maginf.com.br') {
       return NextResponse.json({
         success: false,
-        error: 'Não é possível excluir o cliente MAGINF'
+        error: 'Não é possível excluir o cliente principal'
       }, { status: 400 })
     }
 
