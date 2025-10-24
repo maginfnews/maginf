@@ -98,18 +98,12 @@ export async function PUT(
       }, { status: 404 })
     }
 
-    // Verificar se slug já existe (exceto o próprio cliente)
-    if (slug && slug !== existingClient.slug) {
-      const slugExists = await prisma.client.findUnique({
-        where: { slug }
-      })
-
-      if (slugExists) {
-        return NextResponse.json({
-          success: false,
-          error: 'Slug já existe. Escolha outro.'
-        }, { status: 400 })
-      }
+    // Validação básica
+    if (!name && !email && !phone && !company) {
+      return NextResponse.json({
+        success: false,
+        error: 'Pelo menos um campo deve ser fornecido para atualização'
+      }, { status: 400 })
     }
 
     // Atualizar cliente
@@ -117,11 +111,9 @@ export async function PUT(
       where: { id: params.id },
       data: {
         name: name || existingClient.name,
-        slug: slug || existingClient.slug,
         email: email || existingClient.email,
         phone: phone !== undefined ? phone : existingClient.phone,
-        address: address !== undefined ? address : existingClient.address,
-        active: active !== undefined ? active : existingClient.active
+        company: company !== undefined ? company : existingClient.company
       },
       include: {
         settings: true,
