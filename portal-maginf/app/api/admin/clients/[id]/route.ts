@@ -32,20 +32,9 @@ export async function GET(
             lastLogin: true
           }
         },
-        monitors: {
-          select: {
-            id: true,
-            name: true,
-            type: true,
-            status: true,
-            uptime: true
-          }
-        },
         _count: {
           select: {
-            users: true,
-            monitors: true,
-            alerts: true
+            users: true
           }
         }
       }
@@ -140,9 +129,7 @@ export async function PUT(
         settings: true,
         _count: {
           select: {
-            users: true,
-            monitors: true,
-            alerts: true
+            users: true
           }
         }
       }
@@ -199,9 +186,7 @@ export async function DELETE(
       include: {
         _count: {
           select: {
-            users: true,
-            monitors: true,
-            alerts: true
+            users: true
           }
         }
       }

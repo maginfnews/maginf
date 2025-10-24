@@ -20,9 +20,7 @@ export async function GET() {
       include: {
         _count: {
           select: {
-            users: true,
-            monitors: true,
-            alerts: true
+            users: true
           }
         },
         settings: true
