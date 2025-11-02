@@ -13,6 +13,7 @@
 
 # backup folders
 /dashboard-backup
+/portal-maginf
 
 # misc
 .DS_Store
