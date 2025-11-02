@@ -320,14 +320,61 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Outubro Rosa Section */}
-      <div className="border-t border-pink-500/30 bg-gradient-to-r from-pink-900/20 to-pink-800/20 py-4">
-        <div className="container-max">
-          <div className="text-center">
-            <p className="text-pink-200 text-sm">
-              💗 <strong>Outubro Rosa 2025</strong> - A MAGINF Tecnologia apoia a luta contra o câncer de mama. 
-              <span className="block md:inline md:ml-2">Juntos pela prevenção e conscientização! 💗</span>
-            </p>
+      {/* Novembro Azul Section - Enhanced */}
+      <div className="border-t border-blue-500/30 bg-gradient-to-r from-blue-900/30 via-blue-800/20 to-cyan-900/30 py-6 relative overflow-hidden">
+        {/* Background Animation */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="flex animate-pulse">
+            {[...Array(10)].map((_, i) => (
+              <div key={i} className="flex-1 h-full bg-gradient-to-t from-blue-500/20 to-transparent" style={{animationDelay: `${i * 0.2}s`}}></div>
+            ))}
+          </div>
+        </div>
+        
+        <div className="container-max relative z-10">
+          <div className="text-center space-y-3">
+            <div className="flex justify-center items-center space-x-3">
+              <div className="flex space-x-1">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{animationDelay: `${i * 0.1}s`}}></div>
+                ))}
+              </div>
+              <h3 className="font-bold text-xl bg-gradient-to-r from-blue-200 via-cyan-200 to-blue-200 bg-clip-text text-transparent">
+                Novembro Azul 2025
+              </h3>
+              <div className="flex space-x-1">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{animationDelay: `${i * 0.1 + 0.3}s`}}></div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="max-w-2xl mx-auto">
+              <p className="text-blue-200 text-sm leading-relaxed">
+                A <span className="font-semibold text-white">MAGINF Tecnologia</span> se orgulha em apoiar a 
+                <span className="font-semibold text-cyan-200"> luta contra o câncer de próstata</span>.
+              </p>
+              <p className="text-blue-300 text-xs mt-2">
+                💙 Juntos pela prevenção, conscientização e cuidado com a saúde masculina! 💙
+              </p>
+            </div>
+            
+            <div className="flex justify-center items-center space-x-6 text-xs text-blue-300 pt-2">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-green-500 rounded-full animate-pulse"></div>
+                <span>Prevenção salva vidas</span>
+              </div>
+              <div className="hidden md:block w-px h-4 bg-blue-400/50"></div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full animate-pulse"></div>
+                <span>Diagnóstico precoce é fundamental</span>
+              </div>
+              <div className="hidden md:block w-px h-4 bg-blue-400/50"></div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse"></div>
+                <span>Cuidar-se é masculinidade</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

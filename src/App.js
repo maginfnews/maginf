@@ -1,5 +1,5 @@
 import React from 'react';
-import OutubroRosa from './components/OutubroRosa';
+import NovenbroAzul from './components/NovenbroAzul';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -15,7 +15,7 @@ import CookieConsent from './components/CookieConsent';
 function App() {
   return (
     <div className="App">
-      <OutubroRosa />
+      <NovenbroAzul />
       <Header />
       <Hero />
       <Services />
