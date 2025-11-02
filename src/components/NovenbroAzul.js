@@ -19,7 +19,7 @@ const NovenbroAzul = () => {
       setCurrentIcon((prev) => (prev + 1) % icons.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [icons.length]);
 
   if (!isVisible) return null;
 
