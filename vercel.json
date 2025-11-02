@@ -1,4 +1,7 @@
 {
+  "outputDirectory": ".next",
+  "buildCommand": "npm run build",
+  "framework": "nextjs",
   "env": {
     "RESEND_API_KEY": "@resend_api_key"
   }
