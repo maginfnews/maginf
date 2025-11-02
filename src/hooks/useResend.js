@@ -12,38 +12,29 @@ export const useResend = () => {
     setIsSuccess(false);
 
     try {
+      console.log('🚀 Enviando via Resend API...');
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("Falha ao enviar via backend");
-      console.log("✅ E-mail enviado via Resend (backend)");
-      setIsSuccess(true);
-      return await res.json();
-    } catch (err) {
-      console.warn("⚠️ Falha no Resend, usando fallback FormSubmit");
-      try {
-        await sendViaFormSubmit(payload);
-        console.log("✅ E-mail enviado via FormSubmit (fallback)");
-        setIsSuccess(true);
-      } catch (fallbackErr) {
-        console.error("❌ Falha total no envio:", fallbackErr);
-        setError("Erro ao enviar mensagem. Tente novamente.");
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || `Erro HTTP: ${res.status}`);
       }
+
+      const result = await res.json();
+      console.log("✅ E-mail enviado com sucesso via Resend!", result);
+      setIsSuccess(true);
+      return result;
+    } catch (err) {
+      console.error("❌ Erro no envio via Resend:", err);
+      setError(err.message || "Erro ao enviar mensagem. Tente novamente.");
+      throw err;
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const sendViaFormSubmit = async (payload) => {
-    const formData = new FormData();
-    Object.entries(payload).forEach(([k, v]) => formData.append(k, v));
-    await fetch("https://formsubmit.co/maicon@magpass.com.br", {
-      method: "POST",
-      body: formData,
-    });
   };
 
   const reset = () => {
@@ -91,7 +82,7 @@ export const useContactForm = () => {
     }
 
     try {
-      console.log('🔄 Tentando enviar via API interna...');
+      console.log('🔄 Enviando via Resend API...');
       const payload = {
         name: formData.name,
         email: formData.email,
@@ -99,11 +90,12 @@ export const useContactForm = () => {
         message: formData.message
       };
       const result = await send(payload);
-      console.log('🎉 Formulário processado com sucesso!', result);
+      console.log('🎉 E-mail enviado com sucesso via Resend!', result);
       // Limpar formulário após sucesso
       setFormData({ name: '', email: '', company: '', message: '' });
     } catch (err) {
-      console.error('❌ Erro no envio do formulário:', err);
+      console.error('❌ Falha no envio via Resend:', err);
+      // Erro já está sendo tratado no hook send()
     }
   };
 
