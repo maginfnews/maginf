@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { sendEmail } from '../config/resend';
-import { sendEmailFormSubmit, sendEmailMailto } from '../config/formSubmit';
 
 // Hook personalizado para envio de e-mails com Resend
 export const useResend = () => {
@@ -8,41 +6,44 @@ export const useResend = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  const send = async (emailData, method = 'formsubmit') => {
+  const send = async (payload) => {
     setIsLoading(true);
     setError('');
     setIsSuccess(false);
 
     try {
-      let result;
-      
-      switch (method) {
-        case 'formsubmit':
-          result = await sendEmailFormSubmit(emailData);
-          break;
-        case 'mailto':
-          result = sendEmailMailto(emailData);
-          break;
-        case 'resend':
-        default:
-          // Tentar Resend primeiro, se falhar usar FormSubmit
-          try {
-            result = await sendEmail(emailData);
-          } catch (corsError) {
-            console.warn('⚠️ Erro CORS com Resend, usando FormSubmit como fallback');
-            result = await sendEmailFormSubmit(emailData);
-          }
-          break;
-      }
-      
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error("Falha ao enviar via backend");
+      console.log("✅ E-mail enviado via Resend (backend)");
       setIsSuccess(true);
-      return result;
+      return await res.json();
     } catch (err) {
-      setError(err.message || 'Erro ao enviar e-mail');
-      throw err;
+      console.warn("⚠️ Falha no Resend, usando fallback FormSubmit");
+      try {
+        await sendViaFormSubmit(payload);
+        console.log("✅ E-mail enviado via FormSubmit (fallback)");
+        setIsSuccess(true);
+      } catch (fallbackErr) {
+        console.error("❌ Falha total no envio:", fallbackErr);
+        setError("Erro ao enviar mensagem. Tente novamente.");
+      }
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const sendViaFormSubmit = async (payload) => {
+    const formData = new FormData();
+    Object.entries(payload).forEach(([k, v]) => formData.append(k, v));
+    await fetch("https://formsubmit.co/maicon@magpass.com.br", {
+      method: "POST",
+      body: formData,
+    });
   };
 
   const reset = () => {
@@ -80,21 +81,29 @@ export const useContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    const emailData = {
-      from_name: formData.name,
-      from_email: formData.email,
-      company: formData.company || 'Não informado',
-      message: formData.message,
-      type: 'contact'
-    };
+    console.log('🚀 Iniciando envio do formulário...');
+    console.log('📋 Dados capturados:', formData);
+    
+    // Validar campos obrigatórios
+    if (!formData.name || !formData.email || !formData.message) {
+      console.error('❌ Campos obrigatórios não preenchidos');
+      return;
+    }
 
     try {
-      await send(emailData, 'formsubmit'); // Usar FormSubmit que funciona sem CORS
+      console.log('🔄 Tentando enviar via API interna...');
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company || 'Não informado',
+        message: formData.message
+      };
+      const result = await send(payload);
+      console.log('🎉 Formulário processado com sucesso!', result);
       // Limpar formulário após sucesso
       setFormData({ name: '', email: '', company: '', message: '' });
     } catch (err) {
-      // Erro já tratado no hook useResend
-      console.error('Erro no envio:', err);
+      console.error('❌ Erro no envio do formulário:', err);
     }
   };
 

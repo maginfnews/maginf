@@ -8,7 +8,7 @@
 
 export const resendConfig = {
   // API Key do Resend
-  apiKey: 're_NfuFKPpK_98Rc9vRUwb4Xppgu1qkrw6xp',
+  apiKey: 're_Jjy3jUvG_HHepHm9JCFgawhG8yvxADogC',
   
   // Domínio para envio (usando domínio de teste do Resend)
   fromEmail: 'onboarding@resend.dev', // Domínio verificado do Resend

@@ -62,11 +62,31 @@ const CookieConsent = () => {
     activateScripts(onlyNecessary);
   };
 
+  const loadGoogleAnalytics = () => {
+    // Carregar Google Analytics dinamicamente
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+    document.head.appendChild(script);
+    
+    // Inicializar gtag
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  };
+
   const activateScripts = (prefs) => {
     // Google Analytics
     if (prefs.analytics) {
-      // Ativar GA4 (substitua pelo seu ID)
-      window.gtag('config', 'G-XXXXXXXXXX');
+      // Verificar se gtag existe, se não, carregar
+      if (typeof window.gtag === 'function') {
+        window.gtag('config', 'G-XXXXXXXXXX');
+      } else {
+        console.log('Carregando Google Analytics...');
+        loadGoogleAnalytics();
+      }
     }
     
     // Scripts de marketing (Facebook Pixel, etc.)

@@ -97,7 +97,11 @@ const Footer = () => {
               </p>
 
               {!isSuccess ? (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={(e) => {
+                  console.log('🚀 Formulário sendo enviado...');
+                  console.log('📋 Dados do formulário:', formData);
+                  handleSubmit(e);
+                }} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium mb-2">Nome *</label>

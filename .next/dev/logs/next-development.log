@@ -1,0 +1,72 @@
+[00:00:01.901] Server  LOG      ✓ Ready in 1249ms
+[00:00:01.905] Server  WARN     ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:05.020] Server  LOG      ○ Compiling / ...
+[00:00:07.033] Server  LOG     Categoria ativa: "Todos"
+[00:00:07.033] Server  LOG     Artigos filtrados: 6
+[00:00:07.168] Server  LOG     Categoria ativa: "Todos"
+[00:00:07.168] Server  LOG     Artigos filtrados: 6
+[00:00:59.381] Browser LOG     Categoria ativa: Todos
+[00:00:59.381] Browser LOG     Artigos filtrados: 6
+[00:00:59.381] Browser LOG     Categoria ativa: Todos
+[00:00:59.381] Browser LOG     Artigos filtrados: 6
+[00:01:39.776] Server  LOG     Categoria ativa: "Todos"
+[00:01:39.776] Server  LOG     Artigos filtrados: 6
+[00:01:41.250] Browser LOG     Categoria ativa: Todos
+[00:01:41.251] Browser LOG     Artigos filtrados: 6
+[00:01:41.251] Browser LOG     Categoria ativa: Todos
+[00:01:41.251] Browser LOG     Artigos filtrados: 6
+[00:01:56.100] Browser LOG     🚀 Formulário sendo enviado...
+[00:01:56.100] Browser LOG     📋 Dados do formulário: {"company":"MAGPASS - INFORMATICA LTDA","email":"maicon@magpass.com.br","message":"hhhhhhhhhhhhhhhhhhhhhh","name":"MAICON MAGNO"}
+[00:01:56.100] Browser LOG     🚀 Iniciando envio do formulário...
+[00:01:56.100] Browser LOG     📋 Dados capturados: {"company":"MAGPASS - INFORMATICA LTDA","email":"maicon@magpass.com.br","message":"hhhhhhhhhhhhhhhhhhhhhh","name":"MAICON MAGNO"}
+[00:01:56.100] Browser LOG     🔄 Tentando enviar via API interna...
+[00:01:56.349] Server  LOG     🔥 API /api/contact chamada! "POST"
+[00:01:56.353] Server  LOG     📋 Dados recebidos: {}
+[00:01:56.354] Server  LOG     🔑 API Key encontrada: "re_Jjy3jUv..."
+[00:01:56.354] Server  LOG     📧 Tentando enviar email via Resend...
+[00:01:56.685] Server  LOG     ✅ Email enviado com sucesso! {}
+[00:01:56.799] Browser LOG     ✅ E-mail enviado via Resend (backend)
+[00:01:56.799] Browser LOG     🎉 Formulário processado com sucesso! {"data":{"data":null,"error":{"message":"Not authorized to send emails from seudominio.com","statusCode":403}},"ok":true}
+[00:06:00.927] Server  LOG     Categoria ativa: "Todos"
+[00:06:00.927] Server  LOG     Artigos filtrados: 6
+[00:06:01.913] Browser LOG     Categoria ativa: Todos
+[00:06:01.913] Browser LOG     Artigos filtrados: 6
+[00:06:01.913] Browser LOG     Categoria ativa: Todos
+[00:06:01.913] Browser LOG     Artigos filtrados: 6
+[00:06:11.255] Server  LOG     🔥 API /api/contact chamada! "POST"
+[00:06:11.256] Server  LOG     📋 Dados recebidos: {}
+[00:06:11.256] Server  LOG     🔑 API Key encontrada: "re_Jjy3jUv..."
+[00:06:11.256] Server  LOG     📧 Tentando enviar email via Resend...
+[00:06:11.321] Browser LOG     🚀 Formulário sendo enviado...
+[00:06:11.321] Browser LOG     📋 Dados do formulário: {"company":"MAGPASS - INFORMATICA LTDA","email":"maicon@magpass.com.br","message":"6666666666666666666","name":"MAICON MAGNO"}
+[00:06:11.321] Browser LOG     🚀 Iniciando envio do formulário...
+[00:06:11.321] Browser LOG     📋 Dados capturados: {"company":"MAGPASS - INFORMATICA LTDA","email":"maicon@magpass.com.br","message":"6666666666666666666","name":"MAICON MAGNO"}
+[00:06:11.321] Browser LOG     🔄 Tentando enviar via API interna...
+[00:06:11.704] Server  LOG     ✅ Email enviado com sucesso! {}
+[00:06:11.818] Browser LOG     ✅ E-mail enviado via Resend (backend)
+[00:06:11.818] Browser LOG     🎉 Formulário processado com sucesso! {"data":{"data":{"id":"1c2d2e69-742d-4539-bf88-0d06eaff947a"},"error":null},"ok":true}
+[00:07:17.177] Server  LOG     🔥 API /api/contact chamada! "POST"
+[00:07:17.178] Server  LOG     📋 Dados recebidos: {}
+[00:07:17.178] Server  LOG     🔑 API Key encontrada: "re_Jjy3jUv..."
+[00:07:17.178] Server  LOG     📧 Tentando enviar email via Resend...
+[00:07:17.264] Browser LOG     🚀 Formulário sendo enviado...
+[00:07:17.264] Browser LOG     📋 Dados do formulário: {"company":"MAGPASS - INFORMATICA LTDA","email":"maicon@magpass.com.br","message":"5555555555555555555","name":"MAICON MAGNO"}
+[00:07:17.264] Browser LOG     🚀 Iniciando envio do formulário...
+[00:07:17.264] Browser LOG     📋 Dados capturados: {"company":"MAGPASS - INFORMATICA LTDA","email":"maicon@magpass.com.br","message":"5555555555555555555","name":"MAICON MAGNO"}
+[00:07:17.265] Browser LOG     🔄 Tentando enviar via API interna...
+[00:07:27.823] Server  LOG     ✅ Email enviado com sucesso! {}
+[00:07:27.938] Browser LOG     ✅ E-mail enviado via Resend (backend)
+[00:07:27.938] Browser LOG     🎉 Formulário processado com sucesso! {"data":{"data":null,"error":{"message":"Unable to fetch data. The request could not be resolved.","name":"application_error"}},"ok":true}
+[00:08:35.673] Server  LOG     🔥 API /api/contact chamada! "POST"
+[00:08:35.674] Server  LOG     📋 Dados recebidos: {}
+[00:08:35.674] Server  LOG     🔑 API Key encontrada: "re_Jjy3jUv..."
+[00:08:35.674] Server  LOG     📧 Tentando enviar email via Resend...
+[00:08:35.763] Browser LOG     🚀 Formulário sendo enviado...
+[00:08:35.763] Browser LOG     📋 Dados do formulário: {"company":"26.643.624/0001-10","email":"dropi@maginf.com.br","message":"dropi","name":"Maginf Tecnologia Maginf Informatica Ltda"}
+[00:08:35.763] Browser LOG     🚀 Iniciando envio do formulário...
+[00:08:35.763] Browser LOG     📋 Dados capturados: {"company":"26.643.624/0001-10","email":"dropi@maginf.com.br","message":"dropi","name":"Maginf Tecnologia Maginf Informatica Ltda"}
+[00:08:35.763] Browser LOG     🔄 Tentando enviar via API interna...
+[00:08:35.990] Server  LOG     ✅ Email enviado com sucesso! {}
+[00:08:36.100] Browser LOG     ✅ E-mail enviado via Resend (backend)
+[00:08:36.101] Browser LOG     🎉 Formulário processado com sucesso! {"data":{"data":{"id":"b7680e56-f1ea-4798-8c07-06098a1d6336"},"error":null},"ok":true}
