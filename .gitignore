@@ -11,6 +11,9 @@
 # production
 /build
 
+# backup folders
+/dashboard-backup
+
 # misc
 .DS_Store
 .env.local
