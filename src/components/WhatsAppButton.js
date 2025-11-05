@@ -6,7 +6,7 @@ const WhatsAppButton = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Número do WhatsApp da MAGINF (formato internacional: +55 11 4610-6363)
-  const whatsappNumber = '551146106363';
+  const phoneNumber = '5511935142933'; // Número do WhatsApp da MAGINF
   const message = 'Olá! Gostaria de saber mais sobre os serviços da MAGINF.';
 
   useEffect(() => {
