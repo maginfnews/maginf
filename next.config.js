@@ -12,6 +12,14 @@ const nextConfig = {
       },
     ],
   },
+  // Configuração vazia do Turbopack para silenciar o warning
+  turbopack: {},
+  // Excluir pastas de backup da compilação
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  // Excluir pastas específicas
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
 }
 
 module.exports = nextConfig

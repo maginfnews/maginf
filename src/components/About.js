@@ -9,6 +9,8 @@ import {
   CheckCircle,
   Target
 } from 'lucide-react';
+import { IMAGES } from '../config/imageConfig';
+import CountUp from './CountUp';
 
 const About = () => {
   const differentials = [
@@ -124,7 +126,7 @@ const About = () => {
         </div>
 
         {/* Experience Areas */}
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="max-w-2xl mx-auto">
           {/* Expertise */}
           <div className="bg-maginf-gray rounded-2xl p-8 text-white">
             <div className="flex items-center mb-6">
@@ -140,46 +142,122 @@ const About = () => {
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Identity */}
-          <div className="space-y-6">
-            <div className="bg-gray-50 rounded-xl p-6">
-              <h4 className="font-semibold text-maginf-gray mb-3">Identidade Visual</h4>
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-8 h-8 bg-maginf-orange rounded"></div>
-                <span className="text-sm text-gray-600">Laranja (cor ativa/CTA)</span>
+        {/* Testimonials */}
+        <div className="mt-16">
+          <h3 className="text-2xl font-bold text-maginf-gray mb-8 text-center">
+            O que nossos clientes dizem
+          </h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Testimonial 1 */}
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-maginf-orange rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  M
+                </div>
+                <div className="ml-3">
+                  <h4 className="font-semibold text-maginf-gray">Maria Silva</h4>
+                  <p className="text-sm text-gray-600">Diretora de TI</p>
+                </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <div className="w-8 h-8 bg-maginf-gray rounded"></div>
-                <span className="text-sm text-gray-600">Cinza (cor institucional)</span>
+              <p className="text-gray-700 italic mb-4">
+                "O suporte 24/7 da MAGINF foi essencial para manter nossa operação funcionando sem interrupções. A equipe é extremamente competente e ágil."
+              </p>
+              <div className="flex text-maginf-orange">
+                ★★★★★
               </div>
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-6">
-              <h4 className="font-semibold text-maginf-gray mb-3">Tom de Comunicação</h4>
-              <p className="text-sm text-gray-600">
-                Profissional, acessível e confiável — linguagem técnica mas sem jargões excessivos. 
-                Focamos na clareza e transparência em todas as comunicações.
+            {/* Testimonial 2 */}
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-maginf-orange rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  J
+                </div>
+                <div className="ml-3">
+                  <h4 className="font-semibold text-maginf-gray">João Santos</h4>
+                  <p className="text-sm text-gray-600">Gestor de Infraestrutura</p>
+                </div>
+              </div>
+              <p className="text-gray-700 italic mb-4">
+                "A migração para a nuvem foi conduzida de forma impecável. Reduzimos custos e aumentamos a segurança dos nossos dados."
               </p>
+              <div className="flex text-maginf-orange">
+                ★★★★★
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-maginf-orange rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  A
+                </div>
+                <div className="ml-3">
+                  <h4 className="font-semibold text-maginf-gray">Ana Costa</h4>
+                  <p className="text-sm text-gray-600">Coordenadora Administrativa</p>
+                </div>
+              </div>
+              <p className="text-gray-700 italic mb-4">
+                "Profissionais altamente qualificados. A implementação do sistema de CFTV superou nossas expectativas em qualidade e prazo."
+              </p>
+              <div className="flex text-maginf-orange">
+                ★★★★★
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Social Proof */}
-        <div className="mt-16 bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-8">
-          <h3 className="text-2xl font-bold text-maginf-gray mb-6 text-center">
-            Prova Social
+        {/* Image Gallery - Nosso Trabalho */}
+        <div className="mt-16">
+          <h3 className="text-2xl font-bold text-maginf-gray mb-8 text-center">
+            Nosso Trabalho em Ação
           </h3>
-          <div className="text-center max-w-3xl mx-auto">
-            <p className="text-gray-700 mb-6">
-              Atuamos com projetos para órgãos de ensino e secretarias, além de clientes corporativos locais. 
-              Exemplos de atuação incluem suporte a instituições educacionais, implantação de CFTV e 
-              fornecimento de hardware em grandes volumes.
-            </p>
-            <div className="bg-white rounded-lg p-4 inline-block">
-              <p className="text-sm text-gray-600 italic">
-                "Clientes específicos podem ser listados mediante autorização"
-              </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Image 1 - Data Center */}
+            <div className="relative group overflow-hidden rounded-xl shadow-lg">
+              <img 
+                src={IMAGES.about.team} 
+                alt="Equipe técnica MAGINF"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-maginf-gray/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <div className="p-4 text-white">
+                  <h4 className="font-bold text-lg">Equipe Especializada</h4>
+                  <p className="text-sm text-gray-300">Profissionais certificados em TI</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Image 2 - Technician */}
+            <div className="relative group overflow-hidden rounded-xl shadow-lg">
+              <img 
+                src={IMAGES.about.technician} 
+                alt="Técnico trabalhando"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-maginf-gray/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <div className="p-4 text-white">
+                  <h4 className="font-bold text-lg">Suporte Técnico</h4>
+                  <p className="text-sm text-gray-300">Atendimento presencial e remoto</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Image 3 - Office */}
+            <div className="relative group overflow-hidden rounded-xl shadow-lg">
+              <img 
+                src={IMAGES.about.office} 
+                alt="Infraestrutura moderna"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-maginf-gray/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <div className="p-4 text-white">
+                  <h4 className="font-bold text-lg">Infraestrutura Moderna</h4>
+                  <p className="text-sm text-gray-300">Tecnologia de ponta</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

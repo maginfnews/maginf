@@ -1,10 +1,12 @@
 import React from 'react';
-import { Check, Star, ArrowRight } from 'lucide-react';
+import { Check, Star, ArrowRight, Zap, Shield, Crown } from 'lucide-react';
 
 const Plans = () => {
   const plans = [
     {
       name: "Bronze",
+      icon: <Shield className="h-8 w-8" />,
+      color: "from-amber-600 to-orange-700",
       target: "PMEs até 15 estações",
       price: "Sob consulta",
       popular: false,
@@ -25,6 +27,8 @@ const Plans = () => {
     },
     {
       name: "Prata",
+      icon: <Zap className="h-8 w-8" />,
+      color: "from-blue-600 to-cyan-600",
       target: "Empresas 15–50 estações",
       price: "Sob consulta",
       popular: true,
@@ -46,6 +50,8 @@ const Plans = () => {
     },
     {
       name: "Ouro",
+      icon: <Crown className="h-8 w-8" />,
+      color: "from-yellow-500 to-amber-600",
       target: "50+ estações / missão crítica",
       price: "Sob consulta",
       popular: false,
@@ -121,59 +127,77 @@ const Plans = () => {
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className={`relative rounded-2xl p-8 ${
+              className={`relative rounded-3xl overflow-hidden group ${
                 plan.popular 
-                  ? 'bg-gradient-to-br from-maginf-orange to-maginf-orange-dark text-white shadow-2xl scale-105' 
-                  : 'bg-gray-50 border border-gray-200 hover:shadow-lg'
-              } transition-all duration-300`}
+                  ? 'transform scale-105 shadow-2xl' 
+                  : 'hover:scale-105'
+              } transition-all duration-500`}
             >
+              {/* Gradient Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${plan.color} opacity-90`}></div>
+              
+              {/* Animated Background Pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+                  backgroundSize: '40px 40px'
+                }}></div>
+              </div>
+
+              {/* Popular Badge */}
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-white text-maginf-orange px-4 py-2 rounded-full text-sm font-semibold flex items-center">
-                    <Star className="h-4 w-4 mr-1" />
-                    Mais Popular
+                <div className="absolute -top-3 -right-3 z-20">
+                  <div className="bg-white text-maginf-orange px-6 py-3 rounded-full text-sm font-bold shadow-lg flex items-center animate-pulse">
+                    <Star className="h-5 w-5 mr-2 fill-current" />
+                    MAIS POPULAR
                   </div>
                 </div>
               )}
 
-              <div className="text-center mb-8">
-                <h3 className={`text-2xl font-bold mb-2 ${plan.popular ? 'text-white' : 'text-maginf-gray'}`}>
-                  {plan.name}
-                </h3>
-                <p className={`text-sm mb-4 ${plan.popular ? 'text-white/90' : 'text-gray-600'}`}>
-                  {plan.target}
-                </p>
-                <div className={`text-3xl font-bold ${plan.popular ? 'text-white' : 'text-maginf-orange'}`}>
-                  {plan.price}
-                </div>
-              </div>
-
-              {/* Features */}
-              <div className="space-y-4 mb-8">
-                {plan.highlights.map((feature, idx) => (
-                  <div key={idx} className="flex items-start">
-                    <Check className={`h-5 w-5 mr-3 mt-0.5 flex-shrink-0 ${
-                      plan.popular ? 'text-white' : 'text-maginf-orange'
-                    }`} />
-                    <span className={`text-sm ${plan.popular ? 'text-white/90' : 'text-gray-700'}`}>
-                      {feature}
-                    </span>
+              {/* Content */}
+              <div className="relative z-10 p-8 text-white">
+                {/* Icon */}
+                <div className="flex justify-center mb-6">
+                  <div className="bg-white/20 backdrop-blur-sm p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    {plan.icon}
                   </div>
-                ))}
-              </div>
+                </div>
 
-              {/* CTA */}
-              <button 
-                onClick={scrollToContact}
-                className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center ${
-                  plan.popular 
-                    ? 'bg-white text-maginf-orange hover:bg-gray-100' 
-                    : 'bg-maginf-orange text-white hover:bg-maginf-orange-dark'
-                }`}
-              >
-                Solicitar Proposta
-                <ArrowRight className="h-4 w-4 ml-2" />
-              </button>
+                {/* Plan Info */}
+                <div className="text-center mb-8">
+                  <h3 className="text-3xl font-bold mb-2">
+                    {plan.name}
+                  </h3>
+                  <p className="text-sm text-white/90 mb-4">
+                    {plan.target}
+                  </p>
+                  <div className="text-4xl font-bold mb-2">
+                    {plan.price}
+                  </div>
+                  <div className="text-xs text-white/80">Consulte condições</div>
+                </div>
+
+                {/* Features */}
+                <div className="space-y-3 mb-8">
+                  {plan.highlights.map((feature, idx) => (
+                    <div key={idx} className="flex items-start bg-white/10 backdrop-blur-sm rounded-lg p-3 hover:bg-white/20 transition-colors">
+                      <Check className="h-5 w-5 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm font-medium">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <button 
+                  onClick={scrollToContact}
+                  className="w-full py-4 px-6 bg-white text-gray-900 rounded-xl font-bold transition-all hover:scale-105 hover:shadow-xl flex items-center justify-center group"
+                >
+                  Solicitar Proposta
+                  <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
           ))}
         </div>

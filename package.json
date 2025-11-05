@@ -21,8 +21,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next build && next export",
     "deploy": "node deploy-hostinger.js",
-    "deploy:build": "npm run build && npm run deploy"
+    "deploy:build": "npm run build && npm run deploy",
+    "analyze": "ANALYZE=true next build",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "homepage": "https://maginf.com.br",
   "eslintConfig": {

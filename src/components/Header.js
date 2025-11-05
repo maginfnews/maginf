@@ -26,9 +26,9 @@ const Header = () => {
   };
 
   return (
-    <header className={`shadow-lg fixed w-full top-0 z-50 relative ${
+    <header className={`shadow-lg fixed w-full top-0 z-50 backdrop-blur-md ${
       useBackgroundImage ? 'bg-cover bg-center bg-no-repeat' : 
-      useGradientBackground ? 'bg-gradient-to-b from-white to-maginf-gray/30' : 'bg-white'
+      useGradientBackground ? 'bg-white/95' : 'bg-white'
     }`} style={useBackgroundImage ? {backgroundImage: `url(${backgroundImages.desktop})`} : {}}>
       {/* Overlay para melhorar legibilidade quando usar imagem de fundo */}
       {useBackgroundImage && (

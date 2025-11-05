@@ -8,6 +8,7 @@ const Blog = () => {
   const articles = [
     {
       id: 1,
+      color: "from-blue-600 to-cyan-600",
       title: "MSP vs Suporte Tradicional: Qual é a melhor escolha para sua empresa?",
       excerpt: "Análise comparativa entre contratar um MSP e manter equipe interna de TI. Descubra quando cada modelo faz mais sentido financeiramente e operacionalmente para PMEs.",
       author: "Carlos Silva - CTO MAGINF",
@@ -19,6 +20,7 @@ const Blog = () => {
     },
     {
       id: 2,
+      color: "from-red-600 to-orange-600",
       title: "Ransomware em 2025: Como proteger sua empresa dos ataques mais comuns",
       excerpt: "Guia prático com 12 medidas preventivas contra ransomware, incluindo backup 3-2-1, segmentação de rede e treinamento de funcionários. Cases reais de empresas atacadas.",
       author: "Ana Costa - Especialista em Segurança",
@@ -29,6 +31,7 @@ const Blog = () => {
     },
     {
       id: 3,
+      color: "from-purple-600 to-pink-600",
       title: "Microsoft 365 Business vs Enterprise: Qual licença escolher?",
       excerpt: "Comparativo detalhado entre as licenças do M365, com planilha de custos, funcionalidades e recomendações por porte de empresa. Inclui dicas de migração.",
       author: "Roberto Lima - Consultor Microsoft",
@@ -39,6 +42,7 @@ const Blog = () => {
     },
     {
       id: 4,
+      color: "from-green-600 to-emerald-600",
       title: "Estratégia de Backup 3-2-1: Implementação prática para PMEs",
       excerpt: "Tutorial completo para implementar a regra 3-2-1 de backup: 3 cópias, 2 mídias diferentes, 1 offsite. Inclui ferramentas, custos e cronograma de implementação.",
       author: "Marcos Santos - Especialista em Backup",
@@ -49,6 +53,7 @@ const Blog = () => {
     },
     {
       id: 5,
+      color: "from-yellow-600 to-amber-600",
       title: "NOC (Network Operations Center): Vale a pena terceirizar o monitoramento?",
       excerpt: "Análise de ROI do monitoramento 24/7 terceirizado vs equipe interna. Métricas de SLA, custos operacionais e benefícios do NOC para empresas de 50-500 funcionários.",
       author: "Patricia Oliveira - Gerente de Operações",
@@ -59,6 +64,7 @@ const Blog = () => {
     },
     {
       id: 6,
+      color: "from-indigo-600 to-blue-600",
       title: "CFTV IP vs Analógico: Migração e ROI em 2025",
       excerpt: "Guia completo de migração de CFTV analógico para IP. Análise de custos, benefícios da IA integrada, armazenamento em nuvem e cases de sucesso em diferentes setores.",
       author: "João Ferreira - Especialista em CFTV",

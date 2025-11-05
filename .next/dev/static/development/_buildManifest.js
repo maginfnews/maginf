@@ -9,8 +9,12 @@ self.__BUILD_MANIFEST = {
   },
   "sortedPages": [
     "/",
+    "/404",
     "/_app",
     "/_error",
-    "/api/contact"
+    "/api/chat",
+    "/api/contact",
+    "/privacidade",
+    "/termos"
   ]
 };self.__BUILD_MANIFEST_CB && self.__BUILD_MANIFEST_CB()

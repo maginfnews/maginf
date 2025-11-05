@@ -11,6 +11,7 @@ const Portfolio = () => {
       id: 1,
       title: "Modernização de Infraestrutura - Indústria Metalúrgica",
       category: "Infraestrutura",
+      color: "from-blue-600 to-cyan-600",
       client: "MetalTech Indústria",
       location: "São Paulo, SP",
       date: "Set 2025",
@@ -29,6 +30,7 @@ const Portfolio = () => {
       id: 2,
       title: "Sistema CFTV Inteligente - Shopping Center",
       category: "CFTV",
+      color: "from-red-600 to-orange-600",
       client: "Shopping Metropolitano",
       location: "Guarulhos, SP",
       date: "Ago 2025",
@@ -46,6 +48,7 @@ const Portfolio = () => {
       id: 3,
       title: "Migração Microsoft 365 - Escritório de Advocacia",
       category: "Cloud",
+      color: "from-purple-600 to-pink-600",
       client: "Advocacia & Associados",
       location: "São Paulo, SP",
       date: "Jul 2025",
@@ -63,6 +66,7 @@ const Portfolio = () => {
       id: 4,
       title: "Rede Wi-Fi Corporativa - Hospital",
       category: "Redes",
+      color: "from-green-600 to-emerald-600",
       client: "Hospital São Lucas",
       location: "Osasco, SP",
       date: "Jun 2025",
@@ -78,6 +82,7 @@ const Portfolio = () => {
     },
     {
       id: 5,
+      color: "from-yellow-600 to-amber-600",
       title: "Backup e Disaster Recovery - Fintech",
       category: "Backup",
       client: "FinPay Solutions",
@@ -95,8 +100,9 @@ const Portfolio = () => {
     },
     {
       id: 6,
-      title: "Suporte MSP - Grupo Educacional",
+      title: "Contrato MSP - Instituição de Ensino",
       category: "MSP",
+      color: "from-indigo-600 to-blue-600",
       client: "Colégio Excelência",
       location: "São Paulo, SP",
       date: "Abr 2025",
@@ -162,67 +168,69 @@ const Portfolio = () => {
               animation="fadeInUp" 
               delay={0.1 * index}
             >
-              <div className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+              <div className="relative rounded-3xl overflow-hidden group hover:scale-105 transition-all duration-500">
+                {/* Gradient Background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-90`}></div>
+                
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute inset-0" style={{
+                    backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+                    backgroundSize: '40px 40px'
+                  }}></div>
+                </div>
+
+                {/* Featured Badge */}
                 {project.featured && (
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="bg-maginf-orange text-white px-3 py-1 rounded-full text-sm font-medium">
-                      Destaque
+                  <div className="absolute -top-3 -right-3 z-20">
+                    <span className="bg-white text-maginf-orange px-4 py-2 rounded-full text-sm font-bold shadow-lg animate-pulse">
+                      ⭐ DESTAQUE
                     </span>
                   </div>
                 )}
-                
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
-                    <button 
-                      onClick={() => setSelectedProject(project)}
-                      className="opacity-0 group-hover:opacity-100 bg-white text-maginf-orange p-3 rounded-full hover:bg-maginf-orange hover:text-white transition-all duration-300"
-                    >
-                      <Eye className="h-6 w-6" />
-                    </button>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+
+                {/* Content */}
+                <div className="relative z-10 p-6 text-white">
+                  {/* Category Badge */}
+                  <div className="mb-4">
+                    <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold">
                       {project.category}
                     </span>
                   </div>
                   
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                  {/* Title */}
+                  <h3 className="text-xl font-bold mb-3 line-clamp-2">
                     {project.title}
                   </h3>
                   
-                  <p className="text-gray-600 mb-4 line-clamp-3">
+                  {/* Description */}
+                  <p className="text-white/90 mb-4 line-clamp-3 text-sm">
                     {project.description}
                   </p>
                   
-                  <div className="space-y-2 text-sm text-gray-500 mb-4">
-                    <div className="flex items-center gap-2">
+                  {/* Info Cards */}
+                  <div className="space-y-2 mb-4">
+                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg p-2">
                       <MapPin className="h-4 w-4" />
-                      {project.location}
+                      <span className="text-xs font-medium">{project.location}</span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg p-2">
                       <Calendar className="h-4 w-4" />
-                      {project.date}
+                      <span className="text-xs font-medium">{project.date}</span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg p-2">
                       <Users className="h-4 w-4" />
-                      {project.team}
+                      <span className="text-xs font-medium">{project.team}</span>
                     </div>
                   </div>
                   
+                  {/* Button */}
                   <button 
                     onClick={() => setSelectedProject(project)}
-                    className="w-full btn-primary justify-center"
+                    className="w-full bg-white text-gray-900 py-3 px-4 rounded-xl font-bold hover:scale-105 transition-all flex items-center justify-center gap-2 group"
                   >
-                    Ver detalhes
-                    <ExternalLink className="h-4 w-4" />
+                    Ver Detalhes
+                    <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </div>

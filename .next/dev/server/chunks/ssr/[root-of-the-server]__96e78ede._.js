@@ -3383,223 +3383,300 @@ const About = ()=>{
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                    className: "grid lg:grid-cols-2 gap-12",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                            className: "bg-maginf-gray rounded-2xl p-8 text-white",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                    className: "flex items-center mb-6",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$graduation$2d$cap$2e$mjs__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__GraduationCap$3e$__["GraduationCap"], {
-                                            className: "h-8 w-8 text-maginf-orange mr-3"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/About.js",
-                                            lineNumber: 131,
-                                            columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h3", {
-                                            className: "text-xl font-bold",
-                                            children: "Áreas de Atuação"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/About.js",
-                                            lineNumber: 132,
-                                            columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0))
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/components/About.js",
-                                    lineNumber: 130,
-                                    columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                    className: "grid grid-cols-1 gap-3",
-                                    children: expertise.map((area, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                            className: "flex items-center",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                                    className: "w-2 h-2 bg-maginf-orange rounded-full mr-3"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/About.js",
-                                                    lineNumber: 137,
-                                                    columnNumber: 19
-                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                                    children: area
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/About.js",
-                                                    lineNumber: 138,
-                                                    columnNumber: 19
-                                                }, ("TURBOPACK compile-time value", void 0))
-                                            ]
-                                        }, index, true, {
-                                            fileName: "[project]/src/components/About.js",
-                                            lineNumber: 136,
-                                            columnNumber: 17
-                                        }, ("TURBOPACK compile-time value", void 0)))
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/About.js",
-                                    lineNumber: 134,
-                                    columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0))
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/components/About.js",
-                            lineNumber: 129,
-                            columnNumber: 11
-                        }, ("TURBOPACK compile-time value", void 0)),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                            className: "space-y-6",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                    className: "bg-gray-50 rounded-xl p-6",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h4", {
-                                            className: "font-semibold text-maginf-gray mb-3",
-                                            children: "Identidade Visual"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/About.js",
-                                            lineNumber: 147,
-                                            columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                            className: "flex items-center space-x-4 mb-4",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                                    className: "w-8 h-8 bg-maginf-orange rounded"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/About.js",
-                                                    lineNumber: 149,
-                                                    columnNumber: 17
-                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                                    className: "text-sm text-gray-600",
-                                                    children: "Laranja (cor ativa/CTA)"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/About.js",
-                                                    lineNumber: 150,
-                                                    columnNumber: 17
-                                                }, ("TURBOPACK compile-time value", void 0))
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/About.js",
-                                            lineNumber: 148,
-                                            columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                            className: "flex items-center space-x-4",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                                    className: "w-8 h-8 bg-maginf-gray rounded"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/About.js",
-                                                    lineNumber: 153,
-                                                    columnNumber: 17
-                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                                    className: "text-sm text-gray-600",
-                                                    children: "Cinza (cor institucional)"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/About.js",
-                                                    lineNumber: 154,
-                                                    columnNumber: 17
-                                                }, ("TURBOPACK compile-time value", void 0))
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/components/About.js",
-                                            lineNumber: 152,
-                                            columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0))
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/components/About.js",
-                                    lineNumber: 146,
-                                    columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                    className: "bg-gray-50 rounded-xl p-6",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h4", {
-                                            className: "font-semibold text-maginf-gray mb-3",
-                                            children: "Tom de Comunicação"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/About.js",
-                                            lineNumber: 159,
-                                            columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
-                                            className: "text-sm text-gray-600",
-                                            children: "Profissional, acessível e confiável — linguagem técnica mas sem jargões excessivos. Focamos na clareza e transparência em todas as comunicações."
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/About.js",
-                                            lineNumber: 160,
-                                            columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0))
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/components/About.js",
-                                    lineNumber: 158,
-                                    columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0))
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/components/About.js",
-                            lineNumber: 145,
-                            columnNumber: 11
-                        }, ("TURBOPACK compile-time value", void 0))
-                    ]
-                }, void 0, true, {
+                    className: "max-w-2xl mx-auto",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                        className: "bg-maginf-gray rounded-2xl p-8 text-white",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                className: "flex items-center mb-6",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$graduation$2d$cap$2e$mjs__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__GraduationCap$3e$__["GraduationCap"], {
+                                        className: "h-8 w-8 text-maginf-orange mr-3"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/About.js",
+                                        lineNumber: 131,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h3", {
+                                        className: "text-xl font-bold",
+                                        children: "Áreas de Atuação"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/About.js",
+                                        lineNumber: 132,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0))
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/About.js",
+                                lineNumber: 130,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                className: "grid grid-cols-1 gap-3",
+                                children: expertise.map((area, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                className: "w-2 h-2 bg-maginf-orange rounded-full mr-3"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/About.js",
+                                                lineNumber: 137,
+                                                columnNumber: 19
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
+                                                children: area
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/About.js",
+                                                lineNumber: 138,
+                                                columnNumber: 19
+                                            }, ("TURBOPACK compile-time value", void 0))
+                                        ]
+                                    }, index, true, {
+                                        fileName: "[project]/src/components/About.js",
+                                        lineNumber: 136,
+                                        columnNumber: 17
+                                    }, ("TURBOPACK compile-time value", void 0)))
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/About.js",
+                                lineNumber: 134,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0))
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/About.js",
+                        lineNumber: 129,
+                        columnNumber: 11
+                    }, ("TURBOPACK compile-time value", void 0))
+                }, void 0, false, {
                     fileName: "[project]/src/components/About.js",
                     lineNumber: 127,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                    className: "mt-16 bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-8",
+                    className: "mt-16",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h3", {
-                            className: "text-2xl font-bold text-maginf-gray mb-6 text-center",
-                            children: "Prova Social"
+                            className: "text-2xl font-bold text-maginf-gray mb-8 text-center",
+                            children: "O que nossos clientes dizem"
                         }, void 0, false, {
                             fileName: "[project]/src/components/About.js",
-                            lineNumber: 170,
+                            lineNumber: 147,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                            className: "text-center max-w-3xl mx-auto",
+                            className: "grid md:grid-cols-3 gap-6",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
-                                    className: "text-gray-700 mb-6",
-                                    children: "Atuamos com projetos para órgãos de ensino e secretarias, além de clientes corporativos locais. Exemplos de atuação incluem suporte a instituições educacionais, implantação de CFTV e fornecimento de hardware em grandes volumes."
-                                }, void 0, false, {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                    className: "bg-white rounded-xl p-6 shadow-lg",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                            className: "flex items-center mb-4",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                    className: "w-12 h-12 bg-maginf-orange rounded-full flex items-center justify-center text-white font-bold text-lg",
+                                                    children: "M"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/About.js",
+                                                    lineNumber: 154,
+                                                    columnNumber: 17
+                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                    className: "ml-3",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h4", {
+                                                            className: "font-semibold text-maginf-gray",
+                                                            children: "Maria Silva"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/About.js",
+                                                            lineNumber: 158,
+                                                            columnNumber: 19
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm text-gray-600",
+                                                            children: "Diretora de TI"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/About.js",
+                                                            lineNumber: 159,
+                                                            columnNumber: 19
+                                                        }, ("TURBOPACK compile-time value", void 0))
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/About.js",
+                                                    lineNumber: 157,
+                                                    columnNumber: 17
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/About.js",
+                                            lineNumber: 153,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+                                            className: "text-gray-700 italic mb-4",
+                                            children: '"O suporte 24/7 da MAGINF foi essencial para manter nossa operação funcionando sem interrupções. A equipe é extremamente competente e ágil."'
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/About.js",
+                                            lineNumber: 162,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                            className: "flex text-maginf-orange",
+                                            children: "★★★★★"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/About.js",
+                                            lineNumber: 165,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0))
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/src/components/About.js",
-                                    lineNumber: 174,
+                                    lineNumber: 152,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                    className: "bg-white rounded-lg p-4 inline-block",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
-                                        className: "text-sm text-gray-600 italic",
-                                        children: '"Clientes específicos podem ser listados mediante autorização"'
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/About.js",
-                                        lineNumber: 180,
-                                        columnNumber: 15
-                                    }, ("TURBOPACK compile-time value", void 0))
-                                }, void 0, false, {
+                                    className: "bg-white rounded-xl p-6 shadow-lg",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                            className: "flex items-center mb-4",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                    className: "w-12 h-12 bg-maginf-orange rounded-full flex items-center justify-center text-white font-bold text-lg",
+                                                    children: "J"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/About.js",
+                                                    lineNumber: 173,
+                                                    columnNumber: 17
+                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                    className: "ml-3",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h4", {
+                                                            className: "font-semibold text-maginf-gray",
+                                                            children: "João Santos"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/About.js",
+                                                            lineNumber: 177,
+                                                            columnNumber: 19
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm text-gray-600",
+                                                            children: "Gestor de Infraestrutura"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/About.js",
+                                                            lineNumber: 178,
+                                                            columnNumber: 19
+                                                        }, ("TURBOPACK compile-time value", void 0))
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/About.js",
+                                                    lineNumber: 176,
+                                                    columnNumber: 17
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/About.js",
+                                            lineNumber: 172,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+                                            className: "text-gray-700 italic mb-4",
+                                            children: '"A migração para a nuvem foi conduzida de forma impecável. Reduzimos custos e aumentamos a segurança dos nossos dados."'
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/About.js",
+                                            lineNumber: 181,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                            className: "flex text-maginf-orange",
+                                            children: "★★★★★"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/About.js",
+                                            lineNumber: 184,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0))
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/src/components/About.js",
-                                    lineNumber: 179,
+                                    lineNumber: 171,
+                                    columnNumber: 13
+                                }, ("TURBOPACK compile-time value", void 0)),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                    className: "bg-white rounded-xl p-6 shadow-lg",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                            className: "flex items-center mb-4",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                    className: "w-12 h-12 bg-maginf-orange rounded-full flex items-center justify-center text-white font-bold text-lg",
+                                                    children: "A"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/About.js",
+                                                    lineNumber: 192,
+                                                    columnNumber: 17
+                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                    className: "ml-3",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h4", {
+                                                            className: "font-semibold text-maginf-gray",
+                                                            children: "Ana Costa"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/About.js",
+                                                            lineNumber: 196,
+                                                            columnNumber: 19
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm text-gray-600",
+                                                            children: "Coordenadora Administrativa"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/About.js",
+                                                            lineNumber: 197,
+                                                            columnNumber: 19
+                                                        }, ("TURBOPACK compile-time value", void 0))
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/About.js",
+                                                    lineNumber: 195,
+                                                    columnNumber: 17
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/About.js",
+                                            lineNumber: 191,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+                                            className: "text-gray-700 italic mb-4",
+                                            children: '"Profissionais altamente qualificados. A implementação do sistema de CFTV superou nossas expectativas em qualidade e prazo."'
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/About.js",
+                                            lineNumber: 200,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                            className: "flex text-maginf-orange",
+                                            children: "★★★★★"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/About.js",
+                                            lineNumber: 203,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0))
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/About.js",
+                                    lineNumber: 190,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/About.js",
-                            lineNumber: 173,
+                            lineNumber: 150,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/About.js",
-                    lineNumber: 169,
+                    lineNumber: 146,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             ]
@@ -3657,7 +3734,7 @@ const IMAGE_CONFIG = {
         branch: 'main'
     },
     // Configuração ativa (mude aqui para trocar o servidor)
-    active: 'imagemhost' // 'cloudinary', 'aws', 'imagemhost', 'github', 'local'
+    active: 'cloudinary' // 'cloudinary', 'aws', 'imagemhost', 'github', 'local'
 };
 const getImageUrl = (imagePath, preset = 'blog')=>{
     const config = IMAGE_CONFIG;
@@ -3677,21 +3754,43 @@ const getImageUrl = (imagePath, preset = 'blog')=>{
     }
 };
 const IMAGES = {
-    blog: {
-        mspGuide: getImageUrl('https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop&crop=center', 'blog'),
-        segurancaTi: getImageUrl('https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop&crop=center', 'blog'),
-        microsoft365: getImageUrl('https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop&crop=center', 'blog'),
-        backupNuvem: getImageUrl('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop&crop=center', 'blog'),
-        monitoramento247: getImageUrl('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop&crop=center', 'blog'),
-        cftvInteligente: getImageUrl('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=250&fit=crop&crop=center', 'blog')
+    // Hero Section
+    hero: {
+        main: 'https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg',
+        background: 'https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg' // Tecnologia abstrata
     },
+    // About Section
+    about: {
+        team: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
+        office: 'https://images.pexels.com/photos/1181622/pexels-photo-1181622.jpeg',
+        technician: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg' // Técnico trabalhando
+    },
+    // Services Section
+    services: {
+        cftv: 'https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg',
+        cloud: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg',
+        support: 'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg',
+        network: 'https://images.pexels.com/photos/2881229/pexels-photo-2881229.jpeg',
+        hardware: 'https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg',
+        backup: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg' // Backup e segurança
+    },
+    // Blog Section
+    blog: {
+        mspGuide: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
+        segurancaTi: 'https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg',
+        microsoft365: 'https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg',
+        backupNuvem: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg',
+        monitoramento247: 'https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg',
+        cftvInteligente: 'https://images.pexels.com/photos/2228842/pexels-photo-2228842.jpeg' // CFTV
+    },
+    // Portfolio Section
     portfolio: {
-        infraestrutura: getImageUrl('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&crop=center', 'portfolio'),
-        cftvShopping: getImageUrl('https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&crop=center', 'portfolio'),
-        microsoft365Advocacia: getImageUrl('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&crop=center', 'portfolio'),
-        wifiHospital: getImageUrl('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop&crop=center', 'portfolio'),
-        backupFintech: getImageUrl('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=400&fit=crop&crop=center', 'portfolio'),
-        mspEducacao: getImageUrl('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop&crop=center', 'portfolio')
+        infraestrutura: 'https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg',
+        cftvShopping: 'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg',
+        microsoft365Advocacia: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
+        wifiHospital: 'https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg',
+        backupFintech: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg',
+        mspEducacao: 'https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg' // Educação/Lab
     },
     placeholder: getImageUrl('/images/placeholder.svg', 'blog')
 };
@@ -5442,6 +5541,7 @@ const useResend = ()=>{
         setError('');
         setIsSuccess(false);
         try {
+            console.log('🚀 Enviando via Resend API...');
             const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: {
@@ -5449,31 +5549,21 @@ const useResend = ()=>{
                 },
                 body: JSON.stringify(payload)
             });
-            if (!res.ok) throw new Error("Falha ao enviar via backend");
-            console.log("✅ E-mail enviado via Resend (backend)");
-            setIsSuccess(true);
-            return await res.json();
-        } catch (err) {
-            console.warn("⚠️ Falha no Resend, usando fallback FormSubmit");
-            try {
-                await sendViaFormSubmit(payload);
-                console.log("✅ E-mail enviado via FormSubmit (fallback)");
-                setIsSuccess(true);
-            } catch (fallbackErr) {
-                console.error("❌ Falha total no envio:", fallbackErr);
-                setError("Erro ao enviar mensagem. Tente novamente.");
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.error || `Erro HTTP: ${res.status}`);
             }
+            const result = await res.json();
+            console.log("✅ E-mail enviado com sucesso via Resend!", result);
+            setIsSuccess(true);
+            return result;
+        } catch (err) {
+            console.error("❌ Erro no envio via Resend:", err);
+            setError(err.message || "Erro ao enviar mensagem. Tente novamente.");
+            throw err;
         } finally{
             setIsLoading(false);
         }
-    };
-    const sendViaFormSubmit = async (payload)=>{
-        const formData = new FormData();
-        Object.entries(payload).forEach(([k, v])=>formData.append(k, v));
-        await fetch("https://formsubmit.co/maicon@magpass.com.br", {
-            method: "POST",
-            body: formData
-        });
     };
     const reset = ()=>{
         setIsLoading(false);
@@ -5512,7 +5602,7 @@ const useContactForm = ()=>{
             return;
         }
         try {
-            console.log('🔄 Tentando enviar via API interna...');
+            console.log('🔄 Enviando via Resend API...');
             const payload = {
                 name: formData.name,
                 email: formData.email,
@@ -5520,7 +5610,7 @@ const useContactForm = ()=>{
                 message: formData.message
             };
             const result = await send(payload);
-            console.log('🎉 Formulário processado com sucesso!', result);
+            console.log('🎉 E-mail enviado com sucesso via Resend!', result);
             // Limpar formulário após sucesso
             setFormData({
                 name: '',
@@ -5529,7 +5619,8 @@ const useContactForm = ()=>{
                 message: ''
             });
         } catch (err) {
-            console.error('❌ Erro no envio do formulário:', err);
+            console.error('❌ Falha no envio via Resend:', err);
+        // Erro já está sendo tratado no hook send()
         }
     };
     return {

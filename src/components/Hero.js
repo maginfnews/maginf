@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Shield, Clock, Users } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
+import { IMAGES } from '../config/imageConfig';
 
 const Hero = () => {
   const scrollToSection = (sectionId) => {
@@ -11,8 +12,24 @@ const Hero = () => {
   };
 
   return (
-    <section id="inicio" className="bg-gradient-to-br from-maginf-gray to-maginf-gray-light text-white section-padding pt-32">
-      <div className="container-max">
+    <section 
+      id="inicio" 
+      className="relative bg-gradient-to-br from-maginf-gray to-maginf-gray-light text-white section-padding pt-32 overflow-hidden"
+    >
+      {/* Background Image with 100% Opacity */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${IMAGES.hero.main})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-maginf-gray/80 to-maginf-gray-light/75" />
+      
+      {/* Content */}
+      <div className="container-max relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-8">

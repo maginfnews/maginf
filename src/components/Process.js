@@ -13,6 +13,8 @@ const Process = () => {
     {
       icon: <Search className="h-8 w-8" />,
       title: "Diagnóstico Inicial",
+      number: "01",
+      color: "from-blue-600 to-cyan-600",
       description: "Avaliação completa do ambiente atual e definição de prioridades técnicas e de negócio.",
       details: [
         "Auditoria de infraestrutura existente",
@@ -24,6 +26,8 @@ const Process = () => {
     {
       icon: <FileText className="h-8 w-8" />,
       title: "Proposta e SLA",
+      number: "02",
+      color: "from-purple-600 to-pink-600",
       description: "Definição do pacote recomendado, escopo detalhado e acordos de nível de serviço.",
       details: [
         "Proposta técnica personalizada",
@@ -35,6 +39,8 @@ const Process = () => {
     {
       icon: <Settings className="h-8 w-8" />,
       title: "Onboarding Técnico",
+      number: "03",
+      color: "from-orange-600 to-red-600",
       description: "Configuração completa de monitoramento, inventário de ativos e sistemas de backup.",
       details: [
         "Instalação de agentes de monitoramento",
@@ -46,6 +52,8 @@ const Process = () => {
     {
       icon: <RotateCcw className="h-8 w-8" />,
       title: "Operação Contínua",
+      number: "04",
+      color: "from-green-600 to-emerald-600",
       description: "Suporte diário, manutenção preventiva, atualizações e relatórios de performance.",
       details: [
         "Monitoramento proativo 24/7",
@@ -57,6 +65,8 @@ const Process = () => {
     {
       icon: <TrendingUp className="h-8 w-8" />,
       title: "Revisão Estratégica",
+      number: "05",
+      color: "from-yellow-600 to-amber-600",
       description: "Reuniões trimestrais para otimização de custos, capacidade e roadmap tecnológico.",
       details: [
         "Análise de performance e custos",
@@ -82,58 +92,59 @@ const Process = () => {
         </div>
 
         {/* Process Steps */}
-        <div className="relative">
-          {/* Connection Line */}
-          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-maginf-orange/20 h-full"></div>
-          
-          <div className="space-y-12">
-            {steps.map((step, index) => (
-              <div key={index} className={`flex flex-col lg:flex-row items-center gap-8 ${
-                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-              }`}>
-                {/* Content */}
-                <div className="flex-1 lg:max-w-md">
-                  <div className={`bg-white rounded-2xl p-8 shadow-lg ${
-                    index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'
-                  }`}>
-                    <h3 className="text-xl font-bold text-maginf-gray mb-4">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600 mb-6">
-                      {step.description}
-                    </p>
-                    <ul className={`space-y-2 text-sm text-gray-700 ${
-                      index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'
-                    }`}>
-                      {step.details.map((detail, idx) => (
-                        <li key={idx} className={`flex items-center ${
-                          index % 2 === 0 ? 'lg:justify-end' : 'lg:justify-start'
-                        }`}>
-                          <div className={`w-2 h-2 bg-maginf-orange rounded-full ${
-                            index % 2 === 0 ? 'lg:order-2 lg:ml-2 mr-2 lg:mr-0' : 'mr-2'
-                          }`}></div>
-                          <span>{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {steps.map((step, index) => (
+            <div 
+              key={index} 
+              className="relative rounded-3xl overflow-hidden group hover:scale-105 transition-all duration-500"
+            >
+              {/* Gradient Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-90`}></div>
+              
+              {/* Animated Background Pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+                  backgroundSize: '40px 40px'
+                }}></div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 p-8 text-white">
+                {/* Number Badge */}
+                <div className="absolute -top-3 -right-3 bg-white text-gray-900 w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-xl">
+                  {step.number}
                 </div>
 
-                {/* Step Number and Icon */}
-                <div className="relative z-10 flex-shrink-0">
-                  <div className="bg-maginf-orange text-white w-20 h-20 rounded-full flex items-center justify-center shadow-lg">
+                {/* Icon */}
+                <div className="flex justify-center mb-6">
+                  <div className="bg-white/20 backdrop-blur-sm p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                     {step.icon}
                   </div>
-                  <div className="absolute -top-2 -right-2 bg-maginf-gray text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">
-                    {index + 1}
-                  </div>
                 </div>
 
-                {/* Spacer for alternating layout */}
-                <div className="flex-1 lg:max-w-md hidden lg:block"></div>
+                {/* Title */}
+                <h3 className="text-2xl font-bold mb-4 text-center">
+                  {step.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-white/90 mb-6 text-center text-sm">
+                  {step.description}
+                </p>
+
+                {/* Details */}
+                <ul className="space-y-2">
+                  {step.details.map((detail, idx) => (
+                    <li key={idx} className="flex items-start bg-white/10 backdrop-blur-sm rounded-lg p-2 hover:bg-white/20 transition-colors">
+                      <div className="w-1.5 h-1.5 bg-white rounded-full mt-1.5 mr-2 flex-shrink-0"></div>
+                      <span className="text-xs font-medium">{detail}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
         {/* Timeline Summary */}

@@ -67,22 +67,47 @@ export const getImageUrl = (imagePath, preset = 'blog') => {
 // Termos: "server room", "cybersecurity", "microsoft office", "cloud storage", "network monitoring", "security cameras"
 
 export const IMAGES = {
+  // Hero Section
+  hero: {
+    main: 'https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1920', // Data center moderno
+    background: 'https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1920' // Tecnologia abstrata
+  },
+
+  // About Section
+  about: {
+    team: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800', // Equipe de TI
+    office: 'https://images.pexels.com/photos/1181622/pexels-photo-1181622.jpeg?auto=compress&cs=tinysrgb&w=800', // Escritório moderno
+    technician: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800' // Técnico trabalhando
+  },
+
+  // Services Section
+  services: {
+    cftv: 'https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg', // Câmeras de segurança
+    cloud: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg', // Cloud computing
+    support: 'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg', // Suporte técnico
+    network: 'https://images.pexels.com/photos/2881229/pexels-photo-2881229.jpeg', // Equipamentos de rede
+    hardware: 'https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg', // Hardware
+    backup: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg' // Backup e segurança
+  },
+
+  // Blog Section
   blog: {
-    mspGuide: getImageUrl('https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop&crop=center', 'blog'),
-    segurancaTi: getImageUrl('https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop&crop=center', 'blog'),
-    microsoft365: getImageUrl('https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop&crop=center', 'blog'),
-    backupNuvem: getImageUrl('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop&crop=center', 'blog'),
-    monitoramento247: getImageUrl('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop&crop=center', 'blog'),
-    cftvInteligente: getImageUrl('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=250&fit=crop&crop=center', 'blog')
+    mspGuide: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg', // Consultoria MSP
+    segurancaTi: 'https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg', // Segurança
+    microsoft365: 'https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg', // Microsoft 365
+    backupNuvem: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg', // Backup nuvem
+    monitoramento247: 'https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg', // Monitoramento
+    cftvInteligente: 'https://images.pexels.com/photos/2228842/pexels-photo-2228842.jpeg' // CFTV
   },
   
+  // Portfolio Section
   portfolio: {
-    infraestrutura: getImageUrl('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&crop=center', 'portfolio'),
-    cftvShopping: getImageUrl('https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&crop=center', 'portfolio'),
-    microsoft365Advocacia: getImageUrl('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&crop=center', 'portfolio'),
-    wifiHospital: getImageUrl('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop&crop=center', 'portfolio'),
-    backupFintech: getImageUrl('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=400&fit=crop&crop=center', 'portfolio'),
-    mspEducacao: getImageUrl('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop&crop=center', 'portfolio')
+    infraestrutura: 'https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg', // Data center
+    cftvShopping: 'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg', // Shopping/Retail
+    microsoft365Advocacia: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg', // Escritório advocacia
+    wifiHospital: 'https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg', // Hospital
+    backupFintech: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg', // Fintech/Dados
+    mspEducacao: 'https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg' // Educação/Lab
   },
   
   placeholder: getImageUrl('/images/placeholder.svg', 'blog')

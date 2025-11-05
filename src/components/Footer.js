@@ -391,12 +391,12 @@ const Footer = () => {
               © 2025 MAGINF Tecnologia. Todos os direitos reservados.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <button className="text-gray-400 hover:text-maginf-orange text-sm transition-colors">
+              <a href="/privacidade" className="text-gray-400 hover:text-maginf-orange text-sm transition-colors">
                 Política de Privacidade
-              </button>
-              <button className="text-gray-400 hover:text-maginf-orange text-sm transition-colors">
+              </a>
+              <a href="/termos" className="text-gray-400 hover:text-maginf-orange text-sm transition-colors">
                 Termos de Uso
-              </button>
+              </a>
             </div>
           </div>
         </div>
