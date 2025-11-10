@@ -96,7 +96,7 @@ const Chatbot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-24 z-40 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:right-24 z-40 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group"
           aria-label="Abrir chat"
         >
           <MessageCircle className="h-6 w-6" />
@@ -108,7 +108,7 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-24 z-40 w-96 max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl flex flex-col max-h-[600px]">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:right-24 z-40 w-full sm:w-96 max-w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl flex flex-col h-[calc(100vh-8rem)] sm:h-auto sm:max-h-[600px]">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -175,12 +175,12 @@ const Chatbot = () => {
 
           {/* Quick Replies */}
           {messages.length <= 2 && (
-            <div className="p-4 bg-white border-t flex flex-wrap gap-2">
+            <div className="p-3 sm:p-4 bg-white border-t flex flex-wrap gap-2">
               {quickReplies.map((reply, index) => (
                 <button
                   key={index}
                   onClick={() => handleQuickReply(reply)}
-                  className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-full transition-colors"
+                  className="text-xs sm:text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-full transition-colors whitespace-nowrap"
                 >
                   {reply.text}
                 </button>
@@ -189,7 +189,7 @@ const Chatbot = () => {
           )}
 
           {/* Input */}
-          <div className="p-4 bg-white border-t rounded-b-2xl">
+          <div className="p-3 sm:p-4 bg-white border-t rounded-b-2xl">
             <div className="flex gap-2">
               <input
                 type="text"
@@ -198,12 +198,12 @@ const Chatbot = () => {
                 onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSend()}
                 placeholder="Digite sua mensagem..."
                 disabled={isLoading}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                className="flex-1 px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-full focus:outline-none focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
               />
               <button
                 onClick={() => handleSend()}
                 disabled={isLoading || !input.trim()}
-                className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="bg-blue-600 hover:bg-blue-700 text-white p-2 sm:p-2.5 rounded-full transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed flex-shrink-0"
               >
                 {isLoading ? (
                   <Loader2 className="h-5 w-5 animate-spin" />
