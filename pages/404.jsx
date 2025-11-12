@@ -34,10 +34,10 @@ export default function Custom404() {
   }, []);
 
   const quickLinks = [
-    { name: 'Início', href: '/', icon: Home, color: 'from-blue-500 to-cyan-500' },
-    { name: 'Serviços', href: '/#servicos', icon: Server, color: 'from-purple-500 to-pink-500' },
-    { name: 'Planos', href: '/#planos', icon: Zap, color: 'from-orange-500 to-red-500' },
-    { name: 'Contato', href: '/#contato', icon: Mail, color: 'from-green-500 to-emerald-500' },
+    { name: 'Início', href: '/', icon: Home, color: 'from-maginf-orange to-maginf-orange-dark' },
+    { name: 'Serviços', href: '/#servicos', icon: Server, color: 'from-maginf-orange to-maginf-orange-dark' },
+    { name: 'Planos', href: '/#planos', icon: Zap, color: 'from-maginf-orange to-maginf-orange-dark' },
+    { name: 'Contato', href: '/#contato', icon: Mail, color: 'from-maginf-orange to-maginf-orange-dark' },
   ];
 
   return (
@@ -56,7 +56,7 @@ export default function Custom404() {
             return (
               <div
                 key={item.id}
-                className="absolute opacity-5 animate-float-slow"
+                className="absolute opacity-20 animate-float-slow"
                 style={{
                   left: `${item.x}%`,
                   top: `${item.y}%`,
@@ -70,13 +70,13 @@ export default function Custom404() {
 
           {/* Gradient Orbs */}
           <div 
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-maginf-orange/10 rounded-full blur-3xl animate-pulse"
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-maginf-orange/20 rounded-full blur-3xl animate-pulse"
             style={{
               transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`
             }}
           />
           <div 
-            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-maginf-orange/15 rounded-full blur-3xl animate-pulse"
             style={{
               transform: `translate(${-mousePosition.x}px, ${-mousePosition.y}px)`,
               animationDelay: '1s'
