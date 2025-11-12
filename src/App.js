@@ -6,7 +6,7 @@ import ReadingProgress from './components/ReadingProgress';
 // import CustomCursor from './components/CustomCursor';
 import DarkModeToggle from './components/DarkModeToggle';
 import Chatbot from './components/Chatbot';
-import NovenbroAzul from './components/NovenbroAzul';
+import CampanhaManager from './components/CampanhaManager';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -30,10 +30,8 @@ function App() {
       <ReadingProgress />
       {/* <CustomCursor /> */}
       <DarkModeToggle />
-      <NovenbroAzul />
       <Header />
-      {/* Spacer para compensar navbar fixo */}
-      <div className="h-24"></div>
+      <CampanhaManager />
       <Hero />
       <Services />
       <Plans />
