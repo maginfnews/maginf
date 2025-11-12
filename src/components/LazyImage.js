@@ -2,11 +2,17 @@ import { useState, useEffect, useRef } from 'react';
 
 const LazyImage = ({ 
   src, 
-  alt, 
+  alt = '', 
   className = '', 
   placeholder = '/images/placeholder.svg',
   ...props 
 }) => {
+  // Validar alt text e adicionar fallback
+  const finalAlt = alt || 'Imagem MAGINF Tecnologia';
+  
+  if (!alt || alt.trim() === '') {
+    console.warn('⚠️ LazyImage sem alt text:', src);
+  }
   const [imageSrc, setImageSrc] = useState(placeholder);
   const [imageRef, setImageRef] = useState();
   const imgRef = useRef();
@@ -43,7 +49,7 @@ const LazyImage = ({
     <img
       ref={imgRef}
       src={imageSrc}
-      alt={alt}
+      alt={finalAlt}
       className={`transition-opacity duration-300 ${
         imageSrc === placeholder ? 'opacity-50' : 'opacity-100'
       } ${className}`}

@@ -131,7 +131,7 @@ const Blog = () => {
                   <div className="md:w-1/2">
                     <img 
                       src={articles[0].image} 
-                      alt={articles[0].title}
+                      alt={articles[0].title || 'Artigo em destaque - MAGINF Tecnologia'}
                       className="w-full h-64 md:h-full object-cover"
                     />
                   </div>
@@ -192,7 +192,7 @@ const Blog = () => {
               <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                 <img 
                   src={article.image} 
-                  alt={article.title}
+                  alt={article.title || `Artigo sobre ${article.category} - MAGINF Tecnologia`}
                   className="w-full h-48 object-cover"
                 />
                 

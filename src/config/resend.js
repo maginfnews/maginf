@@ -83,12 +83,12 @@ export const createEmailTemplate = (data) => {
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
       <div style="background: #e35300; color: white; padding: 20px; text-align: center;">
-        <h1>MAGINF Tecnologia</h1>
-        <h2>${type === 'contact' ? 'Nova Mensagem do Site' : 'Solicitação de Orçamento'}</h2>
+        <div style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">MAGINF Tecnologia</div>
+        <div style="font-size: 18px; font-weight: 600;">${type === 'contact' ? 'Nova Mensagem do Site' : 'Solicitação de Orçamento'}</div>
       </div>
       
       <div style="padding: 20px; background: #f9f9f9;">
-        <h2 style="color: #2C3E50;">Informações do Contato</h2>
+        <div style="color: #2C3E50; font-size: 18px; font-weight: bold; margin-bottom: 15px;">Informações do Contato</div>
         
         <table style="width: 100%; border-collapse: collapse;">
           <tr>
@@ -105,7 +105,7 @@ export const createEmailTemplate = (data) => {
           </tr>
         </table>
         
-        <h3 style="color: #2C3E50; margin-top: 20px;">Mensagem:</h3>
+        <div style="color: #2C3E50; font-size: 16px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">Mensagem:</div>
         <div style="background: white; padding: 15px; border-left: 4px solid #e35300; margin: 10px 0;">
           ${message.replace(/\n/g, '<br>')}
         </div>

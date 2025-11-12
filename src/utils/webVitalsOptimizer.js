@@ -1,11 +1,18 @@
 // Otimizações para Core Web Vitals
 
 // 1. Lazy loading de imagens
-export const LazyImage = ({ src, alt, className, ...props }) => {
+export const LazyImage = ({ src, alt = '', className, ...props }) => {
+  // Validar alt text e adicionar fallback
+  const finalAlt = alt || 'Imagem';
+  
+  if (!alt || alt.trim() === '') {
+    console.warn('⚠️ LazyImage sem alt text:', src);
+  }
+  
   return (
     <img
       src={src}
-      alt={alt}
+      alt={finalAlt}
       className={className}
       loading="lazy"
       decoding="async"

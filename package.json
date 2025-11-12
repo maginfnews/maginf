@@ -27,7 +27,13 @@
     "deploy:build": "npm run build && npm run deploy",
     "analyze": "ANALYZE=true next build",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "sitemap": "node update-sitemap.js",
+    "sitemap:validate": "node update-sitemap.js validate",
+    "sitemap:list": "node update-sitemap.js list",
+    "seo:check": "node check-seo.js",
+    "seo:images": "node check-seo.js images",
+    "seo:meta": "node check-seo.js meta"
   },
   "homepage": "https://maginf.com.br",
   "eslintConfig": {

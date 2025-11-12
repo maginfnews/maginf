@@ -10,6 +10,8 @@
 
 # production
 /build
+/out
+/.next
 
 # backup folders
 /dashboard-backup

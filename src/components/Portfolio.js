@@ -245,7 +245,7 @@ const Portfolio = () => {
               <div className="relative">
                 <img 
                   src={selectedProject.image} 
-                  alt={selectedProject.title}
+                  alt={selectedProject.title || `Projeto ${selectedProject.category} - MAGINF Tecnologia`}
                   className="w-full h-64 object-cover"
                 />
                 <button 
