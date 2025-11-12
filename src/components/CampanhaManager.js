@@ -17,7 +17,7 @@ const CAMPANHAS_ATIVAS = {
 
 const CampanhaManager = () => {
   return (
-    <div className="mt-24 md:mt-28">
+    <div className="mt-28 md:mt-32 lg:mt-36">
       {CAMPANHAS_ATIVAS.novenbroAzul && <NovenbroAzul />}
       {CAMPANHAS_ATIVAS.natal && <CampanhaNatal />}
     </div>
