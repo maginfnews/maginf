@@ -8878,7 +8878,7 @@ const WhatsAppButton = ()=>{
     const [isVisible, setIsVisible] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
     const [isOpen, setIsOpen] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
     // Número do WhatsApp da MAGINF (formato internacional: +55 11 4610-6363)
-    const whatsappNumber = '551146106363';
+    const phoneNumber = '551135142933'; // Número do WhatsApp da MAGINF (fixo)
     const message = 'Olá! Gostaria de saber mais sobre os serviços da MAGINF.';
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
         // Mostrar botão após rolar um pouco

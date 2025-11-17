@@ -1,22 +1,24 @@
 {
   "pages": {
     "/_app": [
-      "static/chunks/8a1abf73231222ac.js",
-      "static/chunks/8c92a1d1d905afa0.js",
-      "static/chunks/1882d4b6a0a61862.css",
-      "static/chunks/turbopack-b20db70b9ef5ac2a.js"
+      "static/chunks/fb05c5cf0b24929a.js",
+      "static/chunks/ac3df6bf1410f01b.js",
+      "static/chunks/0508f81bb2665d49.js",
+      "static/chunks/1553794ba1f4b6bf.css",
+      "static/chunks/turbopack-2321174f5d1ce051.js"
     ],
     "/_error": [
       "static/chunks/6a260c74d430d423.js",
-      "static/chunks/8c92a1d1d905afa0.js",
-      "static/chunks/turbopack-248700389ce200c0.js"
+      "static/chunks/ac3df6bf1410f01b.js",
+      "static/chunks/0508f81bb2665d49.js",
+      "static/chunks/turbopack-6a642fb333c99ca4.js"
     ]
   },
   "devFiles": [],
   "polyfillFiles": [],
   "lowPriorityFiles": [
-    "static/EtWcRrh0HfZah6kH7L7_F/_ssgManifest.js",
-    "static/EtWcRrh0HfZah6kH7L7_F/_buildManifest.js"
+    "static/l_5Tr5MWZYjJUo687RA9H/_ssgManifest.js",
+    "static/l_5Tr5MWZYjJUo687RA9H/_buildManifest.js"
   ],
   "rootMainFiles": []
 }
