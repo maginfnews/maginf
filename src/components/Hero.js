@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { ArrowRight, Shield, Clock, Users } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import { IMAGES } from '../config/imageConfig';
@@ -16,17 +17,18 @@ const Hero = () => {
       id="inicio" 
       className="relative bg-gradient-to-br from-maginf-gray to-maginf-gray-light text-white section-padding pt-32 overflow-hidden"
     >
-      {/* Background Image with 100% Opacity */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${IMAGES.hero.main})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-br from-maginf-gray/80 to-maginf-gray-light/75" />
+      {/* Background Image as LCP element */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src={IMAGES.hero.main}
+          alt="MAGINF Tecnologia - Fundo da seção inicial"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-maginf-gray/80 to-maginf-gray-light/75 -z-10" />
       
       {/* Content */}
       <div className="container-max relative z-10">

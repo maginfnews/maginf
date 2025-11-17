@@ -122,31 +122,6 @@ class MyDocument extends __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
                             fileName: "[project]/pages/_document.tsx",
                             lineNumber: 25,
                             columnNumber: 9
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("link", {
-                            rel: "preconnect",
-                            href: "https://fonts.googleapis.com"
-                        }, void 0, false, {
-                            fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 28,
-                            columnNumber: 9
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("link", {
-                            rel: "preconnect",
-                            href: "https://fonts.gstatic.com",
-                            crossOrigin: "anonymous"
-                        }, void 0, false, {
-                            fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 29,
-                            columnNumber: 9
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("link", {
-                            href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
-                            rel: "stylesheet"
-                        }, void 0, false, {
-                            fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 30,
-                            columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
@@ -158,18 +133,18 @@ class MyDocument extends __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$document$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["Main"], {}, void 0, false, {
                             fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 33,
+                            lineNumber: 28,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$document$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["NextScript"], {}, void 0, false, {
                             fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 34,
+                            lineNumber: 29,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/pages/_document.tsx",
-                    lineNumber: 32,
+                    lineNumber: 27,
                     columnNumber: 7
                 }, this)
             ]
