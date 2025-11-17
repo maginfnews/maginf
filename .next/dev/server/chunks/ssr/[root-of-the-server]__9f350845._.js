@@ -84,11 +84,19 @@ class MyDocument extends __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("meta", {
+                            name: "viewport",
+                            content: "width=device-width, initial-scale=1.0, maximum-scale=5.0"
+                        }, void 0, false, {
+                            fileName: "[project]/pages/_document.tsx",
+                            lineNumber: 19,
+                            columnNumber: 9
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("meta", {
                             name: "theme-color",
                             content: "#e35300"
                         }, void 0, false, {
                             fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 19,
+                            lineNumber: 20,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("meta", {
@@ -96,7 +104,7 @@ class MyDocument extends __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
                             content: "MAGINF Tecnologia — MSP e suporte técnico para empresas. Monitoramento 24/7, CFTV, cloud e infraestrutura com atendimento local. Fale com um consultor."
                         }, void 0, false, {
                             fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 20,
+                            lineNumber: 21,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("meta", {
@@ -104,7 +112,7 @@ class MyDocument extends __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
                             content: "msp, suporte técnico, managed services, backup em nuvem, cftv, redes wi-fi, microsoft 365, aws, Maginf Tecnologia"
                         }, void 0, false, {
                             fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 21,
+                            lineNumber: 22,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("link", {
@@ -112,7 +120,7 @@ class MyDocument extends __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
                             href: "/manifest.json"
                         }, void 0, false, {
                             fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 24,
+                            lineNumber: 25,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("link", {
@@ -120,7 +128,7 @@ class MyDocument extends __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
                             href: "https://fonts.googleapis.com"
                         }, void 0, false, {
                             fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 27,
+                            lineNumber: 28,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("link", {
@@ -129,7 +137,7 @@ class MyDocument extends __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
                             crossOrigin: "anonymous"
                         }, void 0, false, {
                             fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 28,
+                            lineNumber: 29,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("link", {
@@ -137,7 +145,7 @@ class MyDocument extends __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
                             rel: "stylesheet"
                         }, void 0, false, {
                             fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 29,
+                            lineNumber: 30,
                             columnNumber: 9
                         }, this)
                     ]
@@ -150,18 +158,18 @@ class MyDocument extends __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$document$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["Main"], {}, void 0, false, {
                             fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 32,
+                            lineNumber: 33,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$document$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["NextScript"], {}, void 0, false, {
                             fileName: "[project]/pages/_document.tsx",
-                            lineNumber: 33,
+                            lineNumber: 34,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/pages/_document.tsx",
-                    lineNumber: 31,
+                    lineNumber: 32,
                     columnNumber: 7
                 }, this)
             ]

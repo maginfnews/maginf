@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+  const isHomePage = router.pathname === '/';
   
   // Configuração da imagem de fundo (opcional)
   const backgroundImages = {
@@ -18,9 +22,13 @@ const Header = () => {
   };
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (isHomePage) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      router.push(`/#${sectionId}`);
     }
     setIsMenuOpen(false);
   };
@@ -49,36 +57,42 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <button 
-              onClick={() => scrollToSection('inicio')}
+            <Link 
+              href="/"
               className="text-maginf-gray hover:text-maginf-orange transition-colors"
             >
               Início
-            </button>
-            <button 
-              onClick={() => scrollToSection('servicos')}
+            </Link>
+            <Link 
+              href="/servicos"
               className="text-maginf-gray hover:text-maginf-orange transition-colors"
             >
               Serviços
-            </button>
-            <button 
-              onClick={() => scrollToSection('planos')}
+            </Link>
+            <Link 
+              href="/planos"
               className="text-maginf-gray hover:text-maginf-orange transition-colors"
             >
               Planos
-            </button>
-            <button 
-              onClick={() => scrollToSection('sobre')}
+            </Link>
+            <Link 
+              href="/sobre"
               className="text-maginf-gray hover:text-maginf-orange transition-colors"
             >
               Sobre
-            </button>
-            <button 
-              onClick={() => scrollToSection('contato')}
+            </Link>
+            <Link 
+              href="/blog"
+              className="text-maginf-gray hover:text-maginf-orange transition-colors"
+            >
+              Blog
+            </Link>
+            <Link 
+              href="/contato"
               className="text-maginf-gray hover:text-maginf-orange transition-colors"
             >
               Contato
-            </button>
+            </Link>
           </nav>
 
           {/* CTA Buttons */}
@@ -115,36 +129,48 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-200">
             <nav className="py-4 space-y-4">
-              <button 
-                onClick={() => scrollToSection('inicio')}
+              <Link 
+                href="/"
+                onClick={() => setIsMenuOpen(false)}
                 className="block w-full text-left px-4 py-2 text-maginf-gray hover:text-maginf-orange transition-colors"
               >
                 Início
-              </button>
-              <button 
-                onClick={() => scrollToSection('servicos')}
+              </Link>
+              <Link 
+                href="/servicos"
+                onClick={() => setIsMenuOpen(false)}
                 className="block w-full text-left px-4 py-2 text-maginf-gray hover:text-maginf-orange transition-colors"
               >
                 Serviços
-              </button>
-              <button 
-                onClick={() => scrollToSection('planos')}
+              </Link>
+              <Link 
+                href="/planos"
+                onClick={() => setIsMenuOpen(false)}
                 className="block w-full text-left px-4 py-2 text-maginf-gray hover:text-maginf-orange transition-colors"
               >
                 Planos
-              </button>
-              <button 
-                onClick={() => scrollToSection('sobre')}
+              </Link>
+              <Link 
+                href="/sobre"
+                onClick={() => setIsMenuOpen(false)}
                 className="block w-full text-left px-4 py-2 text-maginf-gray hover:text-maginf-orange transition-colors"
               >
                 Sobre
-              </button>
-              <button 
-                onClick={() => scrollToSection('contato')}
+              </Link>
+              <Link 
+                href="/blog"
+                onClick={() => setIsMenuOpen(false)}
+                className="block w-full text-left px-4 py-2 text-maginf-gray hover:text-maginf-orange transition-colors"
+              >
+                Blog
+              </Link>
+              <Link 
+                href="/contato"
+                onClick={() => setIsMenuOpen(false)}
                 className="block w-full text-left px-4 py-2 text-maginf-gray hover:text-maginf-orange transition-colors"
               >
                 Contato
-              </button>
+              </Link>
               <div className="px-4 pt-2 space-y-3">
                 <a 
                   href="https://maginf.tomticket.com/"

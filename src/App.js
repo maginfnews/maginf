@@ -9,12 +9,12 @@ import Chatbot from './components/Chatbot';
 import CampanhaManager from './components/CampanhaManager';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Services from './components/Services';
-import Plans from './components/Plans';
+import ServicesPreview from './components/ServicesPreview';
+import PlansPreview from './components/PlansPreview';
 import Process from './components/Process';
-import About from './components/About';
-import Portfolio from './components/Portfolio';
-import Blog from './components/Blog';
+import AboutPreview from './components/AboutPreview';
+import PortfolioPreview from './components/PortfolioPreview';
+import BlogPreview from './components/BlogPreview';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
@@ -33,12 +33,12 @@ function App() {
       <Header />
       <CampanhaManager />
       <Hero />
-      <Services />
-      <Plans />
+      <ServicesPreview />
       <Process />
-      <About />
-      <Portfolio />
-      <Blog />
+      <PlansPreview />
+      <AboutPreview />
+      <PortfolioPreview />
+      <BlogPreview />
       <FAQ />
       <Footer />
       <CookieConsent />

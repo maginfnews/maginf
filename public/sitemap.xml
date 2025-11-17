@@ -4,7 +4,7 @@
   <!-- Página Principal -->
   <url>
     <loc>https://maginf.com.br/</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,25 +12,25 @@
   <!-- Páginas Principais -->
   <url>
     <loc>https://maginf.com.br/servicos</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://maginf.com.br/planos</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://maginf.com.br/sobre</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://maginf.com.br/contato</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -38,7 +38,7 @@
   <!-- Blog -->
   <url>
     <loc>https://maginf.com.br/blog</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
@@ -46,25 +46,25 @@
   <!-- Páginas de Serviços SEO -->
   <url>
     <loc>https://maginf.com.br/suporte-tecnico-ti</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://maginf.com.br/msp-brasil</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://maginf.com.br/backup-nuvem</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://maginf.com.br/monitoramento-ti</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -72,31 +72,31 @@
   <!-- Artigos do Blog -->
   <url>
     <loc>https://maginf.com.br/blog/como-escolher-msp-brasil</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://maginf.com.br/blog/backup-nuvem-vs-local</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://maginf.com.br/blog/monitoramento-proativo-ti</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://maginf.com.br/blog/seguranca-dados-empresas</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://maginf.com.br/blog/infraestrutura-ti-pequenas-empresas</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -104,13 +104,13 @@
   <!-- Páginas Legais -->
   <url>
     <loc>https://maginf.com.br/privacidade</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://maginf.com.br/termos</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2025-11-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

@@ -1,70 +1,95 @@
-[00:00:03.617] Server  LOG      ✓ Ready in 2.6s
-[00:00:37.230] Server  LOG      ○ Compiling / ...
-[00:00:41.288] Server  LOG     Categoria ativa: "Todos"
-[00:00:41.289] Server  LOG     Artigos filtrados: 6
-[00:00:41.885] Server  WARN     ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:42.957] Browser WARN    [Meta Pixel] - Invalid PixelID: null.
-[00:00:42.957] Browser LOG     Categoria ativa: Todos
-[00:00:42.957] Browser LOG     Artigos filtrados: 6
-[00:00:42.957] Browser LOG     Categoria ativa: Todos
-[00:00:42.957] Browser LOG     Artigos filtrados: 6
-[00:03:07.046] Server  LOG     Categoria ativa: "Todos"
-[00:03:07.047] Server  LOG     Artigos filtrados: 6
-[00:03:08.090] Browser LOG     Categoria ativa: Todos
-[00:03:08.090] Browser LOG     Artigos filtrados: 6
-[00:03:08.091] Browser LOG     Categoria ativa: Todos
-[00:03:08.091] Browser LOG     Artigos filtrados: 6
-[00:04:01.440] Server  LOG      ✓ Compiled in 44ms
-[00:04:23.077] Server  LOG      ✓ Compiled in 29ms
-[00:04:40.291] Server  LOG      ✓ Compiled in 23ms
-[00:08:05.124] Server  LOG     Categoria ativa: "Todos"
-[00:08:05.124] Server  LOG     Artigos filtrados: 6
-[00:08:06.453] Browser LOG     Categoria ativa: Todos
-[00:08:06.453] Browser LOG     Artigos filtrados: 6
-[00:08:06.453] Browser LOG     Categoria ativa: Todos
-[00:08:06.453] Browser LOG     Artigos filtrados: 6
-[00:08:07.152] Browser WARN    [Meta Pixel] - Invalid PixelID: null.
-[00:09:22.691] Server  LOG      ✓ Compiled in 28ms
-[00:09:34.486] Server  LOG      ✓ Compiled in 18ms
-[00:11:13.956] Server  LOG      ✓ Compiled in 40ms
-[00:14:46.608] Browser LOG     Categoria ativa: Todos
-[00:14:46.608] Browser LOG     Artigos filtrados: 6
-[00:14:46.608] Browser LOG     Categoria ativa: Todos
-[00:14:46.608] Browser LOG     Artigos filtrados: 6
-[00:14:46.608] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:15:48.877] Server  LOG     Categoria ativa: "Todos"
-[00:15:48.878] Server  LOG     Artigos filtrados: 6
-[00:15:50.479] Browser WARN    [Meta Pixel] - Invalid PixelID: null.
-[00:15:50.479] Browser LOG     Categoria ativa: Todos
-[00:15:50.479] Browser LOG     Artigos filtrados: 6
-[00:15:50.479] Browser LOG     Categoria ativa: Todos
-[00:15:50.479] Browser LOG     Artigos filtrados: 6
-[00:17:15.183] Server  LOG      ✓ Compiled in 776ms
-[00:17:15.614] Browser LOG     Categoria ativa: Todos
-[00:17:15.614] Browser LOG     Artigos filtrados: 6
-[00:17:15.614] Browser LOG     Categoria ativa: Todos
-[00:17:15.614] Browser LOG     Artigos filtrados: 6
-[00:17:35.651] Server  LOG      ✓ Compiled in 428ms
-[00:17:43.808] Server  LOG      ✓ Compiled in 422ms
-[00:17:44.608] Browser LOG     Categoria ativa: Todos
-[00:17:44.608] Browser LOG     Artigos filtrados: 6
-[00:17:44.608] Browser LOG     Categoria ativa: Todos
-[00:17:44.608] Browser LOG     Artigos filtrados: 6
-[00:20:18.473] Server  LOG      ✓ Compiled in 357ms
-[00:22:37.967] Server  LOG      ✓ Compiled in 32ms
-[00:30:40.098] Server  LOG     Categoria ativa: "Todos"
-[00:30:40.099] Server  LOG     Artigos filtrados: 6
-[00:30:40.925] Browser WARN    [Meta Pixel] - Invalid PixelID: null.
-[00:30:41.763] Browser LOG     Categoria ativa: Todos
-[00:30:41.763] Browser LOG     Artigos filtrados: 6
-[00:30:41.763] Browser LOG     Categoria ativa: Todos
-[00:30:41.763] Browser LOG     Artigos filtrados: 6
-[01:27:17.290] Server  LOG      ✓ Compiled in 2.3s
-[01:27:31.125] Server  LOG      ✓ Compiled in 120ms
-[01:27:31.601] Browser LOG     Categoria ativa: Todos
-[01:27:31.601] Browser LOG     Artigos filtrados: 6
-[01:27:31.601] Browser LOG     Categoria ativa: Todos
-[01:27:31.601] Browser LOG     Artigos filtrados: 6
-[01:27:31.601] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[01:27:31.601] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/#contato color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/#contato","r":"","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1762959239879}
+[00:00:03.887] Server  LOG      ✓ Ready in 2.9s
+[00:00:12.438] Server  LOG      ○ Compiling / ...
+[00:00:16.493] Server  LOG     Categoria ativa: "Todos"
+[00:00:16.493] Server  LOG     Artigos filtrados: 6
+[00:00:16.548] Server  WARN    Warning: viewport meta tags should not be used in _document.js's <Head>. https://nextjs.org/docs/messages/no-document-viewport-meta
+[00:00:17.852] Browser LOG     Categoria ativa: Todos
+[00:00:17.852] Browser LOG     Artigos filtrados: 6
+[00:00:17.852] Browser LOG     Categoria ativa: Todos
+[00:00:17.852] Browser LOG     Artigos filtrados: 6
+[00:00:18.377] Browser WARN    [Meta Pixel] - Invalid PixelID: null.
+[00:00:18.377] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:18.377] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763393417528}
+[00:00:30.072] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/servicos color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/servicos","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763393429154}
+[00:00:30.072] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:38.053] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/planos color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/planos","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763393437199}
+[00:01:02.936] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sobre color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/sobre","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763393462085}
+[00:01:17.619] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/blog color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/blog","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763393476764}
+[00:01:30.700] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/blog/seguranca-dados-empresas color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/blog/seguranca-dados-empresas","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763393489846}
+[00:01:41.442] Server  LOG     Categoria ativa: "Todos"
+[00:01:41.442] Server  LOG     Artigos filtrados: 6
+[00:01:41.486] Server  WARN    Warning: viewport meta tags should not be used in _document.js's <Head>. https://nextjs.org/docs/messages/no-document-viewport-meta
+[00:01:42.295] Browser WARN    [Meta Pixel] - Invalid PixelID: null.
+[00:01:42.295] Browser LOG     Categoria ativa: Todos
+[00:01:42.295] Browser LOG     Artigos filtrados: 6
+[00:01:42.295] Browser LOG     Categoria ativa: Todos
+[00:01:42.295] Browser LOG     Artigos filtrados: 6
+[00:01:42.568] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:42.569] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/#contato color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/#contato","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763393501712}
+[00:01:51.497] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/contato color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/contato","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763393510600}
+[00:01:51.497] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:02:26.799] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/#contato color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/#contato","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763393545841}
+[00:02:26.799] Browser LOG     Categoria ativa: Todos
+[00:02:26.799] Browser LOG     Artigos filtrados: 6
+[00:02:26.799] Browser LOG     Categoria ativa: Todos
+[00:02:26.799] Browser LOG     Artigos filtrados: 6
+[00:02:31.218] Browser LOG     Categoria ativa: Todos
+[00:02:31.218] Browser LOG     Artigos filtrados: 6
+[00:02:31.218] Browser LOG     Categoria ativa: Todos
+[00:02:31.218] Browser LOG     Artigos filtrados: 6
+[00:04:22.372] Server  LOG      ✓ Compiled in 45ms
+[00:04:33.431] Server  LOG      ✓ Compiled in 16ms
+[00:19:50.471] Server  LOG     Categoria ativa: "Todos"
+[00:19:50.471] Server  LOG     Artigos filtrados: 6
+[00:19:50.505] Server  WARN    Warning: viewport meta tags should not be used in _document.js's <Head>. https://nextjs.org/docs/messages/no-document-viewport-meta
+[00:19:51.624] Browser LOG     Categoria ativa: Todos
+[00:19:51.624] Browser LOG     Artigos filtrados: 6
+[00:19:51.624] Browser LOG     Categoria ativa: Todos
+[00:19:51.624] Browser LOG     Artigos filtrados: 6
+[00:19:51.812] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:19:51.812] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763394590962}
+[00:19:54.807] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/blog color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/blog","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763394593902}
+[00:19:54.807] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:20:05.960] Server  WARN    Warning: viewport meta tags should not be used in _document.js's <Head>. https://nextjs.org/docs/messages/no-document-viewport-meta
+[00:20:06.580] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:20:06.580] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/blog? color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/blog?","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763394605729}
+[00:20:14.572] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/contato color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/contato","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763394613681}
+[00:20:14.572] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:20:16.122] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/planos color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/planos","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763394615269}
+[00:20:51.745] Server  LOG      ✓ Compiled in 49ms
+[00:21:05.146] Server  LOG      ✓ Compiled in 40ms
+[00:21:14.495] Server  LOG      ✓ Compiled in 39ms
+[00:22:22.407] Server  LOG      ✓ Compiled in 35ms
+[00:28:21.623] Server  LOG      ✓ Compiled in 455ms
+[00:28:41.696] Server  LOG      ✓ Compiled in 447ms
+[00:29:07.153] Server  LOG      ✓ Compiled in 320ms
+[00:29:25.104] Server  LOG      ✓ Compiled in 300ms
+[00:29:56.129] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763395195271}
+[00:29:56.284] Browser LOG     Categoria ativa: Todos
+[00:29:56.284] Browser LOG     Artigos filtrados: 6
+[00:29:56.284] Browser LOG     Categoria ativa: Todos
+[00:29:56.284] Browser LOG     Artigos filtrados: 6
+[00:30:01.834] Browser ERROR   uncaughtError: ReferenceError: Services is not defined
+[00:30:01.834] Browser ERROR   uncaughtError: ReferenceError: Services is not defined
+[00:30:01.834] Browser ERROR   The above error occurred in the <App> component:
+
+    at App (http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__6929f787._.js?id=%255Bproject%255D%252Fsrc%252FApp.js+%255Bclient%255D+%2528ecmascript%2529:97:181)
+    at Home
+    at App (http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__73ecdec8._.js:477:16)
+    at PathnameContextProviderAdapter (http://localhost:3000/_next/static/chunks/node_modules_next_dist_shared_lib_82dc2e9d._.js:5040:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:3000/_next/static/chunks/node_modules_next_dist_6024eba3._.js:1129:9)
+    at PagesDevOverlayBridge (http://localhost:3000/_next/static/chunks/node_modules_next_dist_6024eba3._.js:1906:34)
+    at Container (http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_d0aa886c._.js:3041:1)
+    at AppContainer (http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_d0aa886c._.js:3140:25)
+    at Root (http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_d0aa886c._.js:3353:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[00:30:02.024] Server  LOG      ✓ Compiled in 1054ms
+[00:30:16.684] Server  LOG      ✓ Compiled in 440ms
+[00:31:01.436] Server  WARN    Warning: viewport meta tags should not be used in _document.js's <Head>. https://nextjs.org/docs/messages/no-document-viewport-meta
+[00:31:01.804] Browser WARN    [Meta Pixel] - Invalid PixelID: null.
+[00:31:02.366] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:31:02.366] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763395261513}
+[00:31:15.121] Server  WARN    Warning: viewport meta tags should not be used in _document.js's <Head>. https://nextjs.org/docs/messages/no-document-viewport-meta
+[00:31:15.900] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:31:15.900] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/","sdkn":"@vercel/analytics/react","sdkv":"1.5.0","sv":"0.1.3","ts":1763395275050}
