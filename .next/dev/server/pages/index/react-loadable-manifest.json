@@ -1,1 +1,51 @@
-{}
+{
+  "[project]/src/components/ScrollToTop.js [client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/ScrollToTop.js [client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/_4fbc6cd8._.js",
+      "static/chunks/src_components_ScrollToTop_f2c712ee.js"
+    ]
+  },
+  "[project]/src/components/WhatsAppButton.js [client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/WhatsAppButton.js [client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/_de3ff493._.js",
+      "static/chunks/src_components_WhatsAppButton_f2c712ee.js"
+    ]
+  },
+  "[project]/src/components/CookieConsent.js [client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/CookieConsent.js [client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/_f53665ab._.js",
+      "static/chunks/src_components_CookieConsent_f2c712ee.js"
+    ]
+  },
+  "[project]/src/components/CampanhaManager.js [client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/CampanhaManager.js [client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/_b5e032bb._.js",
+      "static/chunks/src_components_CampanhaManager_f2c712ee.js"
+    ]
+  },
+  "[project]/src/components/Chatbot.js [client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/Chatbot.js [client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/_4d91c471._.js",
+      "static/chunks/src_components_Chatbot_f2c712ee.js"
+    ]
+  },
+  "[project]/src/components/DarkModeToggle.js [client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/DarkModeToggle.js [client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/_85f8f7bc._.js",
+      "static/chunks/src_components_DarkModeToggle_f2c712ee.js"
+    ]
+  },
+  "[project]/src/components/ReadingProgress.js [client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/ReadingProgress.js [client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/src_components_ReadingProgress_a27ebf0f.js",
+      "static/chunks/src_components_ReadingProgress_f2c712ee.js"
+    ]
+  }
+}

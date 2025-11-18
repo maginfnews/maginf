@@ -1,6 +1,5 @@
 import React from 'react';
 import { ArrowRight, Shield, Clock, Users } from 'lucide-react';
-import AnimatedSection from './AnimatedSection';
 import { IMAGES } from '../config/imageConfig';
 
 const Hero = () => {
@@ -22,19 +21,17 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-8">
-            <AnimatedSection animation="fadeInLeft">
-              <div className="space-y-4">
-                <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                  <span className="text-white">MAGINF</span><span className="text-maginf-orange">TECNOLOGIA</span>
-                </h1>
-                <p className="text-xl lg:text-2xl text-gray-300">
-                  Soluções de TI completas para empresas — suporte técnico, infraestrutura, segurança e serviços gerenciados (MSP).
-                </p>
-                <p className="text-lg text-gray-400">
-                  Suporte local e gestão remota de TI com foco em disponibilidade, segurança e custo previsível.
-                </p>
-              </div>
-            </AnimatedSection>
+            <div className="space-y-4">
+              <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+                <span className="text-white">MAGINF</span><span className="text-maginf-orange">TECNOLOGIA</span>
+              </h1>
+              <p className="text-xl lg:text-2xl text-gray-300">
+                Soluções de TI completas para empresas — suporte técnico, infraestrutura, segurança e serviços gerenciados (MSP).
+              </p>
+              <p className="text-lg text-gray-400">
+                Suporte local e gestão remota de TI com foco em disponibilidade, segurança e custo previsível.
+              </p>
+            </div>
 
             {/* Novembro Azul Message - Enhanced */}
             <div className="relative group">
