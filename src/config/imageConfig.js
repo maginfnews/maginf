@@ -69,7 +69,8 @@ export const getImageUrl = (imagePath, preset = 'blog') => {
 export const IMAGES = {
   // Hero Section
   hero: {
-    main: 'https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1920', // Data center moderno
+    // Imagem principal do Hero (LCP) usando arquivo local otimizado
+    main: '/images/hero-main.webp',
     background: 'https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1920' // Tecnologia abstrata
   },
 
