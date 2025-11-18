@@ -1,12 +1,7 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import SEO from './components/SEO';
 import SchemaMarkup from './components/SchemaMarkup';
-import Analytics from './components/Analytics';
-import ReadingProgress from './components/ReadingProgress';
-// import CustomCursor from './components/CustomCursor';
-import DarkModeToggle from './components/DarkModeToggle';
-import Chatbot from './components/Chatbot';
-import CampanhaManager from './components/CampanhaManager';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ServicesPreview from './components/ServicesPreview';
@@ -17,16 +12,40 @@ import PortfolioPreview from './components/PortfolioPreview';
 import BlogPreview from './components/BlogPreview';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import CookieConsent from './components/CookieConsent';
-import WhatsAppButton from './components/WhatsAppButton';
-import ScrollToTop from './components/ScrollToTop';
+
+const ReadingProgress = dynamic(() => import('./components/ReadingProgress'), {
+  ssr: false,
+});
+
+const DarkModeToggle = dynamic(() => import('./components/DarkModeToggle'), {
+  ssr: false,
+});
+
+const Chatbot = dynamic(() => import('./components/Chatbot'), {
+  ssr: false,
+});
+
+const CampanhaManager = dynamic(() => import('./components/CampanhaManager'), {
+  ssr: false,
+});
+
+const CookieConsent = dynamic(() => import('./components/CookieConsent'), {
+  ssr: false,
+});
+
+const WhatsAppButton = dynamic(() => import('./components/WhatsAppButton'), {
+  ssr: false,
+});
+
+const ScrollToTop = dynamic(() => import('./components/ScrollToTop'), {
+  ssr: false,
+});
 
 function App() {
   return (
     <div className="App">
       <SEO />
       <SchemaMarkup />
-      <Analytics />
       <ReadingProgress />
       {/* <CustomCursor /> */}
       <DarkModeToggle />
