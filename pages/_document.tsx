@@ -15,6 +15,19 @@ class MyDocument extends Document {
         <link rel="shortcut icon" href="/favicon-of.ico" />
         <link rel="apple-touch-icon" href="/favicon-of.ico" />
         
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZN8LKRES3R"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-ZN8LKRES3R');
+            `,
+          }}
+        />
+        
         {/* Meta tags essenciais */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         <meta name="theme-color" content="#e35300" />

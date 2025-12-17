@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send, Loader2, Sparkles } from 'lucide-react';
 
 const Chatbot = () => {
@@ -12,6 +12,7 @@ const Chatbot = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isAIEnabled, setIsAIEnabled] = useState(true);
+  const messagesEndRef = useRef(null);
 
   const quickReplies = [
     { text: '💼 Serviços MSP' },
@@ -90,6 +91,13 @@ const Chatbot = () => {
     handleSend(reply.text);
   };
 
+  // Scroll automático sempre que novas mensagens forem adicionadas
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, [messages]);
+
   return (
     <>
       {/* Chat Button */}
@@ -158,6 +166,7 @@ const Chatbot = () => {
                 </div>
               </div>
             ))}
+            <div ref={messagesEndRef} />
             
             {/* Typing indicator */}
             {isLoading && (
