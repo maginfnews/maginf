@@ -33,51 +33,6 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Novembro Azul Message - Enhanced */}
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
-              <div className="relative bg-gradient-to-r from-blue-600/30 to-cyan-600/30 border border-blue-400/40 rounded-xl p-5 backdrop-blur-md hover:from-blue-600/40 hover:to-cyan-600/40 transition-all duration-300">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-30"></div>
-                      <div className="relative bg-gradient-to-r from-blue-400 to-cyan-400 p-2 rounded-full">
-                        <Shield className="h-5 w-5 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className="font-bold text-lg bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">
-                        Novembro Azul 2025
-                      </span>
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
-                        <div className="w-2 h-2 bg-blue-300 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
-                      </div>
-                    </div>
-                    <p className="text-blue-200 text-sm leading-relaxed">
-                      A <span className="font-semibold text-white">MAGINF</span> apoia a conscientização sobre o 
-                      <span className="font-semibold text-cyan-200"> câncer de próstata</span>. 
-                      <br />
-                      <span className="text-blue-300">💙 Prevenção é o melhor cuidado que você pode ter consigo mesmo!</span>
-                    </p>
-                    <div className="flex items-center space-x-4 mt-3 text-xs text-blue-300">
-                      <div className="flex items-center space-x-1">
-                        <div className="w-1 h-1 bg-green-400 rounded-full"></div>
-                        <span>90%+ taxa de cura</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <div className="w-1 h-1 bg-yellow-400 rounded-full"></div>
-                        <span>Diagnóstico precoce</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
