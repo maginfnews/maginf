@@ -12,7 +12,7 @@ import CampanhaNatal from './CampanhaNatal';
 
 const CAMPANHAS_ATIVAS = {
   novenbroAzul: false,  // Campanha Novembro Azul (DESATIVADA)
-  natal: true,          // Campanha de Natal
+  natal: false,         // Campanha de Natal (DESATIVADA)
 };
 
 const CampanhaManager = () => {
