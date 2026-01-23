@@ -6,7 +6,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       type: 'bot',
-      text: '👋 **Olá! Bem-vindo à MAGINF Tecnologia!**\n\nSou seu assistente virtual com inteligência artificial. Estou aqui para ajudar você com:\n\n✅ Informações sobre serviços MSP\n✅ Planos e orçamentos\n✅ Suporte técnico 24/7\n✅ Soluções Cloud, CFTV e mais!\n\n💬 Como posso ajudar você hoje?',
+      text: '👋 **Olá! Bem-vindo à MAGINF Tecnologia!**\n\nEu sou a **MAG**, sua assistente virtual com inteligência artificial! 🤖✨\n\nEstou aqui para ajudar você com:\n\n✅ Informações sobre serviços MSP\n✅ Planos e orçamentos\n✅ Suporte técnico 24/7\n✅ Soluções Cloud, CFTV e mais!\n\n💬 Como posso ajudar você hoje?',
     },
   ]);
   const [input, setInput] = useState('');
@@ -177,8 +177,8 @@ const Chatbot = () => {
     }
 
     // Resposta padrão melhorada
-    return '🤖 **Assistente MAGINF com IA**\n\n' +
-           'Posso ajudar você com:\n\n' +
+    return '🤖 **Olá! Sou a MAG!**\n\n' +
+           'Sua assistente virtual da MAGINF. Posso ajudar você com:\n\n' +
            '✅ Serviços MSP e Outsourcing de TI\n' +
            '✅ Planos e valores\n' +
            '✅ Suporte técnico 24/7\n' +
@@ -229,7 +229,7 @@ const Chatbot = () => {
           {/* Tooltip */}
           <div className="absolute bottom-full right-0 mb-2 hidden group-hover:block animate-fadeIn">
             <div className="bg-gray-900 text-white text-sm px-4 py-2 rounded-lg whitespace-nowrap shadow-xl">
-              💬 Converse com nossa IA!
+              💬 Fale com a MAG, sua assistente IA!
               <div className="absolute bottom-0 right-6 transform translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900"></div>
             </div>
           </div>
@@ -248,7 +248,7 @@ const Chatbot = () => {
               </div>
               <div>
                 <h3 className="font-bold flex items-center gap-2">
-                  Assistente MAGINF
+                  MAG - Assistente MAGINF
                   <span className="text-xs bg-yellow-400 text-blue-900 px-2 py-0.5 rounded-full font-semibold">IA</span>
                 </h3>
                 <p className="text-xs text-blue-100">
