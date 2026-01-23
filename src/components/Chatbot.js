@@ -6,7 +6,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       type: 'bot',
-      text: 'Olá! 👋 Sou o assistente virtual da MAGINF com IA. Como posso ajudar?',
+      text: '👋 **Olá! Bem-vindo à MAGINF Tecnologia!**\n\nSou seu assistente virtual com inteligência artificial. Estou aqui para ajudar você com:\n\n✅ Informações sobre serviços MSP\n✅ Planos e orçamentos\n✅ Suporte técnico 24/7\n✅ Soluções Cloud, CFTV e mais!\n\n💬 Como posso ajudar você hoje?',
     },
   ]);
   const [input, setInput] = useState('');
@@ -15,10 +15,12 @@ const Chatbot = () => {
   const messagesEndRef = useRef(null);
 
   const quickReplies = [
-    { text: '💼 Serviços MSP' },
-    { text: '💰 Planos e Preços' },
-    { text: '📞 Falar com Consultor' },
-    { text: '☁️ Cloud Computing' },
+    { text: '💼 Serviços MSP', category: 'services' },
+    { text: '💰 Planos e Preços', category: 'pricing' },
+    { text: '📞 Falar com Consultor', category: 'contact' },
+    { text: '☁️ Cloud Computing', category: 'cloud' },
+    { text: '🔒 Segurança', category: 'security' },
+    { text: '📊 Monitoramento 24/7', category: 'monitoring' },
   ];
 
   const handleSend = async (text = input) => {
@@ -71,20 +73,120 @@ const Chatbot = () => {
   const getFallbackResponse = (text) => {
     const lowerText = text.toLowerCase();
 
-    if (lowerText.includes('preço') || lowerText.includes('custo') || lowerText.includes('valor')) {
-      return '💰 Nossos planos são personalizados conforme suas necessidades. Entre em contato para uma proposta: sac@maginf.com.br ou (11) 4610-6363';
-    }
-    if (lowerText.includes('suporte') || lowerText.includes('atendimento')) {
-      return '🛟 Oferecemos suporte 24/7 com SLA garantido! Atendimento remoto e presencial quando necessário.';
-    }
-    if (lowerText.includes('cloud') || lowerText.includes('nuvem')) {
-      return '☁️ Trabalhamos com AWS, Azure e Microsoft 365. Fazemos migração completa e gestão de ambientes cloud!';
-    }
-    if (lowerText.includes('cftv') || lowerText.includes('câmera') || lowerText.includes('segurança')) {
-      return '📹 Instalamos sistemas CFTV IP com analytics de IA, acesso remoto e integração com NOC. Quer um orçamento?';
+    // Preços e Planos
+    if (lowerText.includes('preço') || lowerText.includes('custo') || lowerText.includes('valor') || lowerText.includes('plano')) {
+      return '💰 **Planos Personalizados MAGINF**\n\n' +
+             '✅ Básico: Suporte técnico + backup\n' +
+             '✅ Profissional: + Monitoramento 24/7\n' +
+             '✅ Enterprise: + Cloud + CFTV + Infraestrutura\n\n' +
+             '📞 Solicite orçamento: sac@maginf.com.br ou (11) 3514-2933\n' +
+             '💬 Todos os planos incluem SLA garantido!';
     }
 
-    return '🤔 Interessante! Para mais detalhes, recomendo falar com nossa equipe: sac@maginf.com.br ou (11) 4610-6363. Posso ajudar com mais alguma coisa?';
+    // Suporte
+    if (lowerText.includes('suporte') || lowerText.includes('atendimento') || lowerText.includes('ajuda')) {
+      return '🛟 **Suporte MAGINF - 24/7**\n\n' +
+             '✅ Atendimento remoto imediato\n' +
+             '✅ Suporte presencial quando necessário\n' +
+             '✅ SLA garantido por contrato\n' +
+             '✅ Equipe especializada certificada\n\n' +
+             '📞 Emergência: (11) 3514-2933\n' +
+             '📧 E-mail: sac@maginf.com.br';
+    }
+
+    // Cloud
+    if (lowerText.includes('cloud') || lowerText.includes('nuvem') || lowerText.includes('aws') || lowerText.includes('azure')) {
+      return '☁️ **Soluções Cloud MAGINF**\n\n' +
+             '✅ AWS, Azure e Microsoft 365\n' +
+             '✅ Migração completa e segura\n' +
+             '✅ Backup automático em nuvem\n' +
+             '✅ Gestão e otimização de custos\n\n' +
+             '💡 Reduza custos e aumente a segurança!\n' +
+             '📞 Consulte-nos: (11) 3514-2933';
+    }
+
+    // CFTV e Segurança
+    if (lowerText.includes('cftv') || lowerText.includes('câmera') || lowerText.includes('segurança') || lowerText.includes('vigilância')) {
+      return '📹 **CFTV + Segurança Digital**\n\n' +
+             '✅ Câmeras IP com IA e analytics\n' +
+             '✅ Acesso remoto via app\n' +
+             '✅ Gravação em nuvem\n' +
+             '✅ Integração com NOC 24/7\n' +
+             '✅ Firewall e proteção contra ataques\n\n' +
+             '🔒 Proteja seu negócio agora!\n' +
+             '📞 Orçamento: (11) 3514-2933';
+    }
+
+    // Monitoramento
+    if (lowerText.includes('monitoramento') || lowerText.includes('noc') || lowerText.includes('24/7')) {
+      return '📊 **Monitoramento NOC 24/7**\n\n' +
+             '✅ Monitoramento proativo de servidores\n' +
+             '✅ Alertas em tempo real\n' +
+             '✅ Dashboard personalizado\n' +
+             '✅ Prevenção de problemas\n' +
+             '✅ Relatórios mensais detalhados\n\n' +
+             '💡 Evite paradas e perdas!\n' +
+             '📞 Saiba mais: (11) 3514-2933';
+    }
+
+    // MSP
+    if (lowerText.includes('msp') || lowerText.includes('gerenciado') || lowerText.includes('outsourcing')) {
+      return '💼 **MSP - Managed Service Provider**\n\n' +
+             '✅ Terceirização completa de TI\n' +
+             '✅ Suporte + Infraestrutura + Cloud\n' +
+             '✅ Custos previsíveis mensais\n' +
+             '✅ Equipe especializada dedicada\n' +
+             '✅ +8 anos de experiência\n\n' +
+             '🚀 Foque no seu negócio, TI com a gente!\n' +
+             '📞 Consulte: (11) 3514-2933';
+    }
+
+    // Backup
+    if (lowerText.includes('backup') || lowerText.includes('recuperação') || lowerText.includes('dados')) {
+      return '💾 **Backup em Nuvem MAGINF**\n\n' +
+             '✅ Backup automático diário\n' +
+             '✅ Armazenamento seguro em cloud\n' +
+             '✅ Recuperação rápida de dados\n' +
+             '✅ Proteção contra ransomware\n' +
+             '✅ Conformidade com LGPD\n\n' +
+             '🔐 Seus dados sempre protegidos!\n' +
+             '📞 Saiba mais: (11) 3514-2933';
+    }
+
+    // Wi-Fi
+    if (lowerText.includes('wifi') || lowerText.includes('wi-fi') || lowerText.includes('rede') || lowerText.includes('internet')) {
+      return '📡 **Redes Wi-Fi Empresariais**\n\n' +
+             '✅ Wi-Fi corporativo de alta performance\n' +
+             '✅ Cobertura total e estável\n' +
+             '✅ Segurança avançada\n' +
+             '✅ Gestão centralizada\n' +
+             '✅ Suporte técnico incluso\n\n' +
+             '💡 Internet rápida e segura!\n' +
+             '📞 Orçamento: (11) 3514-2933';
+    }
+
+    // Contato
+    if (lowerText.includes('contato') || lowerText.includes('falar') || lowerText.includes('telefone') || lowerText.includes('email')) {
+      return '📞 **Entre em Contato com a MAGINF**\n\n' +
+             '🏢 Endereço: Av. Dr. Penteado, 1673 - Parque Indep., SJBV/SP\n' +
+             '📱 Telefone: (11) 3514-2933\n' +
+             '📧 E-mail: sac@maginf.com.br\n' +
+             '🌐 Site: www.maginf.com.br\n\n' +
+             '⏰ Atendimento: 24 horas, 7 dias por semana!\n' +
+             '💬 Estamos prontos para ajudar!';
+    }
+
+    // Resposta padrão melhorada
+    return '🤖 **Assistente MAGINF com IA**\n\n' +
+           'Posso ajudar você com:\n\n' +
+           '✅ Serviços MSP e Outsourcing de TI\n' +
+           '✅ Planos e valores\n' +
+           '✅ Suporte técnico 24/7\n' +
+           '✅ Cloud Computing (AWS/Azure)\n' +
+           '✅ CFTV e Segurança\n' +
+           '✅ Monitoramento NOC\n\n' +
+           '💬 Digite sua dúvida ou escolha uma opção acima!\n' +
+           '📞 Contato direto: (11) 3514-2933';
   };
 
   const handleQuickReply = (reply) => {
@@ -102,16 +204,36 @@ const Chatbot = () => {
     <>
       {/* Chat Button */}
       {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:right-24 z-40 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group"
-          aria-label="Abrir chat"
-        >
-          <MessageCircle className="h-6 w-6" />
-          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center animate-pulse">
-            1
-          </span>
-        </button>
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:right-24 z-40">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="relative bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 hover:from-blue-700 hover:via-cyan-700 hover:to-blue-700 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group animate-pulse hover:animate-none"
+            aria-label="Abrir chat com IA"
+          >
+            {/* Pulse rings */}
+            <div className="absolute inset-0 rounded-full bg-blue-400 opacity-75 animate-ping"></div>
+            <div className="absolute inset-0 rounded-full bg-cyan-400 opacity-50 animate-ping" style={{animationDelay: '0.5s'}}></div>
+            
+            {/* Icon */}
+            <div className="relative">
+              <MessageCircle className="h-6 w-6" />
+              <Sparkles className="h-3 w-3 absolute -top-1 -right-1 text-yellow-300 animate-bounce" />
+            </div>
+            
+            {/* Badge */}
+            <span className="absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold rounded-full h-7 w-7 flex items-center justify-center shadow-lg animate-bounce">
+              IA
+            </span>
+          </button>
+          
+          {/* Tooltip */}
+          <div className="absolute bottom-full right-0 mb-2 hidden group-hover:block animate-fadeIn">
+            <div className="bg-gray-900 text-white text-sm px-4 py-2 rounded-lg whitespace-nowrap shadow-xl">
+              💬 Converse com nossa IA!
+              <div className="absolute bottom-0 right-6 transform translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900"></div>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Chat Window */}
