@@ -33,10 +33,6 @@ const CookieConsent = dynamic(() => import('./components/CookieConsent'), {
   ssr: false,
 });
 
-const WhatsAppButton = dynamic(() => import('./components/WhatsAppButton'), {
-  ssr: false,
-});
-
 const ScrollToTop = dynamic(() => import('./components/ScrollToTop'), {
   ssr: false,
 });
@@ -63,7 +59,6 @@ function App() {
       <CookieConsent />
       
       {/* Floating Buttons */}
-      <WhatsAppButton />
       <ScrollToTop />
       <Chatbot />
     </div>

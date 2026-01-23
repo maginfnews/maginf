@@ -2,7 +2,6 @@ import React from 'react';
 import SEO from '../src/components/SEO';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
-import WhatsAppButton from '../src/components/WhatsAppButton';
 import { Monitor, Bell, TrendingUp, CheckCircle, Activity, Eye } from 'lucide-react';
 
 export default function MonitoramentoTI() {
@@ -222,7 +221,6 @@ export default function MonitoramentoTI() {
         </div>
 
         <Footer />
-        <WhatsAppButton />
       </div>
     </>
   );

@@ -2,7 +2,6 @@ import React from 'react';
 import SEO from '../src/components/SEO';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
-import WhatsAppButton from '../src/components/WhatsAppButton';
 import { Monitor, Shield, Cloud, TrendingUp, CheckCircle, Award } from 'lucide-react';
 
 export default function MSPBrasil() {
@@ -198,7 +197,6 @@ export default function MSPBrasil() {
         </div>
 
         <Footer />
-        <WhatsAppButton />
       </div>
     </>
   );

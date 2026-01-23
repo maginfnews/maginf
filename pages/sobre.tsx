@@ -2,7 +2,6 @@ import React from 'react';
 import SEO from '../src/components/SEO';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
-import WhatsAppButton from '../src/components/WhatsAppButton';
 import { Award, Users, Target, Heart, TrendingUp, Shield } from 'lucide-react';
 
 export default function Sobre() {
@@ -176,9 +175,7 @@ export default function Sobre() {
           </div>
         </div>
 
-        <Footer />
-        <WhatsAppButton />
-      </div>
+        <Footer />      </div>
     </>
   );
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import SEO from '../src/components/SEO';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
-import WhatsAppButton from '../src/components/WhatsAppButton';
 import { Calendar, User, ArrowRight, Award, Cloud, Activity, Shield, Server } from 'lucide-react';
 import Link from 'next/link';
 
@@ -166,7 +165,6 @@ export default function Blog() {
         </div>
 
         <Footer />
-        <WhatsAppButton />
       </div>
     </>
   );
