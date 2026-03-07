@@ -191,10 +191,31 @@ export default function ClienteDetalhe() {
                     </div>
                   </div>
                   {cliente.dominio && (
-                    <p className="text-xs text-gray-400 flex items-center gap-1.5">
-                      <span className="inline-block w-2 h-2 rounded-full bg-green-400"></span>
-                      Subdomínio personalizado: <span className="font-semibold text-gray-500">{cliente.dominio}.{rootDomain}</span>
-                    </p>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <p className="text-xs text-gray-400 flex items-center gap-1.5">
+                        <span className="inline-block w-2 h-2 rounded-full bg-green-400"></span>
+                        Subdomínio: <span className="font-semibold text-gray-500">{cliente.dominio}.{rootDomain}</span>
+                      </p>
+                      {cliente.dns_status && (
+                        <>
+                          <span className={`text-xs px-2 py-0.5 rounded-full font-semibold ${
+                            cliente.dns_status.cloudflare?.ok ? 'bg-orange-100 text-orange-700' : 'bg-red-100 text-red-600'
+                          }`}>
+                            CF {cliente.dns_status.cloudflare?.ok ? '✓' : '✗'}
+                          </span>
+                          <span className={`text-xs px-2 py-0.5 rounded-full font-semibold ${
+                            cliente.dns_status.vercel?.ok ? 'bg-black/10 text-gray-700' : 'bg-red-100 text-red-600'
+                          }`}>
+                            Vercel {cliente.dns_status.vercel?.ok ? '✓' : '✗'}
+                          </span>
+                          {(!cliente.dns_status.cloudflare?.ok || !cliente.dns_status.vercel?.ok) && (
+                            <span className="text-xs text-red-500">
+                              {cliente.dns_status.cloudflare?.erro || cliente.dns_status.vercel?.erro}
+                            </span>
+                          )}
+                        </>
+                      )}
+                    </div>
                   )}
                 </div>
               )

@@ -3,6 +3,46 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+async function criarDnsCloudflare(subdominio) {
+  const token = process.env.CLOUDFLARE_API_TOKEN
+  const zoneId = process.env.CLOUDFLARE_ZONE_ID
+  if (!token || !zoneId) return { ok: false, erro: 'Variaveis CLOUDFLARE nao configuradas' }
+  try {
+    const res = await fetch(`https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'CNAME', name: subdominio, content: 'cname.vercel-dns.com', ttl: 3600, proxied: false }),
+    })
+    const data = await res.json()
+    if (!data.success) return { ok: false, erro: data.errors?.[0]?.message || 'Erro Cloudflare' }
+    return { ok: true, recordId: data.result?.id }
+  } catch (e) {
+    return { ok: false, erro: e.message }
+  }
+}
+
+async function adicionarDominioVercel(dominioCompleto) {
+  const token = process.env.VERCEL_TOKEN
+  const projectId = process.env.VERCEL_PROJECT_ID
+  const teamId = process.env.VERCEL_TEAM_ID
+  if (!token || !projectId) return { ok: false, erro: 'Variaveis VERCEL nao configuradas' }
+  try {
+    const url = teamId
+      ? `https://api.vercel.com/v9/projects/${projectId}/domains?teamId=${teamId}`
+      : `https://api.vercel.com/v9/projects/${projectId}/domains`
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: dominioCompleto }),
+    })
+    const data = await res.json()
+    if (data.error) return { ok: false, erro: data.error.message || 'Erro Vercel' }
+    return { ok: true }
+  } catch (e) {
+    return { ok: false, erro: e.message }
+  }
+}
+
 export default async function handler(req, res) {
   const db = supabaseAdmin()
 
@@ -45,9 +85,21 @@ export default async function handler(req, res) {
     if (error) return res.status(500).json({ error: error.message })
 
     const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'maginf.com.br'
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `https://${rootDomain}`
     const subdominio = dominioLimpo || slugLimpo
-    const portalUrl = `https://${subdominio}.${rootDomain}`
+    const dominioCompleto = `${subdominio}.${rootDomain}`
+
+    const [cfResult, vercelResult] = await Promise.allSettled([
+      criarDnsCloudflare(subdominio),
+      adicionarDominioVercel(dominioCompleto),
+    ])
+    const dnsStatus = {
+      cloudflare: cfResult.status === 'fulfilled' ? cfResult.value : { ok: false, erro: cfResult.reason?.message },
+      vercel: vercelResult.status === 'fulfilled' ? vercelResult.value : { ok: false, erro: vercelResult.reason?.message },
+    }
+    await db.from('clientes').update({ dns_status: dnsStatus }).eq('id', cliente.id).catch(() => {})
+
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `https://${rootDomain}`
+    const portalUrl = `https://${dominioCompleto}`
     const portalUrlAlt = `${baseUrl}/portal/${slugLimpo}`
     try {
       await resend.emails.send({
@@ -95,7 +147,7 @@ export default async function handler(req, res) {
       console.error('Email erro:', emailErr)
     }
 
-    return res.status(200).json({ ok: true, cliente })
+    return res.status(200).json({ ok: true, cliente, dnsStatus })
   }
 
   if (req.method === 'PUT') {
