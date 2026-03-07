@@ -209,7 +209,7 @@ export default function MarriottPainel() {
               <img src="/logo-maginf-oficial-white.svg" alt="MAGINF" className="h-9 w-auto" />
               <div className="h-8 w-px bg-gray-500" />
               <div className="bg-white rounded-lg px-3 py-1">
-                <img src="/images/marriott.webp" alt="Marriott Sao Paulo Airport" className="h-8 w-auto" />
+                <img src="/images/msf.jpg" alt="Marriott Sao Paulo Airport" className="h-8 w-auto" />
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -243,7 +243,7 @@ export default function MarriottPainel() {
               <p className="text-sm text-gray-500">MAGINF Tecnologia – Relatório de Serviços de Rede</p>
             </div>
             <div className="flex flex-col items-end gap-2">
-              <img src="/images/marriott.webp" alt="Marriott Sao Paulo Airport" className="h-14 w-auto" />
+              <img src="/images/msf.jpg" alt="Marriott Sao Paulo Airport" className="h-14 w-auto" />
               <p className="text-sm text-gray-500">Gerado em {new Date().toLocaleString('pt-BR')}</p>
             </div>
           </div>

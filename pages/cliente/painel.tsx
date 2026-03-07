@@ -212,7 +212,7 @@ export default function ClientePainel() {
               <img src="/logo-maginf-oficial-white.svg" alt="MAGINF" className="h-10 w-auto" />
               <div className="border-l border-gray-500 pl-4 flex items-center gap-3">
                 <img
-                  src="/images/marriott.webp"
+                  src="/images/msf.jpg"
                   alt="Marriott"
                   className="h-10 w-auto rounded bg-white px-2 py-0.5"
                 />
@@ -253,7 +253,7 @@ export default function ClientePainel() {
               <p className="text-sm text-gray-500">MAGINF Tecnologia – Relatório de Serviços</p>
             </div>
             <div className="text-right flex flex-col items-end gap-2">
-              <img src="/images/marriott.webp" alt="Marriott" className="h-14 w-auto" />
+              <img src="/images/msf.jpg" alt="Marriott" className="h-14 w-auto" />
               <p className="text-sm text-gray-500">Gerado em {new Date().toLocaleString('pt-BR')}</p>
             </div>
           </div>

@@ -45,7 +45,7 @@ export default function VistoriaLogin() {
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-px flex-1 bg-gray-200" />
               <img
-                src="/images/marriott.webp"
+                src="/images/msf.jpg"
                 alt="Marriott Sao Paulo Airport"
                 className="h-12 w-auto"
               />

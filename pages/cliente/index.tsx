@@ -45,7 +45,7 @@ export default function ClienteLogin() {
                 className="h-12 w-auto mx-auto mb-4"
               />
               <img
-                src="/images/marriott.webp"
+                src="/images/msf.jpg"
                 alt="Marriott Sao Paulo Airport"
                 className="h-16 w-auto mx-auto mt-2 rounded-lg bg-white px-3 py-1"
               />

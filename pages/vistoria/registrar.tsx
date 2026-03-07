@@ -226,7 +226,7 @@ export default function VistoriaRegistrar() {
           <div className="flex items-center gap-3">
             <img src="/logo-maginf-oficial-white.svg" alt="MAGINF" className="h-8 w-auto" />
             <div className="h-6 w-px bg-gray-500" />
-            <img src="/images/marriott.webp" alt="Marriott" className="h-8 w-auto rounded bg-white px-1.5 py-0.5" />
+            <img src="/images/msf.jpg" alt="Marriott" className="h-8 w-auto rounded bg-white px-1.5 py-0.5" />
           </div>
           <div className="flex items-center gap-2">
             <button

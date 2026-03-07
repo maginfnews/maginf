@@ -45,7 +45,7 @@ export default function MarriottLogin() {
               />
               <div className="bg-white rounded-xl px-6 py-3 inline-block">
                 <img
-                  src="/images/marriott.webp"
+                  src="/images/msf.jpg"
                   alt="Marriott Sao Paulo Airport"
                   className="h-14 w-auto mx-auto"
                 />
