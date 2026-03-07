@@ -1,21 +1,24 @@
 import { supabaseAdmin } from '../../../lib/supabase'
 
 async function enviarWhatsApp(telefone, mensagem) {
-  const url = process.env.EVOLUTION_API_URL
-  const key = process.env.EVOLUTION_API_KEY
-  const instance = process.env.EVOLUTION_INSTANCE
-  if (!url || !key || !instance) return { ok: false, erro: 'Evolution API não configurada' }
+  const instanceId = process.env.ZAPI_INSTANCE_ID
+  const token = process.env.ZAPI_TOKEN
+  const clientToken = process.env.ZAPI_CLIENT_TOKEN
+  if (!instanceId || !token) return { ok: false, erro: 'Z-API não configurada' }
 
   const numero = telefone.replace(/\D/g, '')
   const numeroFormatado = numero.startsWith('55') ? numero : `55${numero}`
 
   try {
-    const res = await fetch(`${url}/message/sendText/${instance}`, {
+    const headers = { 'Content-Type': 'application/json' }
+    if (clientToken) headers['Client-Token'] = clientToken
+
+    const res = await fetch(`https://api.z-api.io/instances/${instanceId}/token/${token}/send-text`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'apikey': key },
+      headers,
       body: JSON.stringify({
-        number: numeroFormatado,
-        text: mensagem,
+        phone: numeroFormatado,
+        message: mensagem,
       }),
     })
     const data = await res.json()
