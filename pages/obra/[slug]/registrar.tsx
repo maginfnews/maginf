@@ -1,10 +1,19 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { Camera, CheckCircle, Trash2, ChevronRight, LogOut, ClipboardList, User, Home, AlertCircle, RefreshCw } from 'lucide-react'
+import { Camera, CheckCircle, Trash2, ChevronRight, LogOut, ClipboardList, User, Home, AlertCircle, RefreshCw, Save, Clock, Pencil } from 'lucide-react'
 
 type Foto = { url: string; preview: string; timestamp: string }
 type Etapa = 'dados' | 'fotos_antes' | 'observacoes' | 'fotos_depois' | 'finalizando' | 'concluido'
+
+const RASCUNHO_KEY = (slug: string) => `obra_rascunho_${slug}`
+
+const ETAPA_LABEL: Record<string, string> = {
+  dados: 'Dados',
+  fotos_antes: 'Fotos – Antes',
+  observacoes: 'Observações',
+  fotos_depois: 'Fotos – Depois',
+}
 
 export default function ObraRegistrar() {
   const router = useRouter()
@@ -17,6 +26,8 @@ export default function ObraRegistrar() {
   const [loading, setLoading] = useState(false)
   const [erro, setErro] = useState('')
   const [gerandoOS, setGerandoOS] = useState(false)
+  const [rascunho, setRascunho] = useState<any>(null)
+  const [ultimoSalvo, setUltimoSalvo] = useState<string | null>(null)
 
   const [apartamento, setApartamento] = useState('')
   const [ordemServico, setOrdemServico] = useState('')
@@ -40,16 +51,50 @@ export default function ObraRegistrar() {
     }
   }
 
+  // Salvar rascunho automaticamente
+  useEffect(() => {
+    if (!slug || etapa === 'concluido' || etapa === 'finalizando') return
+    if (!apartamento && !ordemServico) return
+    const r = { apartamento, ordemServico, tecnico, observacoes, fotosAntes, fotosDepois, etapa, salvoEm: new Date().toISOString() }
+    localStorage.setItem(RASCUNHO_KEY(slug), JSON.stringify(r))
+    setUltimoSalvo(new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }))
+  }, [apartamento, ordemServico, tecnico, observacoes, fotosAntes, fotosDepois, etapa, slug])
+
   useEffect(() => {
     if (!slug) return
     if (typeof window !== 'undefined') {
       if (!sessionStorage.getItem(`obra_auth_${slug}`)) { router.replace(`/obra/${slug}`); return }
       const nomeSalvo = localStorage.getItem(`obra_tecnico_${slug}`)
       if (nomeSalvo) setTecnico(nomeSalvo)
+      // Verificar rascunho
+      try {
+        const raw = localStorage.getItem(RASCUNHO_KEY(slug))
+        if (raw) { const r = JSON.parse(raw); if (r.apartamento) { setRascunho(r); return } }
+      } catch {}
     }
     fetch(`/api/portal/${slug}/listar`).then(r => r.json()).then(d => setCliente(d.cliente)).catch(() => {})
     gerarOS()
   }, [slug, router])
+
+  const carregarRascunho = () => {
+    if (!rascunho) return
+    setApartamento(rascunho.apartamento || '')
+    setOrdemServico(rascunho.ordemServico || '')
+    setTecnico(rascunho.tecnico || '')
+    setObservacoes(rascunho.observacoes || '')
+    setFotosAntes(rascunho.fotosAntes || [])
+    setFotosDepois(rascunho.fotosDepois || [])
+    setEtapa(rascunho.etapa || 'fotos_depois')
+    setRascunho(null)
+    fetch(`/api/portal/${slug}/listar`).then(r => r.json()).then(d => setCliente(d.cliente)).catch(() => {})
+  }
+
+  const descartarRascunho = () => {
+    localStorage.removeItem(RASCUNHO_KEY(slug))
+    setRascunho(null)
+    fetch(`/api/portal/${slug}/listar`).then(r => r.json()).then(d => setCliente(d.cliente)).catch(() => {})
+    gerarOS()
+  }
 
   const comprimirImagem = (file: File): Promise<Blob> => {
     return new Promise((resolve) => {
@@ -122,6 +167,7 @@ export default function ObraRegistrar() {
       })
       if (!res.ok) { const d = await res.json(); throw new Error(d.error || 'Erro ao salvar') }
       localStorage.setItem(`obra_tecnico_${slug}`, tecnico)
+      localStorage.removeItem(RASCUNHO_KEY(slug))
       setEtapa('concluido')
     } catch (err: any) {
       setErro(err.message || 'Erro ao finalizar')
@@ -130,6 +176,7 @@ export default function ObraRegistrar() {
   }
 
   const novaVistoria = () => {
+    localStorage.removeItem(RASCUNHO_KEY(slug))
     setApartamento(''); setObservacoes(''); setFotosAntes([]); setFotosDepois([]); setErro(''); setEtapa('dados'); gerarOS()
   }
 
@@ -140,6 +187,58 @@ export default function ObraRegistrar() {
     { key: 'fotos_depois', label: 'Depois' },
   ]
   const etapaIndex = etapas.findIndex(e => e.key === etapa)
+
+  // Tela de rascunho encontrado
+  if (rascunho) {
+    return (
+      <>
+        <Head><title>Vistoria em andamento – MAGINF</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /></Head>
+        <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+          <div className="w-full max-w-sm">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="bg-maginf-gray px-6 py-6 text-center">
+                <img src="/logo-maginf-oficial-white.svg" alt="MAGINF" className="h-8 w-auto mx-auto mb-3" />
+                <div className="bg-maginf-orange/20 rounded-xl p-3 mt-2 flex items-center justify-center gap-2">
+                  <Clock className="h-5 w-5 text-maginf-orange" />
+                  <p className="text-white font-bold text-sm">Vistoria em andamento</p>
+                </div>
+              </div>
+              <div className="p-6 space-y-4">
+                <div className="bg-orange-50 rounded-xl p-4 border border-orange-200 space-y-2">
+                  <p className="text-xs font-bold text-orange-600 uppercase tracking-wider">Rascunho salvo automaticamente</p>
+                  <div className="flex justify-between text-sm"><span className="text-gray-500">Unidade:</span><span className="font-bold text-maginf-gray">{rascunho.apartamento}</span></div>
+                  <div className="flex justify-between text-sm"><span className="text-gray-500">Etapa salva:</span><span className="font-semibold text-maginf-gray">{ETAPA_LABEL[rascunho.etapa] || rascunho.etapa}</span></div>
+                  <div className="flex justify-between text-sm"><span className="text-gray-500">Fotos antes:</span><span className="font-semibold text-maginf-gray">{rascunho.fotosAntes?.length || 0}</span></div>
+                  <div className="flex justify-between text-sm"><span className="text-gray-500">Fotos depois:</span><span className="font-semibold text-maginf-gray">{rascunho.fotosDepois?.length || 0}</span></div>
+                  <div className="flex justify-between text-sm"><span className="text-gray-500">Salvo em:</span><span className="font-semibold text-gray-500 text-xs">{new Date(rascunho.salvoEm).toLocaleString('pt-BR')}</span></div>
+                </div>
+
+                <button onClick={carregarRascunho}
+                  className="w-full bg-maginf-orange hover:bg-maginf-orange-dark text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                  <RefreshCw className="h-5 w-5" />Continuar de onde parei
+                </button>
+
+                <button onClick={() => { carregarRascunho(); setTimeout(() => setEtapa('fotos_depois'), 100) }}
+                  className="w-full border border-maginf-orange text-maginf-orange hover:bg-orange-50 py-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-colors">
+                  <Pencil className="h-4 w-4" />Adicionar fotos depois e finalizar
+                </button>
+
+                <button onClick={() => { carregarRascunho(); setTimeout(() => setEtapa('dados'), 100) }}
+                  className="w-full border border-gray-300 text-gray-500 hover:bg-gray-50 py-3 rounded-xl text-sm flex items-center justify-center gap-2 transition-colors">
+                  <Pencil className="h-4 w-4" />Editar dados da vistoria
+                </button>
+
+                <button onClick={descartarRascunho}
+                  className="w-full text-red-400 hover:text-red-600 py-2 rounded-xl text-xs transition-colors">
+                  Descartar e iniciar nova vistoria
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    )
+  }
 
   return (
     <>
@@ -161,6 +260,9 @@ export default function ObraRegistrar() {
             )}
           </div>
           <div className="flex items-center gap-2">
+            {ultimoSalvo && etapa !== 'concluido' && etapa !== 'finalizando' && (
+              <span className="flex items-center gap-1 text-xs text-gray-400"><Save className="h-3 w-3" />{ultimoSalvo}</span>
+            )}
             <button onClick={() => router.push(`/obra/${slug}/admin`)} className="text-gray-300 hover:text-white p-2" title="Painel">
               <ClipboardList className="h-5 w-5" />
             </button>
@@ -207,7 +309,10 @@ export default function ObraRegistrar() {
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-gray-400 mb-4 text-center">Etapa {etapaIndex + 1} de {etapas.length}: <span className="font-semibold text-maginf-gray">{etapas[etapaIndex]?.label}</span></p>
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-xs text-gray-400">Etapa {etapaIndex + 1} de {etapas.length}: <span className="font-semibold text-maginf-gray">{etapas[etapaIndex]?.label}</span></p>
+                {apartamento && <span className="text-xs bg-maginf-orange/10 text-maginf-orange font-bold px-2 py-1 rounded-full">Apto {apartamento}</span>}
+              </div>
 
               {erro && (
                 <div className="bg-red-50 border border-red-200 rounded-xl p-3 mb-4 flex items-center gap-2">
@@ -264,7 +369,7 @@ export default function ObraRegistrar() {
                     <div className="grid grid-cols-3 gap-2">
                       {fotosAntes.map((f, i) => (
                         <div key={i} className="relative aspect-square">
-                          <img src={f.preview} alt="Antes" className="w-full h-full object-cover rounded-lg" />
+                          <img src={f.preview || f.url} alt="Antes" className="w-full h-full object-cover rounded-lg" />
                           <button onClick={() => removerFoto('antes', i)} className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-0.5"><Trash2 className="h-3.5 w-3.5" /></button>
                         </div>
                       ))}
@@ -287,10 +392,15 @@ export default function ObraRegistrar() {
                   <textarea value={observacoes} onChange={e => setObservacoes(e.target.value)} rows={5}
                     placeholder="Ex: Ponto de acesso sem energia. Caixa de passagem danificada..."
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-maginf-orange outline-none resize-none" />
+                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 flex items-start gap-2">
+                    <Save className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <p className="text-xs text-blue-700"><strong>Pode fechar o app e ir trabalhar.</strong> Seu progresso está salvo. Ao voltar e logar, tudo estará aqui esperando.</p>
+                  </div>
+
                   <div className="flex gap-3">
                     <button onClick={() => setEtapa('fotos_antes')} className="flex-1 border border-gray-300 text-gray-600 py-3 rounded-xl">Voltar</button>
                     <button onClick={() => setEtapa('fotos_depois')} className="flex-1 bg-maginf-orange hover:bg-maginf-orange-dark text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-1">
-                      Próximo <ChevronRight className="h-4 w-4" />
+                      Ir trabalhar → <ChevronRight className="h-4 w-4" />
                     </button>
                   </div>
                 </div>
@@ -310,7 +420,7 @@ export default function ObraRegistrar() {
                     <div className="grid grid-cols-3 gap-2">
                       {fotosDepois.map((f, i) => (
                         <div key={i} className="relative aspect-square">
-                          <img src={f.preview} alt="Depois" className="w-full h-full object-cover rounded-lg" />
+                          <img src={f.preview || f.url} alt="Depois" className="w-full h-full object-cover rounded-lg" />
                           <button onClick={() => removerFoto('depois', i)} className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-0.5"><Trash2 className="h-3.5 w-3.5" /></button>
                         </div>
                       ))}

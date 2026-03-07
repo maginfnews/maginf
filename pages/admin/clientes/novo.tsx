@@ -136,6 +136,7 @@ export default function NovoCliente() {
   const buscarCnpj = async (valor: string) => {
     const c = valor.replace(/\D/g, '')
     if (c.length !== 14) return
+    if (!validarCnpj(c)) { setCnpjErro('CNPJ inválido'); setCnpjOk(false); return }
     setBuscandoCnpj(true)
     setCnpjErro('')
     try {

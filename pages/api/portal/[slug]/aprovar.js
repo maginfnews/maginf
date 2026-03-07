@@ -4,6 +4,23 @@ import { Resend } from 'resend'
 const resend = new Resend(process.env.RESEND_API_KEY)
 const NOTIFICAR = ['maicon@magpass.com.br', 'matheussleduc@gmail.com']
 
+async function enviarWhatsApp(telefone, mensagem) {
+  const instanceId = process.env.ZAPI_INSTANCE_ID
+  const token = process.env.ZAPI_TOKEN
+  const clientToken = process.env.ZAPI_CLIENT_TOKEN
+  if (!instanceId || !token || !telefone) return
+  const numero = telefone.replace(/\D/g, '')
+  const numeroFormatado = numero.startsWith('55') ? numero : `55${numero}`
+  try {
+    const headers = { 'Content-Type': 'application/json' }
+    if (clientToken) headers['Client-Token'] = clientToken
+    await fetch(`https://api.z-api.io/instances/${instanceId}/token/${token}/send-text`, {
+      method: 'POST', headers,
+      body: JSON.stringify({ phone: numeroFormatado, message: mensagem }),
+    })
+  } catch (e) { console.error('WhatsApp erro:', e) }
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
@@ -12,7 +29,7 @@ export default async function handler(req, res) {
   if (!id || !status) return res.status(400).json({ error: 'id e status obrigatórios' })
 
   const db = supabaseAdmin()
-  const { data: cliente } = await db.from('clientes').select('nome').eq('slug', slug).single()
+  const { data: cliente } = await db.from('clientes').select('nome, celular, telefone, responsavel_telefone, dominio').eq('slug', slug).single()
 
   const { data: vistoria, error } = await db
     .from('vistorias')
@@ -51,6 +68,16 @@ export default async function handler(req, res) {
       `,
     })
   } catch (e) { console.error('Email erro:', e) }
+
+  // WhatsApp ao responsável do cliente
+  const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'maginf.com.br'
+  const subdominio = cliente?.dominio || slug
+  const portalUrl = `https://${subdominio}.${rootDomain}`
+  const telCliente = cliente?.responsavel_telefone || cliente?.celular || cliente?.telefone
+  if (telCliente) {
+    const msg = `${emoji} *${status === 'aprovado' ? 'Serviço aprovado' : 'Serviço reprovado'}* – ${cliente?.nome}\n\n📋 *Unidade:* ${vistoria.apartamento}\n🔧 *OS:* ${vistoria.ordem_servico}${observacao ? `\n💬 *Obs:* ${observacao}` : ''}\n\n🔗 Ver no portal: ${portalUrl}`
+    await enviarWhatsApp(telCliente, msg)
+  }
 
   return res.status(200).json({ ok: true })
 }

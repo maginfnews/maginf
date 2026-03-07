@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   const { slug } = req.query
   const db = supabaseAdmin()
 
-  const { data: cliente, error: cErr } = await db.from('clientes').select('*').eq('slug', slug).single()
+  const { data: cliente, error: cErr } = await db.from('clientes').select('id, nome, slug, logo_url, ativo, dominio, email_contato, telefone, celular, cidade, estado, senha_cliente, senha_tecnico').eq('slug', slug).single()
   if (cErr || !cliente) return res.status(404).json({ error: 'Cliente não encontrado' })
 
   const { data: vistorias, error } = await db

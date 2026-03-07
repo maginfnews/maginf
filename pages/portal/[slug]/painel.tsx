@@ -51,6 +51,21 @@ export default function PortalPainel() {
       if (ult) setUltimoEnvio(ult)
     }
     carregar()
+
+    // Realtime: atualizar automaticamente quando nova vistoria for registrada
+    const { createClient } = require('@supabase/supabase-js')
+    const rt = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    )
+    const channel = rt
+      .channel(`vistorias_${slug}`)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'vistorias', filter: `cliente_slug=eq.${slug}` },
+        () => { carregar() }
+      )
+      .subscribe()
+
+    return () => { rt.removeChannel(channel) }
   }, [slug, router])
 
   const carregar = async () => {
