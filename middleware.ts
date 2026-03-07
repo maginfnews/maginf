@@ -45,8 +45,8 @@ export function middleware(req: NextRequest) {
   let destino: string
 
   if (pathname.startsWith('/obra')) {
-    const restante = pathname.replace('/obra', '') || ''
-    destino = `/obra/${slug}${restante}`
+    const semObra = pathname.replace(/^\/obra(\/[^/]+)?/, '') || ''
+    destino = `/obra/${slug}${semObra}`
   } else if (pathname === '/painel') {
     destino = `/portal/${slug}/painel`
   } else if (pathname === '/' || pathname === '') {
