@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import {
@@ -17,6 +17,10 @@ import {
   User,
   Calendar,
   MessageSquare,
+  Send,
+  X,
+  ChevronsUpDown,
+  AlertTriangle,
 } from 'lucide-react'
 
 type Foto = { id: string; url: string; tipo: 'antes' | 'depois'; timestamp: string }
@@ -57,11 +61,22 @@ export default function MarriottPainel() {
   const [loadingAprovar, setLoadingAprovar] = useState(false)
   const [enviandoEmail, setEnviandoEmail] = useState(false)
   const [emailEnviado, setEmailEnviado] = useState(false)
+  const [modalEmail, setModalEmail] = useState(false)
+  const [emailDestino, setEmailDestino] = useState('')
+  const [historicoEmails, setHistoricoEmails] = useState<string[]>([])
+  const [showSugestoes, setShowSugestoes] = useState(false)
+  const [ultimoEnvio, setUltimoEnvio] = useState<string | null>(null)
+  const [expandirTodos, setExpandirTodos] = useState(false)
+  const emailInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const auth = sessionStorage.getItem('marriott_auth')
       if (!auth) { router.replace('/marriott'); return }
+      const hist = localStorage.getItem('marriott_emails_hist')
+      if (hist) setHistoricoEmails(JSON.parse(hist))
+      const ult = localStorage.getItem('marriott_ultimo_envio')
+      if (ult) setUltimoEnvio(ult)
     }
     carregar()
   }, [router])
@@ -99,22 +114,44 @@ export default function MarriottPainel() {
     }
   }
 
+  const salvarHistorico = (email: string) => {
+    const emails = email.split(',').map(e => e.trim()).filter(Boolean)
+    const novo = Array.from(new Set([...emails, ...historicoEmails])).slice(0, 10)
+    setHistoricoEmails(novo)
+    localStorage.setItem('marriott_emails_hist', JSON.stringify(novo))
+  }
+
   const handleEnviarEmail = async () => {
+    if (!emailDestino.trim()) return
     setEnviandoEmail(true)
     try {
       await fetch('/api/vistoria/relatorio-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ vistorias: vistoriasFiltradas }),
+        body: JSON.stringify({ destinatarios: emailDestino }),
       })
+      salvarHistorico(emailDestino)
+      const agora = new Date().toLocaleString('pt-BR')
+      setUltimoEnvio(agora)
+      localStorage.setItem('marriott_ultimo_envio', agora)
       setEmailEnviado(true)
-      setTimeout(() => setEmailEnviado(false), 4000)
+      setModalEmail(false)
+      setEmailDestino('')
+      setShowSugestoes(false)
+      setTimeout(() => setEmailEnviado(false), 5000)
     } finally {
       setEnviandoEmail(false)
     }
   }
 
+  const sugestoesFiltradas = historicoEmails.filter(e =>
+    emailDestino ? e.toLowerCase().includes(emailDestino.toLowerCase()) : true
+  )
+
+  const isExpandido = (id: string) => expandirTodos || expandido === id
+
   const handleImprimir = () => window.print()
+
   const formatarData = (iso: string) => iso ? new Date(iso).toLocaleString('pt-BR') : '—'
 
   const statusBadge = (v: Vistoria) => {
@@ -201,6 +238,76 @@ export default function MarriottPainel() {
         </div>
       )}
 
+      {/* Modal Email */}
+      {modalEmail && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6">
+            <div className="flex items-center justify-between mb-5">
+              <div className="flex items-center gap-3">
+                <div className="bg-maginf-orange/10 rounded-xl p-2.5">
+                  <Mail className="h-5 w-5 text-maginf-orange" />
+                </div>
+                <div>
+                  <p className="font-bold text-maginf-gray">Enviar Relatório por Email</p>
+                  <p className="text-xs text-gray-400">Cópia automática para MAGINF</p>
+                </div>
+              </div>
+              <button onClick={() => { setModalEmail(false); setEmailDestino(''); setShowSugestoes(false) }} className="text-gray-400 hover:text-gray-600 p-1">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <label className="block text-sm font-medium text-maginf-gray mb-2">
+              Destinatário(s)
+            </label>
+            <div className="relative">
+              <input
+                ref={emailInputRef}
+                type="text"
+                value={emailDestino}
+                onChange={e => { setEmailDestino(e.target.value); setShowSugestoes(true) }}
+                onFocus={() => setShowSugestoes(true)}
+                onBlur={() => setTimeout(() => setShowSugestoes(false), 150)}
+                placeholder="email@empresa.com.br"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maginf-orange focus:border-transparent outline-none text-sm"
+              />
+              {showSugestoes && sugestoesFiltradas.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 overflow-hidden">
+                  {sugestoesFiltradas.map(email => (
+                    <button
+                      key={email}
+                      type="button"
+                      onMouseDown={() => { setEmailDestino(email); setShowSugestoes(false) }}
+                      className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-maginf-orange/5 hover:text-maginf-orange flex items-center gap-2 border-b border-gray-50 last:border-0"
+                    >
+                      <Mail className="h-3.5 w-3.5 text-gray-400 flex-shrink-0" />
+                      {email}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            <p className="text-xs text-gray-400 mt-2">
+              Múltiplos emails separados por vírgula. A MAGINF receberá sempre uma cópia.
+            </p>
+
+            <div className="flex gap-3 mt-5">
+              <button onClick={() => { setModalEmail(false); setEmailDestino(''); setShowSugestoes(false) }} className="flex-1 border border-gray-300 text-gray-600 font-semibold py-3 rounded-lg hover:bg-gray-50 text-sm">
+                Cancelar
+              </button>
+              <button
+                onClick={handleEnviarEmail}
+                disabled={enviandoEmail || !emailDestino.trim()}
+                className="flex-1 flex items-center justify-center gap-2 bg-maginf-orange hover:bg-maginf-orange-dark text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 text-sm"
+              >
+                <Send className="h-4 w-4" />
+                {enviandoEmail ? 'Enviando...' : 'Enviar'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="min-h-screen bg-gray-50 print:bg-white">
         {/* Header */}
         <header className="bg-maginf-gray text-white px-4 py-3 shadow-lg print:hidden">
@@ -213,13 +320,17 @@ export default function MarriottPainel() {
               </div>
             </div>
             <div className="flex items-center gap-2">
+              {emailEnviado && (
+                <span className="hidden sm:flex items-center gap-1 bg-green-500/20 text-green-300 text-xs px-3 py-1.5 rounded-lg">
+                  <CheckCircle className="h-3 w-3" />Enviado!
+                </span>
+              )}
               <button
-                onClick={handleEnviarEmail}
-                disabled={enviandoEmail}
-                className="hidden sm:flex items-center gap-2 bg-maginf-orange hover:bg-maginf-orange-dark text-white text-sm px-3 py-2 rounded-lg transition-colors disabled:opacity-50"
+                onClick={() => setModalEmail(true)}
+                className="hidden sm:flex items-center gap-2 bg-maginf-orange hover:bg-maginf-orange-dark text-white text-sm px-3 py-2 rounded-lg transition-colors"
               >
                 <Mail className="h-4 w-4" />
-                {emailEnviado ? 'Enviado!' : enviandoEmail ? 'Enviando...' : 'Enviar por Email'}
+                Enviar por Email
               </button>
               <button
                 onClick={handleImprimir}
@@ -313,12 +424,27 @@ export default function MarriottPainel() {
             </div>
           </div>
 
+          {/* Badge de pendentes */}
+          {pendentes > 0 && (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-3 mb-4 flex items-center gap-3 print:hidden">
+              <AlertTriangle className="h-5 w-5 text-yellow-500 flex-shrink-0" />
+              <p className="text-sm text-yellow-700 font-medium">
+                <span className="font-bold">{pendentes} apartamento{pendentes > 1 ? 's' : ''}</span> aguardando sua aprovação
+              </p>
+            </div>
+          )}
+
+          {/* Último envio */}
+          {ultimoEnvio && (
+            <p className="text-xs text-gray-400 mb-3 print:hidden">Último relatório enviado por email em <span className="font-medium text-gray-500">{ultimoEnvio}</span></p>
+          )}
+
           {/* Botões mobile */}
           <div className="flex gap-2 mb-4 sm:hidden print:hidden">
             <button onClick={handleImprimir} className="flex-1 flex items-center justify-center gap-2 border border-gray-300 text-gray-600 text-sm py-2 rounded-lg">
               <Printer className="h-4 w-4" />Imprimir
             </button>
-            <button onClick={handleEnviarEmail} disabled={enviandoEmail} className="flex-1 flex items-center justify-center gap-2 bg-maginf-orange text-white text-sm py-2 rounded-lg disabled:opacity-50">
+            <button onClick={() => setModalEmail(true)} className="flex-1 flex items-center justify-center gap-2 bg-maginf-orange text-white text-sm py-2 rounded-lg">
               <Mail className="h-4 w-4" />{emailEnviado ? 'Enviado!' : 'Email'}
             </button>
           </div>
@@ -331,6 +457,19 @@ export default function MarriottPainel() {
             </div>
           )}
 
+          {/* Botão expandir todos */}
+          {!loading && vistoriasFiltradas.length > 0 && (
+            <div className="flex justify-end mb-3 print:hidden">
+              <button
+                onClick={() => { setExpandirTodos(!expandirTodos); setExpandido(null) }}
+                className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-maginf-orange border border-gray-200 bg-white px-3 py-1.5 rounded-lg transition-colors"
+              >
+                <ChevronsUpDown className="h-3.5 w-3.5" />
+                {expandirTodos ? 'Recolher todos' : 'Expandir todos'}
+              </button>
+            </div>
+          )}
+
           {/* Lista */}
           {!loading && vistoriasFiltradas.length === 0 && (
             <div className="bg-white rounded-xl p-8 text-center shadow-sm">
@@ -339,11 +478,15 @@ export default function MarriottPainel() {
             </div>
           )}
 
-          {!loading && vistoriasFiltradas.map(v => (
-            <div key={v.id} className="bg-white rounded-xl shadow-sm mb-3 overflow-hidden print:break-inside-avoid print:border print:border-gray-200 print:mb-4">
+          {!loading && vistoriasFiltradas.map(v => {
+            const statusCard = v.aprovado_status || 'pendente'
+            const borderColor = statusCard === 'aprovado' ? 'border-l-green-400' : statusCard === 'reprovado' ? 'border-l-red-400' : 'border-l-yellow-400'
+            const totalFotos = (v.vistoria_fotos?.length || 0)
+            return (
+            <div key={v.id} className={`bg-white rounded-xl shadow-sm mb-3 overflow-hidden border-l-4 ${borderColor} print:break-inside-avoid print:border print:border-gray-200 print:mb-4`}>
               <div
                 className="px-5 py-4 flex items-center justify-between cursor-pointer hover:bg-gray-50 print:cursor-default"
-                onClick={() => setExpandido(expandido === v.id ? null : v.id)}
+                onClick={() => { if (!expandirTodos) setExpandido(isExpandido(v.id) ? null : v.id) }}
               >
                 <div className="flex items-center gap-4">
                   <div className="bg-maginf-orange/10 rounded-xl p-3">
@@ -355,14 +498,19 @@ export default function MarriottPainel() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
+                  {totalFotos > 0 && (
+                    <span className="hidden sm:flex items-center gap-1 text-xs text-gray-400">
+                      <Camera className="h-3 w-3" />{totalFotos}
+                    </span>
+                  )}
                   {statusBadge(v)}
                   <span className="print:hidden">
-                    {expandido === v.id ? <ChevronUp className="h-5 w-5 text-gray-400" /> : <ChevronDown className="h-5 w-5 text-gray-400" />}
+                    {isExpandido(v.id) ? <ChevronUp className="h-5 w-5 text-gray-400" /> : <ChevronDown className="h-5 w-5 text-gray-400" />}
                   </span>
                 </div>
               </div>
 
-              {expandido === v.id && (
+              {isExpandido(v.id) && (
                 <div className="border-t border-gray-100 px-5 py-5 space-y-5">
                   {/* Info */}
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
@@ -470,7 +618,7 @@ export default function MarriottPainel() {
                 </div>
               )}
             </div>
-          ))}
+          )})}
 
           {/* Rodapé impressão */}
           <div className="hidden print:block mt-8 pt-4 border-t border-gray-200 text-center">
