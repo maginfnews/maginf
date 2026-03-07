@@ -19,7 +19,7 @@ export default function ClienteDetalhe() {
   const [loading, setLoading] = useState(true)
   const [expandido, setExpandido] = useState<string | null>(null)
   const [fotoAmpliada, setFotoAmpliada] = useState<string | null>(null)
-  const [aba, setAba] = useState<'visao_geral' | 'vistorias' | 'dados'>('visao_geral')
+  const [aba, setAba] = useState<'visao_geral' | 'vistorias' | 'dados' | 'funcionarios'>('visao_geral')
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -258,6 +258,7 @@ export default function ClienteDetalhe() {
               { id: 'visao_geral', label: 'Visão Geral' },
               { id: 'vistorias', label: `Vistorias (${total})` },
               { id: 'dados', label: 'Dados Cadastrais' },
+              { id: 'funcionarios', label: 'Equipe Técnica' },
             ].map((a) => (
               <button key={a.id} onClick={() => setAba(a.id as any)}
                 className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-semibold transition-colors ${aba === a.id ? 'bg-white text-maginf-orange shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>
@@ -479,6 +480,17 @@ export default function ClienteDetalhe() {
                   </div>
                 )}
               </div>
+            </div>
+          )}
+
+          {/* ABA: FUNCIONÁRIOS */}
+          {aba === 'funcionarios' && (
+            <div className="bg-white rounded-2xl shadow-sm p-6 text-center">
+              <p className="text-gray-500 text-sm mb-4">Gerencie a equipe técnica deste cliente.</p>
+              <Link href={`/admin/clientes/${id}/funcionarios`}
+                className="inline-flex items-center gap-2 bg-maginf-orange hover:bg-maginf-orange-dark text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm">
+                Abrir Gestão de Equipe →
+              </Link>
             </div>
           )}
 
