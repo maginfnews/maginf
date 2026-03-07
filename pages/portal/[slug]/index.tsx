@@ -28,7 +28,11 @@ export default function PortalLogin() {
     setErro('')
     if (senha === cliente.senha_cliente) {
       sessionStorage.setItem(`portal_auth_${slug}`, '1')
-      router.push(`/portal/${slug}/painel`)
+      const isSubdomain = typeof window !== 'undefined' &&
+        window.location.hostname !== process.env.NEXT_PUBLIC_ROOT_DOMAIN &&
+        !window.location.hostname.includes('localhost') &&
+        !window.location.hostname.includes('vercel.app')
+      router.push(isSubdomain ? '/painel' : `/portal/${slug}/painel`)
     } else {
       setErro('Senha incorreta. Entre em contato com a MAGINF.')
       setLoading(false)
