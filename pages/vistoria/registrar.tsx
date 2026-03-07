@@ -9,9 +9,9 @@ import {
   LogOut,
   ClipboardList,
   User,
-  Hash,
   Home,
   AlertCircle,
+  RefreshCw,
 } from 'lucide-react'
 
 type Foto = {
@@ -30,6 +30,7 @@ export default function VistoriaRegistrar() {
   const [etapa, setEtapa] = useState<Etapa>('dados')
   const [loading, setLoading] = useState(false)
   const [erro, setErro] = useState('')
+  const [gerandoOS, setGerandoOS] = useState(false)
 
   // Dados do formulário
   const [apartamento, setApartamento] = useState('')
@@ -38,6 +39,21 @@ export default function VistoriaRegistrar() {
   const [observacoes, setObservacoes] = useState('')
   const [fotosAntes, setFotosAntes] = useState<Foto[]>([])
   const [fotosDepois, setFotosDepois] = useState<Foto[]>([])
+
+  const gerarOS = async () => {
+    setGerandoOS(true)
+    try {
+      const res = await fetch('/api/vistoria/gerar-os')
+      const data = await res.json()
+      setOrdemServico(data.ordem_servico)
+    } catch {
+      // fallback local
+      const hoje = new Date().toISOString().slice(0, 10).replace(/-/g, '')
+      setOrdemServico(`OS-${hoje}-001`)
+    } finally {
+      setGerandoOS(false)
+    }
+  }
 
   // Verificar autenticação
   useEffect(() => {
@@ -50,6 +66,8 @@ export default function VistoriaRegistrar() {
       const nomeSalvo = localStorage.getItem('vistoria_tecnico')
       if (nomeSalvo) setTecnico(nomeSalvo)
     }
+    // Gerar OS automaticamente
+    gerarOS()
   }, [router])
 
   const handleLogout = () => {
@@ -155,12 +173,12 @@ export default function VistoriaRegistrar() {
 
   const novaVistoria = () => {
     setApartamento('')
-    setOrdemServico('')
     setObservacoes('')
     setFotosAntes([])
     setFotosDepois([])
     setErro('')
     setEtapa('dados')
+    gerarOS()
   }
 
   const etapas: { key: Etapa; label: string }[] = [
@@ -310,18 +328,23 @@ export default function VistoriaRegistrar() {
 
                   <div>
                     <label className="block text-sm font-medium text-maginf-gray mb-1">
-                      Ordem de Serviço *
+                      Ordem de Serviço
                     </label>
-                    <div className="relative">
-                      <Hash className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
-                      <input
-                        type="text"
-                        value={ordemServico}
-                        onChange={(e) => setOrdemServico(e.target.value)}
-                        placeholder="Ex: OS-2025-001"
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maginf-orange focus:border-transparent outline-none"
-                      />
+                    <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">
+                      <span className="flex-1 font-mono font-bold text-maginf-gray text-sm">
+                        {gerandoOS ? 'Gerando...' : ordemServico || '—'}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={gerarOS}
+                        disabled={gerandoOS}
+                        className="text-maginf-orange hover:text-maginf-orange-dark disabled:opacity-50"
+                        title="Gerar nova OS"
+                      >
+                        <RefreshCw className={`h-4 w-4 ${gerandoOS ? 'animate-spin' : ''}`} />
+                      </button>
                     </div>
+                    <p className="text-xs text-gray-400 mt-1">Gerada automaticamente</p>
                   </div>
 
                   <div>
@@ -342,8 +365,8 @@ export default function VistoriaRegistrar() {
 
                   <button
                     onClick={() => {
-                      if (!apartamento || !ordemServico || !tecnico) {
-                        setErro('Preencha todos os campos obrigatórios.')
+                      if (!apartamento || !tecnico) {
+                        setErro('Preencha o número do apartamento e o nome do técnico.')
                         return
                       }
                       setErro('')
