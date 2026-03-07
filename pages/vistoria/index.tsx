@@ -40,10 +40,19 @@ export default function VistoriaLogin() {
             <img
               src="/logo-maginf-oficial.svg"
               alt="MAGINF Tecnologia"
-              className="h-14 w-auto mx-auto mb-4"
+              className="h-12 w-auto mx-auto mb-4"
             />
-            <h1 className="text-2xl font-bold text-maginf-gray">Sistema de Vistoria</h1>
-            <p className="text-gray-500 text-sm mt-1">Marriott Airport – Projeto de Rede</p>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-px flex-1 bg-gray-200" />
+              <img
+                src="/images/marriott.webp"
+                alt="Marriott Sao Paulo Airport"
+                className="h-12 w-auto"
+              />
+              <div className="h-px flex-1 bg-gray-200" />
+            </div>
+            <h1 className="text-xl font-bold text-maginf-gray">Sistema de Vistoria</h1>
+            <p className="text-gray-500 text-sm mt-1">Projeto de Rede – Marriott Airport</p>
           </div>
 
           {/* Form */}

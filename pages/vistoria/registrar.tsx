@@ -225,10 +225,8 @@ export default function VistoriaRegistrar() {
         <header className="bg-maginf-gray text-white px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-lg">
           <div className="flex items-center gap-3">
             <img src="/logo-maginf-oficial-white.svg" alt="MAGINF" className="h-8 w-auto" />
-            <div>
-              <p className="text-xs text-gray-400">Marriott Airport</p>
-              <p className="text-sm font-semibold">Vistoria de Rede</p>
-            </div>
+            <div className="h-6 w-px bg-gray-500" />
+            <img src="/images/marriott.webp" alt="Marriott" className="h-8 w-auto rounded bg-white px-1.5 py-0.5" />
           </div>
           <div className="flex items-center gap-2">
             <button

@@ -210,12 +210,16 @@ export default function ClientePainel() {
           <div className="max-w-5xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-4">
               <img src="/logo-maginf-oficial-white.svg" alt="MAGINF" className="h-10 w-auto" />
-              <div className="border-l border-gray-500 pl-4">
-                <div className="flex items-center gap-2">
-                  <Building2 className="h-4 w-4 text-maginf-orange" />
-                  <p className="font-semibold">Marriott Airport</p>
+              <div className="border-l border-gray-500 pl-4 flex items-center gap-3">
+                <img
+                  src="/images/marriott.webp"
+                  alt="Marriott"
+                  className="h-10 w-auto rounded bg-white px-2 py-0.5"
+                />
+                <div>
+                  <p className="font-semibold text-sm">Marriott Airport</p>
+                  <p className="text-xs text-gray-400">Relatório de Serviços de Rede</p>
                 </div>
-                <p className="text-xs text-gray-400">Relatório de Serviços de Rede</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -245,11 +249,11 @@ export default function ClientePainel() {
         <div className="hidden print:block p-8 border-b">
           <div className="flex items-center justify-between">
             <div>
-              <img src="/logo-maginf-oficial.svg" alt="MAGINF" className="h-12 w-auto mb-2" />
+              <img src="/logo-maginf-oficial.svg" alt="MAGINF" className="h-12 w-auto mb-1" />
               <p className="text-sm text-gray-500">MAGINF Tecnologia – Relatório de Serviços</p>
             </div>
-            <div className="text-right">
-              <p className="font-bold text-lg">Marriott Airport</p>
+            <div className="text-right flex flex-col items-end gap-2">
+              <img src="/images/marriott.webp" alt="Marriott" className="h-14 w-auto" />
               <p className="text-sm text-gray-500">Gerado em {new Date().toLocaleString('pt-BR')}</p>
             </div>
           </div>

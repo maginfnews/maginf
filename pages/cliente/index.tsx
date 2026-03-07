@@ -44,10 +44,11 @@ export default function ClienteLogin() {
                 alt="MAGINF Tecnologia"
                 className="h-12 w-auto mx-auto mb-4"
               />
-              <div className="bg-white/20 rounded-xl px-4 py-2 inline-flex items-center gap-2">
-                <Building2 className="h-4 w-4 text-white" />
-                <span className="text-white text-sm font-medium">Marriott Airport</span>
-              </div>
+              <img
+                src="/images/marriott.webp"
+                alt="Marriott Sao Paulo Airport"
+                className="h-16 w-auto mx-auto mt-2 rounded-lg bg-white px-3 py-1"
+              />
             </div>
 
             {/* Form */}
