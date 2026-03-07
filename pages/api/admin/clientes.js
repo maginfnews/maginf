@@ -96,7 +96,7 @@ export default async function handler(req, res) {
       cloudflare: cfResult.status === 'fulfilled' ? cfResult.value : { ok: false, erro: cfResult.reason?.message },
       vercel: vercelResult.status === 'fulfilled' ? vercelResult.value : { ok: false, erro: vercelResult.reason?.message },
     }
-    await db.from('clientes').update({ dns_status: dnsStatus }).eq('id', cliente.id).catch(() => {})
+    try { await db.from('clientes').update({ dns_status: dnsStatus }).eq('id', cliente.id) } catch (_) {}
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `https://${rootDomain}`
     const portalUrl = `https://${dominioCompleto}`
