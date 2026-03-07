@@ -22,8 +22,8 @@ async function enviarWhatsApp(telefone, mensagem) {
       }),
     })
     const data = await res.json()
-    if (!res.ok) return { ok: false, erro: data.message || 'Erro ao enviar' }
-    return { ok: true }
+    if (!res.ok) return { ok: false, erro: data.message || data.error || data.reason || JSON.stringify(data) }
+    return { ok: true, msgId: data.messageId || data.id }
   } catch (err) {
     return { ok: false, erro: err.message }
   }
