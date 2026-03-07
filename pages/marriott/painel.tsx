@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
+
+const { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid } = require('recharts')
 import {
   CheckCircle,
   XCircle,
@@ -181,6 +184,18 @@ export default function MarriottPainel() {
 
   const fotosAntes = (v: Vistoria) => v.vistoria_fotos?.filter(f => f.tipo === 'antes') || []
   const fotosDepois = (v: Vistoria) => v.vistoria_fotos?.filter(f => f.tipo === 'depois') || []
+
+  const dadosDonut = [
+    { name: 'Aprovados', value: aprovados, color: '#16a34a' },
+    { name: 'Pendentes', value: pendentes, color: '#f59e0b' },
+    { name: 'Reprovados', value: reprovados, color: '#dc2626' },
+  ].filter(d => d.value > 0)
+
+  const dadosBarras = vistoriasFiltradas.slice(0, 15).map(v => ({
+    name: `${v.apartamento}`,
+    fotos: (v.vistoria_fotos?.length || 0),
+    status: v.aprovado_status || 'pendente',
+  }))
 
   return (
     <>
@@ -396,6 +411,83 @@ export default function MarriottPainel() {
             </div>
             <p className="text-xs text-gray-400 mt-1">{aprovados} de {total} apartamentos aprovados</p>
           </div>
+
+          {/* Gráficos */}
+          {total > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 print:grid-cols-2">
+
+              {/* Donut – distribuição de status */}
+              <div className="bg-white rounded-xl p-5 shadow-sm">
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Distribuição de Status</p>
+                <div className="flex items-center gap-4">
+                  <ResponsiveContainer width={140} height={140}>
+                    <PieChart>
+                      <Pie
+                        data={dadosDonut}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={42}
+                        outerRadius={65}
+                        paddingAngle={3}
+                        dataKey="value"
+                        strokeWidth={0}
+                      >
+                        {dadosDonut.map((entry: any, index: number) => (
+                          <Cell key={index} fill={entry.color} />
+                        ))}
+                      </Pie>
+                      <Tooltip
+                        formatter={(value: any, name: any) => [`${value} apto${value > 1 ? 's' : ''}`, name]}
+                        contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', fontSize: '12px' }}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                  <div className="flex flex-col gap-2.5 flex-1">
+                    {dadosDonut.map((d: any) => (
+                      <div key={d.name} className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: d.color }} />
+                          <span className="text-xs text-gray-600">{d.name}</span>
+                        </div>
+                        <span className="text-xs font-bold" style={{ color: d.color }}>{d.value}</span>
+                      </div>
+                    ))}
+                    <div className="pt-1 border-t border-gray-100 flex items-center justify-between">
+                      <span className="text-xs text-gray-400">Total</span>
+                      <span className="text-xs font-bold text-maginf-gray">{total}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Barras – fotos por apartamento */}
+              <div className="bg-white rounded-xl p-5 shadow-sm">
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Fotos por Apartamento</p>
+                <ResponsiveContainer width="100%" height={140}>
+                  <BarChart data={dadosBarras} barSize={14} margin={{ top: 0, right: 4, left: -28, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
+                    <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} allowDecimals={false} />
+                    <Tooltip
+                      formatter={(value: any) => [`${value} foto${value !== 1 ? 's' : ''}`, 'Total']}
+                      contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', fontSize: '12px' }}
+                    />
+                    <Bar dataKey="fotos" radius={[4, 4, 0, 0]}>
+                      {dadosBarras.map((entry: any, index: number) => (
+                        <Cell
+                          key={index}
+                          fill={entry.status === 'aprovado' ? '#16a34a' : entry.status === 'reprovado' ? '#dc2626' : '#f59e0b'}
+                          fillOpacity={0.85}
+                        />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+                <p className="text-xs text-gray-400 mt-2 text-center">Cor indica status do apartamento</p>
+              </div>
+
+            </div>
+          )}
 
           {/* Filtros e busca */}
           <div className="flex flex-col sm:flex-row gap-3 mb-4 print:hidden">
