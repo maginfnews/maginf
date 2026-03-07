@@ -8,6 +8,7 @@ async function enviarWhatsApp(telefone, mensagem) {
 
   const numero = telefone.replace(/\D/g, '')
   const numeroFormatado = numero.startsWith('55') ? numero : `55${numero}`
+  console.log('[Z-API] enviando para:', numeroFormatado, '| instanceId:', instanceId)
 
   try {
     const headers = { 'Content-Type': 'application/json' }
@@ -22,6 +23,7 @@ async function enviarWhatsApp(telefone, mensagem) {
       }),
     })
     const data = await res.json()
+    console.log('[Z-API status]', res.status, JSON.stringify(data))
     if (!res.ok) return { ok: false, erro: data.message || data.error || data.reason || JSON.stringify(data) }
     return { ok: true, msgId: data.messageId || data.id }
   } catch (err) {
