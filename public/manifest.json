@@ -1,21 +1,26 @@
 {
-  "short_name": "MAGINF",
-  "name": "MAGINF Tecnologia - Soluções de TI Completas",
-  "description": "MSP e suporte técnico para empresas. Monitoramento 24/7, CFTV, cloud e infraestrutura com atendimento local.",
+  "short_name": "Vistoria",
+  "name": "Vistoria MAGINF – Marriott",
+  "description": "Sistema de vistoria de rede para técnicos MAGINF em campo.",
   "icons": [
     {
-      "src": "favicon-of.ico",
+      "src": "/favicon-of.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/logo-maginf-oficial.png",
+      "sizes": "192x192",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "/vistoria",
+  "scope": "/vistoria",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme_color": "#e35300",
-  "background_color": "#ffffff",
-  "categories": ["business", "productivity", "technology"],
+  "theme_color": "#2C3E50",
+  "background_color": "#f3f4f6",
+  "categories": ["business", "productivity"],
   "lang": "pt-BR",
-  "scope": "/",
   "prefer_related_applications": false
 }

@@ -36,6 +36,16 @@ class MyDocument extends Document {
         
         {/* Manifest */}
         <link rel="manifest" href="/manifest.json" />
+
+        {/* PWA – iOS Safari */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Vistoria MAGINF" />
+        <link rel="apple-touch-icon" sizes="192x192" href="/favicon-of.ico" />
+
+        {/* PWA – Android Chrome */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="application-name" content="Vistoria MAGINF" />
       </Head>
       <body>
         <Main />

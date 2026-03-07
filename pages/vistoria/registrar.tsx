@@ -75,31 +75,53 @@ export default function VistoriaRegistrar() {
     router.push('/vistoria')
   }
 
-  // Upload de foto para Cloudinary via API
-  const uploadFoto = async (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader()
-      reader.onload = async (e) => {
-        try {
-          const base64 = e.target?.result as string
-          const timestamp = new Date().toISOString().replace(/[:.]/g, '-')
-          const fileName = `apto${apartamento}_${timestamp}`
-
-          const res = await fetch('/api/vistoria/upload', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ imageBase64: base64, fileName }),
-          })
-
-          if (!res.ok) throw new Error('Erro no upload')
-          const data = await res.json()
-          resolve(data.url)
-        } catch (err) {
-          reject(err)
+  // Comprime imagem via canvas (máx 1280px, qualidade 0.8) — compatível iOS/Android
+  const comprimirImagem = (file: File): Promise<Blob> => {
+    return new Promise((resolve) => {
+      const img = new Image()
+      const url = URL.createObjectURL(file)
+      img.onload = () => {
+        const MAX = 1280
+        let { width, height } = img
+        if (width > MAX || height > MAX) {
+          if (width > height) { height = Math.round((height * MAX) / width); width = MAX }
+          else { width = Math.round((width * MAX) / height); height = MAX }
         }
+        const canvas = document.createElement('canvas')
+        canvas.width = width
+        canvas.height = height
+        const ctx = canvas.getContext('2d')!
+        ctx.drawImage(img, 0, 0, width, height)
+        URL.revokeObjectURL(url)
+        canvas.toBlob((blob) => resolve(blob || file), 'image/jpeg', 0.82)
       }
-      reader.readAsDataURL(file)
+      img.onerror = () => resolve(file)
+      img.src = url
     })
+  }
+
+  // Upload direto ao Cloudinary via FormData (sem passar pelo servidor)
+  const uploadFoto = async (file: File): Promise<string> => {
+    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dxr6mywet'
+    const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || 'vistoria_maginf'
+
+    const blob = await comprimirImagem(file)
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-')
+    const fileName = `apto${apartamento}_${timestamp}`
+
+    const form = new FormData()
+    form.append('file', blob, `${fileName}.jpg`)
+    form.append('upload_preset', uploadPreset)
+    form.append('folder', 'vistorias/marriott')
+    form.append('public_id', fileName)
+
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+      { method: 'POST', body: form }
+    )
+    if (!res.ok) throw new Error('Erro no upload da foto')
+    const data = await res.json()
+    return data.secure_url as string
   }
 
   const handleFotos = async (files: FileList | null, tipo: 'antes' | 'depois') => {
@@ -394,11 +416,10 @@ export default function VistoriaRegistrar() {
                   <input
                     ref={fileInputAntesRef}
                     type="file"
-                    accept="image/*"
-                    capture="environment"
+                    accept="image/*,video/*"
                     multiple
                     className="hidden"
-                    onChange={(e) => handleFotos(e.target.files, 'antes')}
+                    onChange={(e) => { handleFotos(e.target.files, 'antes'); e.target.value = '' }}
                   />
 
                   <button
@@ -503,11 +524,10 @@ export default function VistoriaRegistrar() {
                   <input
                     ref={fileInputDepoisRef}
                     type="file"
-                    accept="image/*"
-                    capture="environment"
+                    accept="image/*,video/*"
                     multiple
                     className="hidden"
-                    onChange={(e) => handleFotos(e.target.files, 'depois')}
+                    onChange={(e) => { handleFotos(e.target.files, 'depois'); e.target.value = '' }}
                   />
 
                   <button
