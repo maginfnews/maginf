@@ -120,25 +120,22 @@ export default async function handler(req, res) {
       </div>
     `
 
-    // Destinatários informados pelo cliente
+    // Destinatários: quem o cliente digitou + CC_FIXO sempre (sem duplicatas)
     const parasInput = destinatarios
       ? destinatarios.split(',').map(e => e.trim()).filter(Boolean)
       : []
 
-    const toList = parasInput.length > 0 ? parasInput : CC_FIXO
-    const ccList = parasInput.length > 0
-      ? CC_FIXO.filter(e => !parasInput.map(p => p.toLowerCase()).includes(e.toLowerCase()))
-      : []
+    const toSet = new Set([...parasInput, ...CC_FIXO].map(e => e.toLowerCase()))
+    const toList = Array.from(toSet)
 
     await resend.emails.send({
       from: 'Portal Marriott <contato@notificacao.maginf.com.br>',
       to: toList,
-      ...(ccList.length > 0 && { cc: ccList }),
       subject: `📊 Relatório Marriott Airport – ${aprovados}/${total} aprovados`,
       html: htmlEmail,
     })
 
-    return res.status(200).json({ ok: true, enviado_para: toList, cc: ccList })
+    return res.status(200).json({ ok: true, enviado_para: toList })
   } catch (error) {
     console.error('Relatorio email error:', error)
     return res.status(500).json({ error: error.message })

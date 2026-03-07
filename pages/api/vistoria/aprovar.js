@@ -40,8 +40,8 @@ export default async function handler(req, res) {
     const label = status === 'aprovado' ? 'APROVADO' : 'REPROVADO'
 
     await resend.emails.send({
-      from: 'Portal Cliente <contato@notificacao.maginf.com.br>',
-      to: ['maicon@magpass.com.br'],
+      from: 'Portal Marriott <contato@notificacao.maginf.com.br>',
+      to: ['maicon@magpass.com.br', 'matheussleduc@gmail.com'],
       subject: `${emoji} Serviço ${label} – Apto ${vistoria.apartamento} | Marriott`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">

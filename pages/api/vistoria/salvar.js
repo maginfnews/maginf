@@ -83,7 +83,7 @@ export default async function handler(req, res) {
     // Enviar email de notificação
     await resend.emails.send({
       from: 'Vistoria MAGINF <contato@notificacao.maginf.com.br>',
-      to: ['maicon@magpass.com.br'],
+      to: ['maicon@magpass.com.br', 'matheussleduc@gmail.com'],
       subject: `✅ Vistoria finalizada – Apto ${apartamento} | OS ${ordem_servico}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
