@@ -10,7 +10,7 @@
     }
   ],
   "start_url": "/vistoria",
-  "scope": "/vistoria",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#2C3E50",
