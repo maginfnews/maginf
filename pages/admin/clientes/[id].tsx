@@ -157,28 +157,48 @@ export default function ClienteDetalhe() {
             </div>
 
             {/* URLs de acesso */}
-            <div className="px-6 py-4 bg-gray-50 border-b border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-3 print:hidden">
-              <div className="flex items-center gap-3 bg-white rounded-lg px-4 py-3 border border-gray-200">
-                <div className="h-8 w-8 bg-maginf-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <User className="h-4 w-4 text-maginf-orange" />
+            {(() => {
+              const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'maginf.com.br'
+              const subdominio = cliente.dominio || cliente.slug
+              const portalUrl = `https://${subdominio}.${rootDomain}`
+              const obraUrl = `https://${subdominio}.${rootDomain}/obra`
+              const portalAlt = `/portal/${cliente.slug}`
+              const obraAlt = `/obra/${cliente.slug}`
+              return (
+                <div className="px-6 py-4 bg-gray-50 border-b border-gray-100 space-y-2 print:hidden">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="flex items-center gap-3 bg-white rounded-lg px-4 py-3 border border-gray-200">
+                      <div className="h-8 w-8 bg-maginf-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <User className="h-4 w-4 text-maginf-orange" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs font-semibold text-gray-500">Portal do cliente</p>
+                        <code className="text-xs text-maginf-orange truncate block font-bold">{portalUrl}</code>
+                        <code className="text-xs text-gray-300 truncate block">{portalAlt}</code>
+                      </div>
+                      <a href={portalUrl} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-maginf-orange flex-shrink-0"><ExternalLink className="h-4 w-4" /></a>
+                    </div>
+                    <div className="flex items-center gap-3 bg-white rounded-lg px-4 py-3 border border-gray-200">
+                      <div className="h-8 w-8 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Camera className="h-4 w-4 text-blue-600" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs font-semibold text-gray-500">Equipe técnica</p>
+                        <code className="text-xs text-blue-600 truncate block font-bold">{obraUrl}</code>
+                        <code className="text-xs text-gray-300 truncate block">{obraAlt}</code>
+                      </div>
+                      <a href={obraUrl} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-blue-600 flex-shrink-0"><ExternalLink className="h-4 w-4" /></a>
+                    </div>
+                  </div>
+                  {cliente.dominio && (
+                    <p className="text-xs text-gray-400 flex items-center gap-1.5">
+                      <span className="inline-block w-2 h-2 rounded-full bg-green-400"></span>
+                      Subdomínio personalizado: <span className="font-semibold text-gray-500">{cliente.dominio}.{rootDomain}</span>
+                    </p>
+                  )}
                 </div>
-                <div className="min-w-0">
-                  <p className="text-xs font-semibold text-gray-500">Portal do cliente</p>
-                  <code className="text-xs text-maginf-orange truncate block">{baseUrl}/portal/{cliente.slug}</code>
-                </div>
-                <Link href={`/portal/${cliente.slug}`} target="_blank" className="text-gray-400 hover:text-maginf-orange flex-shrink-0"><ExternalLink className="h-4 w-4" /></Link>
-              </div>
-              <div className="flex items-center gap-3 bg-white rounded-lg px-4 py-3 border border-gray-200">
-                <div className="h-8 w-8 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Camera className="h-4 w-4 text-blue-600" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs font-semibold text-gray-500">Equipe técnica</p>
-                  <code className="text-xs text-blue-600 truncate block">{baseUrl}/obra/{cliente.slug}</code>
-                </div>
-                <Link href={`/obra/${cliente.slug}`} target="_blank" className="text-gray-400 hover:text-blue-600 flex-shrink-0"><ExternalLink className="h-4 w-4" /></Link>
-              </div>
-            </div>
+              )
+            })()}
           </div>
 
           {/* Stats */}

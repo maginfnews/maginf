@@ -58,6 +58,7 @@ export default function NovoCliente() {
   const [respTelefone, setRespTelefone] = useState('')
 
   const [logoUrl, setLogoUrl] = useState('')
+  const [dominio, setDominio] = useState('')
   const [senhaCliente, setSenhaCliente] = useState(gerarSenha())
   const [senhaTecnico, setSenhaTecnico] = useState(gerarSenha(8))
   const [observacoes, setObservacoes] = useState('')
@@ -115,7 +116,7 @@ export default function NovoCliente() {
           email_contato: emailContato, telefone, celular, site,
           cep, logradouro, numero, complemento, bairro, cidade, estado,
           responsavel_nome: respNome, responsavel_cargo: respCargo, responsavel_email: respEmail, responsavel_telefone: respTelefone,
-          logo_url: logoUrl, senha_cliente: senhaCliente, senha_tecnico: senhaTecnico, observacoes,
+          logo_url: logoUrl, dominio: dominio || null, senha_cliente: senhaCliente, senha_tecnico: senhaTecnico, observacoes,
         }),
       })
       const data = await res.json()
@@ -387,16 +388,43 @@ export default function NovoCliente() {
                     placeholder="Notas internas sobre o cliente ou projeto..." className={`${inputCls} resize-none`} />
                 </div>
 
+                {/* Domínio personalizado */}
+                <div>
+                  <label className={labelCls}>Subdomínio personalizado</label>
+                  <div className="flex items-center">
+                    <input
+                      value={dominio}
+                      onChange={e => setDominio(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ''))}
+                      placeholder={slug || 'meu-cliente'}
+                      className={`${inputCls} rounded-r-none flex-1`}
+                    />
+                    <span className="px-3 py-2.5 bg-gray-100 border border-l-0 border-gray-300 rounded-r-lg text-sm text-gray-500 whitespace-nowrap">.maginf.com.br</span>
+                  </div>
+                  <p className="text-xs text-gray-400 mt-1">
+                    Se vazio, usa o slug como subdomínio. Ex: <span className="font-medium text-maginf-orange">{dominio || slug || 'meu-cliente'}.maginf.com.br</span>
+                  </p>
+                </div>
+
                 {/* Preview de URLs */}
-                <div className="bg-gray-50 rounded-xl p-4 space-y-2">
-                  <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">URLs geradas automaticamente</p>
+                <div className="bg-gray-50 rounded-xl p-4 space-y-2.5">
+                  <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">URLs de acesso geradas</p>
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-medium text-gray-600 w-28">Portal cliente:</span>
-                    <code className="text-xs bg-white border border-gray-200 px-3 py-1.5 rounded-lg text-maginf-orange font-medium">/portal/{slug || 'slug'}</code>
+                    <span className="text-xs font-medium text-gray-600 w-32 flex-shrink-0">Portal cliente:</span>
+                    <code className="text-xs bg-white border border-gray-200 px-3 py-1.5 rounded-lg text-maginf-orange font-medium break-all">
+                      {dominio || slug || 'slug'}.maginf.com.br
+                    </code>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-medium text-gray-600 w-28">Equipe técnica:</span>
-                    <code className="text-xs bg-white border border-gray-200 px-3 py-1.5 rounded-lg text-blue-600 font-medium">/obra/{slug || 'slug'}</code>
+                    <span className="text-xs font-medium text-gray-600 w-32 flex-shrink-0">Equipe técnica:</span>
+                    <code className="text-xs bg-white border border-gray-200 px-3 py-1.5 rounded-lg text-blue-600 font-medium break-all">
+                      {dominio || slug || 'slug'}.maginf.com.br/obra
+                    </code>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-medium text-gray-600 w-32 flex-shrink-0">URL alternativa:</span>
+                    <code className="text-xs bg-white border border-gray-200 px-3 py-1.5 rounded-lg text-gray-400 font-medium break-all">
+                      maginf.com.br/portal/{slug || 'slug'}
+                    </code>
                   </div>
                 </div>
               </>

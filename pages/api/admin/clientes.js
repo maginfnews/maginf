@@ -21,7 +21,7 @@ export default async function handler(req, res) {
       email_contato, telefone, celular, site,
       cep, logradouro, numero, complemento, bairro, cidade, estado,
       responsavel_nome, responsavel_cargo, responsavel_email, responsavel_telefone,
-      logo_url, senha_cliente, senha_tecnico, observacoes,
+      logo_url, dominio, senha_cliente, senha_tecnico, observacoes,
     } = req.body
 
     if (!nome || !slug || !email_contato || !senha_cliente || !senha_tecnico) {
@@ -32,17 +32,23 @@ export default async function handler(req, res) {
     const { data: existe } = await db.from('clientes').select('id').eq('slug', slugLimpo).maybeSingle()
     if (existe) return res.status(400).json({ error: 'Este slug já está em uso' })
 
+    const dominioLimpo = dominio ? dominio.toLowerCase().replace(/[^a-z0-9-]/g, '') : null
+
     const { data: cliente, error } = await db.from('clientes').insert({
       tipo: tipo || 'PJ', nome, razao_social, nome_fantasia, cpf, cnpj, ie, slug: slugLimpo,
       email_contato, telefone, celular, site,
       cep, logradouro, numero, complemento, bairro, cidade, estado,
       responsavel_nome, responsavel_cargo, responsavel_email, responsavel_telefone,
-      logo_url: logo_url || null, senha_cliente, senha_tecnico, observacoes, ativo: true,
+      logo_url: logo_url || null, dominio: dominioLimpo, senha_cliente, senha_tecnico, observacoes, ativo: true,
     }).select().single()
 
     if (error) return res.status(500).json({ error: error.message })
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://maginf.com.br'
+    const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'maginf.com.br'
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `https://${rootDomain}`
+    const subdominio = dominioLimpo || slugLimpo
+    const portalUrl = `https://${subdominio}.${rootDomain}`
+    const portalUrlAlt = `${baseUrl}/portal/${slugLimpo}`
     try {
       await resend.emails.send({
         from: 'MAGINF Tecnologia <contato@notificacao.maginf.com.br>',
@@ -62,17 +68,21 @@ export default async function handler(req, res) {
                 <table style="width:100%;border-collapse:collapse;">
                   <tr>
                     <td style="padding:10px 0;font-size:13px;color:#64748b;font-weight:600;width:150px;">Link do portal</td>
-                    <td style="padding:10px 0;font-size:13px;"><a href="${baseUrl}/portal/${slugLimpo}" style="color:#e35300;font-weight:700;">${baseUrl}/portal/${slugLimpo}</a></td>
+                    <td style="padding:10px 0;font-size:13px;"><a href="${portalUrl}" style="color:#e35300;font-weight:700;">${portalUrl}</a></td>
                   </tr>
                   <tr style="border-top:1px solid #e2e8f0;">
                     <td style="padding:10px 0;font-size:13px;color:#64748b;font-weight:600;">Senha</td>
                     <td style="padding:10px 0;font-size:16px;font-weight:800;color:#1e293b;letter-spacing:2px;">${senha_cliente}</td>
                   </tr>
+                  <tr style="border-top:1px solid #e2e8f0;">
+                    <td style="padding:10px 0;font-size:13px;color:#64748b;font-weight:600;">URL alternativa</td>
+                    <td style="padding:10px 0;font-size:12px;"><a href="${portalUrlAlt}" style="color:#94a3b8;">${portalUrlAlt}</a></td>
+                  </tr>
                 </table>
               </div>
               <p style="color:#6b7280;font-size:13px;margin:0 0 24px;">Pelo portal você acompanha serviços realizados, visualiza fotos antes e depois, aprova ou reprova apartamentos e gera relatórios.</p>
               <div style="text-align:center;">
-                <a href="${baseUrl}/portal/${slugLimpo}" style="display:inline-block;background:#e35300;color:#fff;font-weight:700;font-size:14px;padding:14px 36px;border-radius:10px;text-decoration:none;">Acessar meu portal →</a>
+                <a href="${portalUrl}" style="display:inline-block;background:#e35300;color:#fff;font-weight:700;font-size:14px;padding:14px 36px;border-radius:10px;text-decoration:none;">Acessar meu portal →</a>
               </div>
             </div>
             <div style="background:#1e293b;padding:18px 24px;text-align:center;border-radius:0 0 12px 12px;">
