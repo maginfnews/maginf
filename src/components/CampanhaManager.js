@@ -13,7 +13,7 @@ import CarnavalBrasil from './CarnavalBrasil';
  */
 
 const CAMPANHAS_ATIVAS = {
-  carnavalBrasil: true,   // Campanha Carnaval Brasil
+  carnavalBrasil: false,  // Campanha Carnaval Brasil (DESATIVADA)
   janeiroBranco: false,  // Campanha Janeiro Branco (DESATIVADA)
   novenbroAzul: false,   // Campanha Novembro Azul (DESATIVADA)
   natal: false,          // Campanha de Natal (DESATIVADA)
