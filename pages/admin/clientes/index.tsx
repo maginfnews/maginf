@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Users, PlusCircle, Search, LogOut, Building2, CheckCircle, Clock, XCircle, Eye } from 'lucide-react'
+import { Users, PlusCircle, Search, LogOut, Building2, CheckCircle, Clock, XCircle, Eye, Archive } from 'lucide-react'
 import { supabase } from '../../../lib/supabase'
 
 export default function AdminClientes() {
@@ -10,7 +10,7 @@ export default function AdminClientes() {
   const [clientes, setClientes] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [busca, setBusca] = useState('')
-  const [filtro, setFiltro] = useState<'todos' | 'ativos' | 'inativos'>('todos')
+  const [filtro, setFiltro] = useState<'ativos' | 'concluidos'>('ativos')
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -37,9 +37,12 @@ export default function AdminClientes() {
       c.slug.toLowerCase().includes(busca.toLowerCase()) ||
       (c.email_contato || '').toLowerCase().includes(busca.toLowerCase()) ||
       (c.cidade || '').toLowerCase().includes(busca.toLowerCase())
-    const matchFiltro = filtro === 'todos' || (filtro === 'ativos' ? c.ativo : !c.ativo)
+    const matchFiltro = filtro === 'ativos' ? c.status !== 'concluido' : c.status === 'concluido'
     return matchBusca && matchFiltro
   })
+
+  const totalAtivos = clientes.filter(c => c.status !== 'concluido').length
+  const totalConcluidos = clientes.filter(c => c.status === 'concluido').length
 
   const getStats = (c: any) => {
     const vs = c.vistorias || []
@@ -77,7 +80,7 @@ export default function AdminClientes() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-maginf-gray flex items-center gap-2"><Users className="h-6 w-6 text-maginf-orange" />Clientes</h1>
-              <p className="text-gray-400 text-sm mt-0.5">{clientes.length} cliente{clientes.length !== 1 ? 's' : ''} cadastrado{clientes.length !== 1 ? 's' : ''}</p>
+              <p className="text-gray-400 text-sm mt-0.5">{totalAtivos} ativ{totalAtivos !== 1 ? 'os' : 'o'} · {totalConcluidos} concluído{totalConcluidos !== 1 ? 's' : ''}</p>
             </div>
             <Link href="/admin/clientes/novo" className="flex items-center gap-2 bg-maginf-orange hover:bg-maginf-orange-dark text-white text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors">
               <PlusCircle className="h-4 w-4" />Novo Cliente
@@ -93,12 +96,14 @@ export default function AdminClientes() {
                 className="w-full pl-9 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-maginf-orange text-sm" />
             </div>
             <div className="flex gap-2">
-              {(['todos', 'ativos', 'inativos'] as const).map(f => (
-                <button key={f} onClick={() => setFiltro(f)}
-                  className={`px-3 py-2 rounded-lg text-xs font-semibold transition-colors capitalize ${filtro === f ? 'bg-maginf-orange text-white' : 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50'}`}>
-                  {f}
-                </button>
-              ))}
+              <button onClick={() => setFiltro('ativos')}
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold transition-colors ${filtro === 'ativos' ? 'bg-maginf-orange text-white' : 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50'}`}>
+                <Building2 className="h-3.5 w-3.5" />Em andamento {totalAtivos > 0 && <span className="bg-white/30 rounded-full px-1.5">{totalAtivos}</span>}
+              </button>
+              <button onClick={() => setFiltro('concluidos')}
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold transition-colors ${filtro === 'concluidos' ? 'bg-gray-600 text-white' : 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50'}`}>
+                <Archive className="h-3.5 w-3.5" />Concluídos {totalConcluidos > 0 && <span className={`rounded-full px-1.5 ${filtro === 'concluidos' ? 'bg-white/30' : 'bg-gray-100'}`}>{totalConcluidos}</span>}
+              </button>
             </div>
           </div>
 
@@ -117,11 +122,19 @@ export default function AdminClientes() {
             </div>
           )}
 
+          {filtro === 'concluidos' && totalConcluidos > 0 && (
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 flex items-center gap-3">
+              <Archive className="h-5 w-5 text-gray-400 flex-shrink-0" />
+              <p className="text-sm text-gray-500">Obras concluídas — subdomínios removidos. Histórico e vistorias preservados.</p>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {!loading && filtrados.map(c => {
               const st = getStats(c)
+              const concluido = c.status === 'concluido'
               return (
-                <div key={c.id} className={`bg-white rounded-xl shadow-sm overflow-hidden border-l-4 ${c.ativo ? 'border-l-maginf-orange' : 'border-l-gray-300'}`}>
+                <div key={c.id} className={`bg-white rounded-xl shadow-sm overflow-hidden border-l-4 ${concluido ? 'border-l-gray-300 opacity-80' : 'border-l-maginf-orange'}`}>
                   <div className="p-5">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
@@ -134,7 +147,7 @@ export default function AdminClientes() {
                           <p className="text-xs text-gray-400">{c.tipo} · {c.cidade || 'Sem cidade'}</p>
                         </div>
                       </div>
-                      {!c.ativo && <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">Inativo</span>}
+                      {concluido && <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full flex items-center gap-1"><Archive className="h-3 w-3" />Concluído</span>}
                     </div>
 
                     <div className="grid grid-cols-3 gap-2 mb-3">

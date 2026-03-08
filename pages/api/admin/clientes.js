@@ -43,6 +43,52 @@ async function adicionarDominioVercel(dominioCompleto) {
   }
 }
 
+async function removerDnsCloudflare(subdominio) {
+  const token = process.env.CLOUDFLARE_API_TOKEN
+  const zoneId = process.env.CLOUDFLARE_ZONE_ID
+  if (!token || !zoneId) return { ok: false, erro: 'Variaveis CLOUDFLARE nao configuradas' }
+  try {
+    // Buscar o record pelo nome
+    const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'maginf.com.br'
+    const res = await fetch(`https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records?name=${subdominio}.${rootDomain}`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+    })
+    const data = await res.json()
+    if (!data.success || !data.result?.length) return { ok: false, erro: 'Record DNS não encontrado' }
+    const recordId = data.result[0].id
+    const del = await fetch(`https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/${recordId}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${token}` },
+    })
+    const delData = await del.json()
+    if (!delData.success) return { ok: false, erro: delData.errors?.[0]?.message || 'Erro ao deletar' }
+    return { ok: true }
+  } catch (e) {
+    return { ok: false, erro: e.message }
+  }
+}
+
+async function removerDominioVercel(dominioCompleto) {
+  const token = process.env.VERCEL_TOKEN
+  const projectId = process.env.VERCEL_PROJECT_ID
+  const teamId = process.env.VERCEL_TEAM_ID
+  if (!token || !projectId) return { ok: false, erro: 'Variaveis VERCEL nao configuradas' }
+  try {
+    const url = teamId
+      ? `https://api.vercel.com/v9/projects/${projectId}/domains/${dominioCompleto}?teamId=${teamId}`
+      : `https://api.vercel.com/v9/projects/${projectId}/domains/${dominioCompleto}`
+    const res = await fetch(url, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${token}` },
+    })
+    if (res.status === 204 || res.ok) return { ok: true }
+    const data = await res.json()
+    return { ok: false, erro: data.error?.message || 'Erro Vercel' }
+  } catch (e) {
+    return { ok: false, erro: e.message }
+  }
+}
+
 export default async function handler(req, res) {
   const db = supabaseAdmin()
 
@@ -157,6 +203,41 @@ export default async function handler(req, res) {
     const { data, error } = await db.from('clientes').update({ ...campos, atualizado_em: new Date().toISOString() }).eq('id', id).select().single()
     if (error) return res.status(500).json({ error: error.message })
     return res.status(200).json({ ok: true, cliente: data })
+  }
+
+  // PATCH: concluir obra - remove subdominio e marca como concluido
+  if (req.method === 'PATCH') {
+    const { id, acao } = req.body
+    if (!id || acao !== 'concluir') return res.status(400).json({ error: 'id e acao obrigatórios' })
+
+    const { data: cliente } = await db.from('clientes').select('slug, dominio').eq('id', id).single()
+    if (!cliente) return res.status(404).json({ error: 'Cliente não encontrado' })
+
+    const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'maginf.com.br'
+    const subdominio = cliente.dominio || cliente.slug
+    const dominioCompleto = `${subdominio}.${rootDomain}`
+
+    const [cfResult, vercelResult] = await Promise.allSettled([
+      removerDnsCloudflare(subdominio),
+      removerDominioVercel(dominioCompleto),
+    ])
+
+    const dnsRemovido = {
+      cloudflare: cfResult.status === 'fulfilled' ? cfResult.value : { ok: false },
+      vercel: vercelResult.status === 'fulfilled' ? vercelResult.value : { ok: false },
+    }
+
+    const { data: atualizado, error } = await db.from('clientes')
+      .update({ status: 'concluido', ativo: false, concluido_em: new Date().toISOString() })
+      .eq('id', id).select().single()
+
+    if (error) return res.status(500).json({ error: error.message })
+    return res.status(200).json({ ok: true, cliente: atualizado, dnsRemovido })
+  }
+
+  // PATCH: reativar obra
+  if (req.method === 'DELETE') {
+    return res.status(405).json({ error: 'Use PATCH com acao=concluir' })
   }
 
   return res.status(405).json({ error: 'Method not allowed' })

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import {
   ArrowLeft, Building2, Mail, Phone, MapPin, User, Globe,
   CheckCircle, XCircle, Clock, Camera, ChevronDown, ChevronUp,
-  Edit2, LogOut, ExternalLink, Hash, Calendar, Printer,
+  Edit2, LogOut, ExternalLink, Hash, Calendar, Printer, Archive, AlertTriangle,
 } from 'lucide-react'
 import { supabase } from '../../../lib/supabase'
 
@@ -20,6 +20,8 @@ export default function ClienteDetalhe() {
   const [expandido, setExpandido] = useState<string | null>(null)
   const [fotoAmpliada, setFotoAmpliada] = useState<string | null>(null)
   const [aba, setAba] = useState<'visao_geral' | 'vistorias' | 'dados' | 'funcionarios'>('visao_geral')
+  const [concluindo, setConcluindo] = useState(false)
+  const [confirmarConclusao, setConfirmarConclusao] = useState(false)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -46,6 +48,25 @@ export default function ClienteDetalhe() {
   const handleLogout = async () => {
     await supabase.auth.signOut()
     router.push('/admin')
+  }
+
+  const handleConcluirObra = async () => {
+    setConcluindo(true)
+    try {
+      const res = await fetch('/api/admin/clientes', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, acao: 'concluir' }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Erro ao concluir')
+      setConfirmarConclusao(false)
+      router.push('/admin/clientes')
+    } catch (err: any) {
+      alert(err.message)
+    } finally {
+      setConcluindo(false)
+    }
   }
 
   if (loading) return (
@@ -384,6 +405,7 @@ export default function ClienteDetalhe() {
 
           {/* ABA: DADOS CADASTRAIS */}
           {aba === 'dados' && (
+            <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Identificação */}
               <div className="bg-white rounded-xl p-5 shadow-sm">
@@ -479,6 +501,64 @@ export default function ClienteDetalhe() {
                     <p className="text-sm text-gray-600">{cliente.observacoes}</p>
                   </div>
                 )}
+              </div>
+            </div>
+
+            {/* Zona de conclusão */}
+            {cliente.status !== 'concluido' ? (
+              <div className="bg-white rounded-2xl shadow-sm p-5 border border-red-100">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-bold text-maginf-gray text-sm flex items-center gap-2"><Archive className="h-4 w-4 text-red-500" />Encerrar obra</p>
+                    <p className="text-xs text-gray-400 mt-0.5">Remove o subdomínio e arquiva o cliente. Histórico preservado.</p>
+                  </div>
+                  <button onClick={() => setConfirmarConclusao(true)}
+                    className="flex items-center gap-2 bg-red-50 hover:bg-red-100 text-red-600 font-semibold px-4 py-2.5 rounded-xl text-sm transition-colors border border-red-200">
+                    <Archive className="h-4 w-4" />Concluir Obra
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-gray-50 rounded-2xl p-5 border border-gray-200 flex items-center gap-3">
+                <Archive className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                <div>
+                  <p className="font-bold text-gray-500 text-sm">Obra concluída</p>
+                  <p className="text-xs text-gray-400">Subdomínio removido em {cliente.concluido_em ? new Date(cliente.concluido_em).toLocaleDateString('pt-BR') : '—'}</p>
+                </div>
+              </div>
+            )}
+            </div>
+          )}
+
+          {/* MODAL CONFIRMAR CONCLUSÃO */}
+          {confirmarConclusao && (
+            <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="bg-red-100 rounded-full p-2.5"><AlertTriangle className="h-6 w-6 text-red-600" /></div>
+                  <div>
+                    <p className="font-bold text-maginf-gray">Concluir Obra</p>
+                    <p className="text-xs text-gray-400">{cliente.nome}</p>
+                  </div>
+                </div>
+                <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 space-y-1.5 text-xs text-amber-800">
+                  <p className="font-bold">O que será feito:</p>
+                  <p>• Subdomínio <strong>{cliente.dominio || cliente.slug}.maginf.com.br</strong> será removido do Cloudflare e Vercel</p>
+                  <p>• Cliente movido para "Obras Concluídas"</p>
+                  <p>• Histórico de vistorias e dados preservados</p>
+                  <p>• Slug <strong>/{cliente.slug}</strong> mantido no banco</p>
+                </div>
+                <p className="text-sm text-gray-600">Tem certeza? Esta ação removerá o acesso ao portal do cliente.</p>
+                <div className="flex gap-3">
+                  <button onClick={() => setConfirmarConclusao(false)} disabled={concluindo}
+                    className="flex-1 border border-gray-300 text-gray-600 py-3 rounded-xl text-sm hover:bg-gray-50">
+                    Cancelar
+                  </button>
+                  <button onClick={handleConcluirObra} disabled={concluindo}
+                    className="flex-1 bg-red-600 hover:bg-red-700 disabled:opacity-60 text-white font-bold py-3 rounded-xl text-sm flex items-center justify-center gap-2">
+                    {concluindo ? <><div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />Concluindo...</> : <><Archive className="h-4 w-4" />Confirmar</>}
+                  </button>
+                </div>
               </div>
             </div>
           )}
