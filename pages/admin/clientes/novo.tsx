@@ -50,17 +50,6 @@ function maskCep(v: string) {
   return v.replace(/\D/g, '').slice(0, 8).replace(/(\d{5})(\d)/, '$1-$2')
 }
 
-function validarCnpj(cnpj: string) {
-  const nums = cnpj.replace(/\D/g, '')
-  if (nums.length !== 14 || /^(\d)\1+$/.test(nums)) return false
-  const calcDigito = (n: number) => {
-    let s = 0, p = n
-    for (let i = 0; i < n; i++) { s += parseInt(nums[i]) * p--; if (p < 2) p = 9 }
-    const r = s % 11
-    return r < 2 ? 0 : 11 - r
-  }
-  return calcDigito(12) === parseInt(nums[12]) && calcDigito(13) === parseInt(nums[13])
-}
 
 type AbaType = 'identificacao' | 'contato' | 'endereco' | 'responsavel' | 'portal'
 
@@ -136,7 +125,6 @@ export default function NovoCliente() {
   const buscarCnpj = async (valor: string) => {
     const c = valor.replace(/\D/g, '')
     if (c.length !== 14) return
-    if (!validarCnpj(c)) { setCnpjErro('CNPJ inválido'); setCnpjOk(false); return }
     setBuscandoCnpj(true)
     setCnpjErro('')
     try {
