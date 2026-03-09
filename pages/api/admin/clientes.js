@@ -104,7 +104,7 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     const {
       tipo, nome, razao_social, nome_fantasia, cpf, cnpj, ie, slug,
-      email_contato, emails_notificacao, telefone, celular, site,
+      email_contato, emails_notificacao, whatsapps_notificacao, telefone, celular, site,
       cep, logradouro, numero, complemento, bairro, cidade, estado,
       responsavel_nome, responsavel_cargo, responsavel_email, responsavel_telefone,
       logo_url, dominio, senha_cliente, senha_tecnico, observacoes, mensagem_whatsapp,
@@ -122,7 +122,7 @@ export default async function handler(req, res) {
 
     const { data: cliente, error } = await db.from('clientes').insert({
       tipo: tipo || 'PJ', nome, razao_social, nome_fantasia, cpf, cnpj, ie, slug: slugLimpo,
-      email_contato, emails_notificacao: emails_notificacao || [], telefone, celular, site,
+      email_contato, emails_notificacao: emails_notificacao || [], whatsapps_notificacao: whatsapps_notificacao || [], telefone, celular, site,
       cep, logradouro, numero, complemento, bairro, cidade, estado,
       responsavel_nome, responsavel_cargo, responsavel_email, responsavel_telefone,
       logo_url: logo_url || null, dominio: dominioLimpo, senha_cliente, senha_tecnico, observacoes,

@@ -29,7 +29,7 @@ export default async function handler(req, res) {
   if (!id || !status) return res.status(400).json({ error: 'id e status obrigatórios' })
 
   const db = supabaseAdmin()
-  const { data: cliente } = await db.from('clientes').select('nome, celular, telefone, responsavel_telefone, dominio, emails_notificacao, mensagem_whatsapp').eq('slug', slug).single()
+  const { data: cliente } = await db.from('clientes').select('nome, celular, telefone, responsavel_telefone, dominio, emails_notificacao, whatsapps_notificacao, mensagem_whatsapp').eq('slug', slug).single()
 
   const { data: vistoria, error } = await db
     .from('vistorias')
@@ -89,6 +89,25 @@ export default async function handler(req, res) {
       .replace(/{obs}/g, obsFormatada)
       .replace(/{portal}/g, portalUrl)
     await enviarWhatsApp(telCliente, msg)
+  }
+
+  // WhatsApp para números adicionais cadastrados
+  if (cliente?.whatsapps_notificacao?.length) {
+    const statusLabel = status === 'aprovado' ? 'aprovado' : 'reprovado'
+    const obsFormatada = observacao ? `\n💬 *Obs:* ${observacao}` : ''
+    const template = cliente?.mensagem_whatsapp ||
+      `{emoji} *Serviço {status}* – {cliente}\n\n📋 *Unidade:* {apartamento}\n🔧 *OS:* {os}{obs}\n\n🔗 Acesse o portal: {portal}`
+    const msg = template
+      .replace(/{emoji}/g, emoji)
+      .replace(/{status}/g, statusLabel)
+      .replace(/{cliente}/g, cliente?.nome || slug)
+      .replace(/{apartamento}/g, vistoria.apartamento)
+      .replace(/{os}/g, vistoria.ordem_servico)
+      .replace(/{obs}/g, obsFormatada)
+      .replace(/{portal}/g, portalUrl)
+    for (const tel of cliente.whatsapps_notificacao) {
+      await enviarWhatsApp(tel, msg)
+    }
   }
 
   return res.status(200).json({ ok: true })
