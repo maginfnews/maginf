@@ -107,7 +107,7 @@ export default async function handler(req, res) {
       email_contato, emails_notificacao, telefone, celular, site,
       cep, logradouro, numero, complemento, bairro, cidade, estado,
       responsavel_nome, responsavel_cargo, responsavel_email, responsavel_telefone,
-      logo_url, dominio, senha_cliente, senha_tecnico, observacoes,
+      logo_url, dominio, senha_cliente, senha_tecnico, observacoes, mensagem_whatsapp,
     } = req.body
 
     if (!nome || !slug || !email_contato || !senha_cliente || !senha_tecnico) {
@@ -125,7 +125,8 @@ export default async function handler(req, res) {
       email_contato, emails_notificacao: emails_notificacao || [], telefone, celular, site,
       cep, logradouro, numero, complemento, bairro, cidade, estado,
       responsavel_nome, responsavel_cargo, responsavel_email, responsavel_telefone,
-      logo_url: logo_url || null, dominio: dominioLimpo, senha_cliente, senha_tecnico, observacoes, ativo: true,
+      logo_url: logo_url || null, dominio: dominioLimpo, senha_cliente, senha_tecnico, observacoes,
+      mensagem_whatsapp: mensagem_whatsapp || null, ativo: true,
     }).select().single()
 
     if (error) return res.status(500).json({ error: error.message })

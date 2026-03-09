@@ -103,6 +103,7 @@ export default function NovoCliente() {
   const [senhaCliente, setSenhaCliente] = useState(gerarSenha())
   const [senhaTecnico, setSenhaTecnico] = useState(gerarSenha(8))
   const [observacoes, setObservacoes] = useState('')
+  const [msgWhatsapp, setMsgWhatsapp] = useState(`{emoji} *Serviço {status}* – {cliente}\n\n📋 *Unidade:* {apartamento}\n🔧 *OS:* {os}{obs}\n\n🔗 Acesse o portal: {portal}`)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -189,7 +190,7 @@ export default function NovoCliente() {
           email_contato: emailContato, emails_notificacao: emailsNotificacao, telefone, celular, site,
           cep, logradouro, numero, complemento, bairro, cidade, estado,
           responsavel_nome: respNome, responsavel_cargo: respCargo, responsavel_email: respEmail, responsavel_telefone: respTelefone,
-          logo_url: logoUrl, dominio: dominio || null, senha_cliente: senhaCliente, senha_tecnico: senhaTecnico, observacoes,
+          logo_url: logoUrl, dominio: dominio || null, senha_cliente: senhaCliente, senha_tecnico: senhaTecnico, observacoes, mensagem_whatsapp: msgWhatsapp,
         }),
       })
       const data = await res.json()
@@ -501,6 +502,25 @@ export default function NovoCliente() {
                   <label className={labelCls}>Observações internas</label>
                   <textarea value={observacoes} onChange={e => setObservacoes(e.target.value)} rows={3}
                     placeholder="Notas internas sobre o cliente ou projeto..." className={`${inputCls} resize-none`} />
+                </div>
+
+                {/* Template WhatsApp */}
+                <div>
+                  <label className={labelCls}>Mensagem WhatsApp (aprovação/reprovação)</label>
+                  <textarea value={msgWhatsapp} onChange={e => setMsgWhatsapp(e.target.value)} rows={6}
+                    className={`${inputCls} resize-none font-mono text-sm`} />
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {['{emoji}','{status}','{cliente}','{apartamento}','{os}','{obs}','{portal}'].map(v => (
+                      <button key={v} type="button"
+                        onClick={() => setMsgWhatsapp(prev => prev + v)}
+                        className="text-xs bg-gray-100 hover:bg-maginf-orange hover:text-white text-gray-600 px-2 py-0.5 rounded font-mono transition-colors">
+                        {v}
+                      </button>
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-400 mt-1">
+                    Variáveis: <code className="bg-gray-100 px-1 rounded">{'{emoji}'}</code> ✅/❌ · <code className="bg-gray-100 px-1 rounded">{'{status}'}</code> aprovado/reprovado · <code className="bg-gray-100 px-1 rounded">{'{obs}'}</code> observação (se houver)
+                  </p>
                 </div>
 
                 {/* Domínio personalizado */}
