@@ -70,7 +70,7 @@ export default async function handler(req, res) {
 
     const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'maginf.com.br'
     const subdominio = cliente.dominio || cliente.slug
-    const obraUrl = `https://${subdominio}.${rootDomain}/obra`
+    const obraUrl = `https://${subdominio}.${rootDomain}/obra/${cliente.slug}?token=${encodeURIComponent(cliente.senha_tecnico)}`
 
     const mensagem = `Olá, *${nome}*! 👷
 

@@ -17,7 +17,16 @@ export default function ObraLogin() {
     if (!slug) return
     fetch(`/api/portal/${slug}/listar`)
       .then(r => r.json())
-      .then(d => { setCliente(d.cliente); setLoadingCliente(false) })
+      .then(d => {
+        setCliente(d.cliente)
+        setLoadingCliente(false)
+        const params = new URLSearchParams(window.location.search)
+        const token = params.get('token')
+        if (token && d.cliente && token === d.cliente.senha_tecnico) {
+          sessionStorage.setItem(`obra_auth_${slug}`, '1')
+          router.replace(`/obra/${slug}/registrar`)
+        }
+      })
       .catch(() => setLoadingCliente(false))
   }, [slug])
 
