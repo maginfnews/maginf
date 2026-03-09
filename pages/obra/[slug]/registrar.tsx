@@ -41,6 +41,9 @@ export default function ObraRegistrar() {
   const [observacoes, setObservacoes] = useState('')
   const [fotosAntes, setFotosAntes] = useState<Foto[]>([])
   const [fotosDepois, setFotosDepois] = useState<Foto[]>([])
+  const [pendentes, setPendentes] = useState<{ file: File; preview: string }[]>([])
+  const [tipoPendente, setTipoPendente] = useState<'antes' | 'depois' | null>(null)
+  const [uploadProgress, setUploadProgress] = useState(0)
 
   const gerarOS = async () => {
     if (!slug) return
@@ -134,20 +137,39 @@ export default function ObraRegistrar() {
     return data.secure_url as string
   }
 
-  const handleFotos = async (files: FileList | null, tipo: 'antes' | 'depois') => {
+  const handleSelecionarFotos = (files: FileList | null, tipo: 'antes' | 'depois') => {
     if (!files || files.length === 0) return
-    setLoading(true); setErro('')
+    const novas = Array.from(files).map(file => ({ file, preview: URL.createObjectURL(file) }))
+    setPendentes(prev => [...prev, ...novas])
+    setTipoPendente(tipo)
+  }
+
+  const handleConfirmarUpload = async () => {
+    if (!pendentes.length || !tipoPendente) return
+    setLoading(true); setErro(''); setUploadProgress(0)
     try {
       const novas: Foto[] = []
-      for (const file of Array.from(files)) {
-        const preview = URL.createObjectURL(file)
+      for (let i = 0; i < pendentes.length; i++) {
+        const { file, preview } = pendentes[i]
         const url = await uploadFoto(file)
         novas.push({ url, preview, timestamp: new Date().toLocaleString('pt-BR') })
+        setUploadProgress(Math.round(((i + 1) / pendentes.length) * 100))
       }
-      if (tipo === 'antes') setFotosAntes(prev => [...prev, ...novas])
+      if (tipoPendente === 'antes') setFotosAntes(prev => [...prev, ...novas])
       else setFotosDepois(prev => [...prev, ...novas])
+      setPendentes([]); setTipoPendente(null)
     } catch { setErro('Erro ao fazer upload das fotos. Tente novamente.') }
-    finally { setLoading(false) }
+    finally { setLoading(false); setUploadProgress(0) }
+  }
+
+  const handleDescartarPendentes = () => {
+    pendentes.forEach(p => URL.revokeObjectURL(p.preview))
+    setPendentes([]); setTipoPendente(null)
+  }
+
+  const removerPendente = (index: number) => {
+    URL.revokeObjectURL(pendentes[index].preview)
+    setPendentes(prev => prev.filter((_, i) => i !== index))
   }
 
   const removerFoto = (tipo: 'antes' | 'depois', index: number) => {
@@ -218,6 +240,61 @@ export default function ObraRegistrar() {
             </button>
           </div>
         </header>
+
+        {/* Modal de preview pendente */}
+        {pendentes.length > 0 && (
+          <div className="fixed inset-0 z-50 bg-black/80 flex flex-col">
+            <div className="bg-maginf-gray px-4 py-3 flex items-center justify-between flex-shrink-0">
+              <div>
+                <p className="text-white font-bold text-sm">{pendentes.length} foto{pendentes.length > 1 ? 's' : ''} selecionada{pendentes.length > 1 ? 's' : ''}</p>
+                <p className="text-gray-400 text-xs">Revise e confirme para enviar</p>
+              </div>
+              <button onClick={handleDescartarPendentes} disabled={loading} className="text-gray-400 hover:text-white p-2 disabled:opacity-50">
+                <Trash2 className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-3">
+              <div className="grid grid-cols-3 gap-2">
+                {pendentes.map((p, i) => (
+                  <div key={i} className="relative aspect-square">
+                    <img src={p.preview} alt={`Foto ${i + 1}`} className="w-full h-full object-cover rounded-xl" />
+                    {!loading && (
+                      <button onClick={() => removerPendente(i)} className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1">
+                        <Trash2 className="h-3 w-3" />
+                      </button>
+                    )}
+                    <span className="absolute bottom-1 left-1 bg-black/60 text-white text-xs px-1.5 py-0.5 rounded-full">{i + 1}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-maginf-gray px-4 py-4 flex-shrink-0 space-y-3">
+              {loading && (
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs text-gray-400">
+                    <span>Enviando fotos...</span>
+                    <span>{uploadProgress}%</span>
+                  </div>
+                  <div className="w-full bg-gray-700 rounded-full h-2">
+                    <div className="bg-maginf-orange h-2 rounded-full transition-all duration-300" style={{ width: `${uploadProgress}%` }} />
+                  </div>
+                </div>
+              )}
+              <div className="flex gap-3">
+                <button onClick={handleDescartarPendentes} disabled={loading}
+                  className="flex-1 border border-gray-600 text-gray-300 py-3 rounded-xl text-sm disabled:opacity-50">
+                  Cancelar
+                </button>
+                <button onClick={handleConfirmarUpload} disabled={loading || pendentes.length === 0}
+                  className="flex-2 flex-grow bg-maginf-orange hover:bg-maginf-orange-dark disabled:opacity-50 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                  {loading ? `Enviando ${uploadProgress}%` : `Adicionar ${pendentes.length} foto${pendentes.length > 1 ? 's' : ''}`}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="max-w-lg mx-auto p-4 pb-8">
 
@@ -316,7 +393,7 @@ export default function ObraRegistrar() {
                     className="w-full border-2 border-dashed border-maginf-orange/40 hover:border-maginf-orange bg-maginf-orange/5 hover:bg-maginf-orange/10 text-maginf-orange font-semibold py-6 rounded-xl transition-colors flex items-center justify-center gap-2 disabled:opacity-50">
                     <Camera className="h-6 w-6" />{loading ? 'Enviando...' : 'Tirar / Selecionar Fotos'}
                   </button>
-                  <input ref={fileInputAntesRef} type="file" accept="image/*" multiple capture="environment" className="hidden" onChange={e => handleFotos(e.target.files, 'antes')} />
+                  <input ref={fileInputAntesRef} type="file" accept="image/*" multiple className="hidden" onChange={e => { handleSelecionarFotos(e.target.files, 'antes'); e.target.value = '' }} />
                   {fotosAntes.length > 0 && (
                     <div className="grid grid-cols-3 gap-2">
                       {fotosAntes.map((f, i) => (
@@ -367,7 +444,7 @@ export default function ObraRegistrar() {
                     className="w-full border-2 border-dashed border-green-400/40 hover:border-green-500 bg-green-50 hover:bg-green-100 text-green-700 font-semibold py-6 rounded-xl transition-colors flex items-center justify-center gap-2 disabled:opacity-50">
                     <Camera className="h-6 w-6" />{loading ? 'Enviando...' : 'Tirar / Selecionar Fotos'}
                   </button>
-                  <input ref={fileInputDepoisRef} type="file" accept="image/*" multiple capture="environment" className="hidden" onChange={e => handleFotos(e.target.files, 'depois')} />
+                  <input ref={fileInputDepoisRef} type="file" accept="image/*" multiple className="hidden" onChange={e => { handleSelecionarFotos(e.target.files, 'depois'); e.target.value = '' }} />
                   {fotosDepois.length > 0 && (
                     <div className="grid grid-cols-3 gap-2">
                       {fotosDepois.map((f, i) => (
