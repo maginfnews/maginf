@@ -178,7 +178,43 @@ export default async function handler(req, res) {
                   </tr>
                 </table>
               </div>
-              <p style="color:#6b7280;font-size:13px;margin:0 0 24px;">Pelo portal você acompanha serviços realizados, visualiza fotos antes e depois, aprova ou reprova apartamentos e gera relatórios.</p>
+              <p style="color:#374151;font-size:14px;margin:0 0 20px;">Veja abaixo como funciona o seu portal:</p>
+
+              <div style="margin-bottom:24px;">
+                <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;">
+                  <div style="background:#e35300;color:#fff;font-weight:700;font-size:14px;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;text-align:center;line-height:32px;">1</div>
+                  <div>
+                    <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#1e293b;">Acesse o portal com sua senha</p>
+                    <p style="margin:0;font-size:13px;color:#64748b;">Entre no link acima e use a senha informada neste e-mail. O acesso é exclusivo para sua empresa.</p>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;">
+                  <div style="background:#e35300;color:#fff;font-weight:700;font-size:14px;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;text-align:center;line-height:32px;">2</div>
+                  <div>
+                    <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#1e293b;">Acompanhe as vistorias em tempo real</p>
+                    <p style="margin:0;font-size:13px;color:#64748b;">Cada unidade vistoriada aparece no painel com fotos do antes e depois, nome do técnico, data e observações do serviço.</p>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;">
+                  <div style="background:#e35300;color:#fff;font-weight:700;font-size:14px;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;text-align:center;line-height:32px;">3</div>
+                  <div>
+                    <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#1e293b;">Aprove ou reprove cada serviço</p>
+                    <p style="margin:0;font-size:13px;color:#64748b;">Com um clique você valida o trabalho realizado ou sinaliza uma pendência — sua equipe é notificada automaticamente.</p>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;">
+                  <div style="background:#e35300;color:#fff;font-weight:700;font-size:14px;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;text-align:center;line-height:32px;">4</div>
+                  <div>
+                    <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#1e293b;">Gere relatórios por e-mail</p>
+                    <p style="margin:0;font-size:13px;color:#64748b;">A qualquer momento envie um relatório completo com estatísticas, progresso geral e lista detalhada de todas as vistorias.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div style="background:#f8fafc;border-radius:10px;padding:16px;margin-bottom:24px;border-left:4px solid #e35300;">
+                <p style="margin:0;font-size:13px;color:#64748b;"><strong style="color:#1e293b;">Dúvidas?</strong> Nossa equipe está disponível pelo e-mail <a href="mailto:sac@maginf.com.br" style="color:#e35300;">sac@maginf.com.br</a> ou pelo telefone <strong>(11) 4610-6363</strong>.</p>
+              </div>
+
               <div style="text-align:center;">
                 <a href="${portalUrl}" style="display:inline-block;background:#e35300;color:#fff;font-weight:700;font-size:14px;padding:14px 36px;border-radius:10px;text-decoration:none;">Acessar meu portal →</a>
               </div>
