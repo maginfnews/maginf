@@ -444,6 +444,16 @@ export default function ClienteDetalhe() {
                       <span className="text-maginf-gray font-medium text-right">{f.value}</span>
                     </div>
                   ))}
+                  {cliente.emails_notificacao?.length > 0 && (
+                    <div>
+                      <span className="text-gray-400 text-xs block mb-1">Notificações OS</span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {cliente.emails_notificacao.map((em: string) => (
+                          <span key={em} className="bg-orange-50 border border-orange-200 text-orange-700 text-xs px-2 py-0.5 rounded-full">{em}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 

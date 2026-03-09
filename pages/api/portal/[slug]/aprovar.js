@@ -29,7 +29,7 @@ export default async function handler(req, res) {
   if (!id || !status) return res.status(400).json({ error: 'id e status obrigatórios' })
 
   const db = supabaseAdmin()
-  const { data: cliente } = await db.from('clientes').select('nome, celular, telefone, responsavel_telefone, dominio').eq('slug', slug).single()
+  const { data: cliente } = await db.from('clientes').select('nome, celular, telefone, responsavel_telefone, dominio, emails_notificacao').eq('slug', slug).single()
 
   const { data: vistoria, error } = await db
     .from('vistorias')
@@ -43,10 +43,11 @@ export default async function handler(req, res) {
   const emoji = status === 'aprovado' ? '✅' : '❌'
   const label = status === 'aprovado' ? 'APROVADO' : 'REPROVADO'
 
+  const toList = Array.from(new Set([...NOTIFICAR, ...(cliente?.emails_notificacao || [])]))
   try {
     await resend.emails.send({
       from: 'Portal MAGINF <contato@notificacao.maginf.com.br>',
-      to: NOTIFICAR,
+      to: toList,
       subject: `${emoji} Serviço ${label} – Apto ${vistoria.apartamento} | ${cliente?.nome || slug}`,
       html: `
         <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:600px;margin:0 auto;">

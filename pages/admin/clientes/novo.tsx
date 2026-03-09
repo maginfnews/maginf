@@ -76,6 +76,8 @@ export default function NovoCliente() {
   const [slugManual, setSlugManual] = useState(false)
 
   const [emailContato, setEmailContato] = useState('')
+  const [emailsNotificacao, setEmailsNotificacao] = useState<string[]>([])
+  const [emailNotifInput, setEmailNotifInput] = useState('')
   const [telefone, setTelefone] = useState('')
   const [celular, setCelular] = useState('')
   const [site, setSite] = useState('')
@@ -184,7 +186,7 @@ export default function NovoCliente() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           tipo, nome, razao_social: razaoSocial, nome_fantasia: nomeFantasia, cpf, cnpj, ie, slug,
-          email_contato: emailContato, telefone, celular, site,
+          email_contato: emailContato, emails_notificacao: emailsNotificacao, telefone, celular, site,
           cep, logradouro, numero, complemento, bairro, cidade, estado,
           responsavel_nome: respNome, responsavel_cargo: respCargo, responsavel_email: respEmail, responsavel_telefone: respTelefone,
           logo_url: logoUrl, dominio: dominio || null, senha_cliente: senhaCliente, senha_tecnico: senhaTecnico, observacoes,
@@ -326,6 +328,37 @@ export default function NovoCliente() {
                   <label className={labelCls}>Email de contato <span className="text-red-500">*</span></label>
                   <input type="email" value={emailContato} onChange={e => setEmailContato(e.target.value)} placeholder="contato@empresa.com.br" className={inputCls} />
                   <p className="text-xs text-gray-400 mt-1">Este email receberá as credenciais de acesso.</p>
+                </div>
+                <div>
+                  <label className={labelCls}>Emails adicionais para notificação de OS</label>
+                  <div className="flex gap-2">
+                    <input type="email" value={emailNotifInput} onChange={e => setEmailNotifInput(e.target.value)}
+                      onKeyDown={e => {
+                        if ((e.key === 'Enter' || e.key === ',') && emailNotifInput.trim()) {
+                          e.preventDefault()
+                          const v = emailNotifInput.trim().toLowerCase()
+                          if (v && !emailsNotificacao.includes(v)) setEmailsNotificacao(prev => [...prev, v])
+                          setEmailNotifInput('')
+                        }
+                      }}
+                      placeholder="outro@empresa.com.br" className={inputCls} />
+                    <button type="button" onClick={() => {
+                      const v = emailNotifInput.trim().toLowerCase()
+                      if (v && !emailsNotificacao.includes(v)) setEmailsNotificacao(prev => [...prev, v])
+                      setEmailNotifInput('')
+                    }} className="px-4 py-2 bg-maginf-orange text-white rounded-lg text-sm font-bold flex-shrink-0">+</button>
+                  </div>
+                  {emailsNotificacao.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {emailsNotificacao.map(em => (
+                        <span key={em} className="flex items-center gap-1 bg-orange-50 border border-orange-200 text-orange-700 text-xs px-2 py-1 rounded-full">
+                          {em}
+                          <button type="button" onClick={() => setEmailsNotificacao(prev => prev.filter(x => x !== em))} className="text-orange-400 hover:text-red-500 ml-1 font-bold">×</button>
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <p className="text-xs text-gray-400 mt-1">Receberão notificações de aprovação/reprovação. Pressione Enter ou clique em + para adicionar.</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
