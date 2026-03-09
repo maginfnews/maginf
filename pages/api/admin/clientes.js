@@ -3,6 +3,23 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+async function enviarWhatsApp(telefone, mensagem) {
+  const instanceId = process.env.ZAPI_INSTANCE_ID
+  const token = process.env.ZAPI_TOKEN
+  const clientToken = process.env.ZAPI_CLIENT_TOKEN
+  if (!instanceId || !token || !telefone) return
+  const numero = telefone.replace(/\D/g, '')
+  const numeroFormatado = numero.startsWith('55') ? numero : `55${numero}`
+  try {
+    const headers = { 'Content-Type': 'application/json' }
+    if (clientToken) headers['Client-Token'] = clientToken
+    await fetch(`https://api.z-api.io/instances/${instanceId}/token/${token}/send-text`, {
+      method: 'POST', headers,
+      body: JSON.stringify({ phone: numeroFormatado, message: mensagem }),
+    })
+  } catch (e) { console.error('WhatsApp erro:', e) }
+}
+
 async function criarDnsCloudflare(subdominio) {
   const token = process.env.CLOUDFLARE_API_TOKEN
   const zoneId = process.env.CLOUDFLARE_ZONE_ID
@@ -228,6 +245,13 @@ export default async function handler(req, res) {
       })
     } catch (emailErr) {
       console.error('Email erro:', emailErr)
+    }
+
+    // WhatsApp de boas-vindas para o responsável
+    const telResp = responsavel_telefone || celular || telefone
+    if (telResp) {
+      const msg = `🎉 *Seu portal MAGINF está pronto!*\n\n🏢 *Empresa:* ${nome}\n\n🔗 *Acesso:* ${portalUrl}\n🔑 *Senha:* ${senha_cliente}\n\nDúvidas? (11) 4610-6363 · sac@maginf.com.br`
+      await enviarWhatsApp(telResp, msg)
     }
 
     return res.status(200).json({ ok: true, cliente, dnsStatus })
