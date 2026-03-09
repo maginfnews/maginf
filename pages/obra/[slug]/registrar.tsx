@@ -6,18 +6,24 @@ import { Camera, CheckCircle, Trash2, ChevronRight, LogOut, ClipboardList, User,
 type Foto = { url: string; preview: string; timestamp: string }
 type Etapa = 'dados' | 'fotos_antes' | 'observacoes' | 'fotos_depois' | 'finalizando' | 'concluido'
 
-const RASCUNHO_KEY = (slug: string) => `obra_rascunho_${slug}`
+const RASCUNHOS_KEY = (slug: string) => `obra_rascunhos_${slug}`
 
-const ETAPA_LABEL: Record<string, string> = {
-  dados: 'Dados',
-  fotos_antes: 'Fotos – Antes',
-  observacoes: 'Observações',
-  fotos_depois: 'Fotos – Depois',
+function getRascunhos(slug: string): any[] {
+  try { return JSON.parse(localStorage.getItem(RASCUNHOS_KEY(slug)) || '[]') } catch { return [] }
+}
+function salvarRascunho(slug: string, osId: string, dados: any) {
+  const lista = getRascunhos(slug).filter((r: any) => r.osId !== osId)
+  lista.unshift({ ...dados, osId, salvoEm: new Date().toISOString() })
+  localStorage.setItem(RASCUNHOS_KEY(slug), JSON.stringify(lista))
+}
+function removerRascunho(slug: string, osId: string) {
+  const lista = getRascunhos(slug).filter((r: any) => r.osId !== osId)
+  localStorage.setItem(RASCUNHOS_KEY(slug), JSON.stringify(lista))
 }
 
 export default function ObraRegistrar() {
   const router = useRouter()
-  const { slug } = router.query as { slug: string }
+  const { slug, osId: osIdQuery } = router.query as { slug: string; osId?: string }
   const fileInputAntesRef = useRef<HTMLInputElement>(null)
   const fileInputDepoisRef = useRef<HTMLInputElement>(null)
 
@@ -26,8 +32,8 @@ export default function ObraRegistrar() {
   const [loading, setLoading] = useState(false)
   const [erro, setErro] = useState('')
   const [gerandoOS, setGerandoOS] = useState(false)
-  const [rascunho, setRascunho] = useState<any>(null)
   const [ultimoSalvo, setUltimoSalvo] = useState<string | null>(null)
+  const [osId, setOsId] = useState<string>('')
 
   const [apartamento, setApartamento] = useState('')
   const [ordemServico, setOrdemServico] = useState('')
@@ -53,48 +59,40 @@ export default function ObraRegistrar() {
 
   // Salvar rascunho automaticamente
   useEffect(() => {
-    if (!slug || etapa === 'concluido' || etapa === 'finalizando') return
+    if (!slug || !osId || etapa === 'concluido' || etapa === 'finalizando') return
     if (!apartamento && !ordemServico) return
-    const r = { apartamento, ordemServico, tecnico, observacoes, fotosAntes, fotosDepois, etapa, salvoEm: new Date().toISOString() }
-    localStorage.setItem(RASCUNHO_KEY(slug), JSON.stringify(r))
+    salvarRascunho(slug, osId, { apartamento, ordemServico, tecnico, observacoes, fotosAntes, fotosDepois, etapa })
     setUltimoSalvo(new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }))
-  }, [apartamento, ordemServico, tecnico, observacoes, fotosAntes, fotosDepois, etapa, slug])
+  }, [apartamento, ordemServico, tecnico, observacoes, fotosAntes, fotosDepois, etapa, slug, osId])
 
   useEffect(() => {
     if (!slug) return
     if (typeof window !== 'undefined') {
       if (!sessionStorage.getItem(`obra_auth_${slug}`)) { router.replace(`/obra/${slug}`); return }
-      const nomeSalvo = localStorage.getItem(`obra_tecnico_${slug}`)
+      const nomeSalvo = localStorage.getItem(`obra_tecnico_${slug}`) || ''
       if (nomeSalvo) setTecnico(nomeSalvo)
-      // Verificar rascunho
-      try {
-        const raw = localStorage.getItem(RASCUNHO_KEY(slug))
-        if (raw) { const r = JSON.parse(raw); if (r.apartamento) { setRascunho(r); return } }
-      } catch {}
+      if (osIdQuery) {
+        const lista = getRascunhos(slug)
+        const r = lista.find((x: any) => x.osId === osIdQuery)
+        if (r) {
+          setOsId(r.osId)
+          setApartamento(r.apartamento || '')
+          setOrdemServico(r.ordemServico || '')
+          setTecnico(r.tecnico || nomeSalvo)
+          setObservacoes(r.observacoes || '')
+          setFotosAntes(r.fotosAntes || [])
+          setFotosDepois(r.fotosDepois || [])
+          setEtapa(r.etapa || 'dados')
+          fetch(`/api/portal/${slug}/listar`).then(res => res.json()).then(d => setCliente(d.cliente)).catch(() => {})
+          return
+        }
+      }
+      const novoId = `os_${Date.now()}`
+      setOsId(novoId)
     }
     fetch(`/api/portal/${slug}/listar`).then(r => r.json()).then(d => setCliente(d.cliente)).catch(() => {})
     gerarOS()
-  }, [slug, router])
-
-  const carregarRascunho = () => {
-    if (!rascunho) return
-    setApartamento(rascunho.apartamento || '')
-    setOrdemServico(rascunho.ordemServico || '')
-    setTecnico(rascunho.tecnico || '')
-    setObservacoes(rascunho.observacoes || '')
-    setFotosAntes(rascunho.fotosAntes || [])
-    setFotosDepois(rascunho.fotosDepois || [])
-    setEtapa(rascunho.etapa || 'fotos_depois')
-    setRascunho(null)
-    fetch(`/api/portal/${slug}/listar`).then(r => r.json()).then(d => setCliente(d.cliente)).catch(() => {})
-  }
-
-  const descartarRascunho = () => {
-    localStorage.removeItem(RASCUNHO_KEY(slug))
-    setRascunho(null)
-    fetch(`/api/portal/${slug}/listar`).then(r => r.json()).then(d => setCliente(d.cliente)).catch(() => {})
-    gerarOS()
-  }
+  }, [slug, osIdQuery])
 
   const comprimirImagem = (file: File): Promise<Blob> => {
     return new Promise((resolve) => {
@@ -167,7 +165,7 @@ export default function ObraRegistrar() {
       })
       if (!res.ok) { const d = await res.json(); throw new Error(d.error || 'Erro ao salvar') }
       localStorage.setItem(`obra_tecnico_${slug}`, tecnico)
-      localStorage.removeItem(RASCUNHO_KEY(slug))
+      removerRascunho(slug, osId)
       setEtapa('concluido')
     } catch (err: any) {
       setErro(err.message || 'Erro ao finalizar')
@@ -175,10 +173,8 @@ export default function ObraRegistrar() {
     }
   }
 
-  const novaVistoria = () => {
-    localStorage.removeItem(RASCUNHO_KEY(slug))
-    setApartamento(''); setObservacoes(''); setFotosAntes([]); setFotosDepois([]); setErro(''); setEtapa('dados'); gerarOS()
-  }
+  const novaVistoria = () => router.push(`/obra/${slug}/registrar`)
+  const voltarLista = () => router.push(`/obra/${slug}`)
 
   const etapas = [
     { key: 'dados', label: 'Dados' },
@@ -187,58 +183,6 @@ export default function ObraRegistrar() {
     { key: 'fotos_depois', label: 'Depois' },
   ]
   const etapaIndex = etapas.findIndex(e => e.key === etapa)
-
-  // Tela de rascunho encontrado
-  if (rascunho) {
-    return (
-      <>
-        <Head><title>Vistoria em andamento – MAGINF</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /></Head>
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-          <div className="w-full max-w-sm">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="bg-maginf-gray px-6 py-6 text-center">
-                <img src="/logo-maginf-oficial-white.svg" alt="MAGINF" className="h-8 w-auto mx-auto mb-3" />
-                <div className="bg-maginf-orange/20 rounded-xl p-3 mt-2 flex items-center justify-center gap-2">
-                  <Clock className="h-5 w-5 text-maginf-orange" />
-                  <p className="text-white font-bold text-sm">Vistoria em andamento</p>
-                </div>
-              </div>
-              <div className="p-6 space-y-4">
-                <div className="bg-orange-50 rounded-xl p-4 border border-orange-200 space-y-2">
-                  <p className="text-xs font-bold text-orange-600 uppercase tracking-wider">Rascunho salvo automaticamente</p>
-                  <div className="flex justify-between text-sm"><span className="text-gray-500">Unidade:</span><span className="font-bold text-maginf-gray">{rascunho.apartamento}</span></div>
-                  <div className="flex justify-between text-sm"><span className="text-gray-500">Etapa salva:</span><span className="font-semibold text-maginf-gray">{ETAPA_LABEL[rascunho.etapa] || rascunho.etapa}</span></div>
-                  <div className="flex justify-between text-sm"><span className="text-gray-500">Fotos antes:</span><span className="font-semibold text-maginf-gray">{rascunho.fotosAntes?.length || 0}</span></div>
-                  <div className="flex justify-between text-sm"><span className="text-gray-500">Fotos depois:</span><span className="font-semibold text-maginf-gray">{rascunho.fotosDepois?.length || 0}</span></div>
-                  <div className="flex justify-between text-sm"><span className="text-gray-500">Salvo em:</span><span className="font-semibold text-gray-500 text-xs">{new Date(rascunho.salvoEm).toLocaleString('pt-BR')}</span></div>
-                </div>
-
-                <button onClick={carregarRascunho}
-                  className="w-full bg-maginf-orange hover:bg-maginf-orange-dark text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
-                  <RefreshCw className="h-5 w-5" />Continuar de onde parei
-                </button>
-
-                <button onClick={() => { carregarRascunho(); setTimeout(() => setEtapa('fotos_depois'), 100) }}
-                  className="w-full border border-maginf-orange text-maginf-orange hover:bg-orange-50 py-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-colors">
-                  <Pencil className="h-4 w-4" />Adicionar fotos depois e finalizar
-                </button>
-
-                <button onClick={() => { carregarRascunho(); setTimeout(() => setEtapa('dados'), 100) }}
-                  className="w-full border border-gray-300 text-gray-500 hover:bg-gray-50 py-3 rounded-xl text-sm flex items-center justify-center gap-2 transition-colors">
-                  <Pencil className="h-4 w-4" />Editar dados da vistoria
-                </button>
-
-                <button onClick={descartarRascunho}
-                  className="w-full text-red-400 hover:text-red-600 py-2 rounded-xl text-xs transition-colors">
-                  Descartar e iniciar nova vistoria
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </>
-    )
-  }
 
   return (
     <>
@@ -251,7 +195,10 @@ export default function ObraRegistrar() {
         {/* Header */}
         <header className="bg-maginf-gray text-white px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-lg">
           <div className="flex items-center gap-3">
-            <img src="/logo-maginf-oficial-white.svg" alt="MAGINF" className="h-8 w-auto" />
+            <button onClick={voltarLista} className="text-gray-400 hover:text-white p-1 -ml-1" title="Voltar">
+              <ChevronRight className="h-5 w-5 rotate-180" />
+            </button>
+            <img src="/logo-maginf-oficial-white.svg" alt="MAGINF" className="h-7 w-auto" />
             {cliente?.logo_url && (
               <>
                 <div className="h-6 w-px bg-gray-500" />
@@ -283,9 +230,14 @@ export default function ObraRegistrar() {
               <h2 className="text-xl font-bold text-maginf-gray mb-2">Vistoria registrada!</h2>
               <p className="text-gray-500 text-sm mb-1">Unidade: <span className="font-bold">{apartamento}</span></p>
               <p className="text-gray-500 text-sm mb-6">OS: <span className="font-bold">{ordemServico}</span></p>
-              <button onClick={novaVistoria} className="w-full bg-maginf-orange hover:bg-maginf-orange-dark text-white font-semibold py-3 rounded-xl transition-colors">
-                Nova Vistoria
-              </button>
+              <div className="space-y-3">
+                <button onClick={novaVistoria} className="w-full bg-maginf-orange hover:bg-maginf-orange-dark text-white font-semibold py-3 rounded-xl transition-colors">
+                  + Nova Vistoria
+                </button>
+                <button onClick={voltarLista} className="w-full border border-gray-300 text-gray-600 py-3 rounded-xl text-sm hover:bg-gray-50">
+                  Ver todas as OS abertas
+                </button>
+              </div>
             </div>
           )}
 
