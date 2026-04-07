@@ -8,7 +8,7 @@ export const enContent: SiteContent = {
       'MAGINF helps companies move away from reactive IT and operate with more stability, visibility and predictability.',
   },
   brand: {
-    homeAriaLabel: 'MAGINF Tecnologia, go back to the top',
+    homeAriaLabel: 'MAGINF Tecnologia, go back to the homepage',
     logoAlt: 'MAGINF Tecnologia logo',
   },
   nav: {
@@ -27,11 +27,11 @@ export const enContent: SiteContent = {
     ],
   },
   hero: {
-    eyebrow: 'For companies that cannot stop',
+    eyebrow: "For companies that can't afford downtime",
     title: 'MAGINF takes ownership of IT operations so your business gains ',
     highlight: 'stability and predictability',
     description:
-      'When technology becomes a bottleneck, teams lose time, productivity and confidence. We step in to organize the environment, reduce incidents and sustain operations through monitoring, routine and technical response.',
+      'When technology becomes a bottleneck, teams lose time, productivity and confidence. We step in to organize the environment, reduce incidents and keep operations stable through monitoring, structured routines and technical response.',
     primaryCta: 'Request assessment',
     secondaryCta: 'See deliverables',
     stats: [
@@ -51,9 +51,9 @@ export const enContent: SiteContent = {
     ],
   },
   challenges: {
-    eyebrow: 'When IT turns into urgency',
-    title: 'The warning signs show up before the outage, but they are usually handled only when they become',
-    highlight: ' improvisation',
+    eyebrow: 'When IT becomes urgent',
+    title: 'The warning signs appear before the outage, but they are usually addressed only when everything turns into',
+    highlight: ' firefighting',
     description:
       'That is when hidden costs grow: interrupted teams, recurring tickets, operational risk and poor visibility to prioritize what really matters.',
     items: [
@@ -83,13 +83,13 @@ export const enContent: SiteContent = {
       },
     ],
     conclusion:
-      'That is exactly where MAGINF comes in: to take IT out of reactive mode, organize the foundation and sustain operations with method.',
+      'That is exactly where MAGINF comes in: to take IT out of reactive mode, organize the foundation and sustain operations with a clear method.',
   },
   services: {
     eyebrow: 'What changes in practice',
     title: 'Deliverables that reduce operational noise and increase control',
     description:
-      'We do not deliver isolated pieces. We organize support, infrastructure, cloud, backup and monitoring to attack the source of problems and restore predictability to operations.',
+      'We do not deliver isolated pieces. We organize support, infrastructure, cloud, backup and monitoring to address root causes and restore predictability to operations.',
     ctaLabel: 'Talk to us',
     filters: [
       { id: 'all', label: 'All' },
@@ -112,7 +112,7 @@ export const enContent: SiteContent = {
         id: '1',
         title: 'Support that reduces interruptions',
         description:
-          'Managed assistance for users, endpoints and servers focused on consistent resolution and continuity.',
+          'Managed support for users, endpoints and servers focused on consistent resolution and continuity.',
         category: 'suporte',
         icon: 'engineering',
       },
@@ -152,7 +152,7 @@ export const enContent: SiteContent = {
         id: '6',
         title: 'Microsoft 365 and cloud with governance',
         description:
-          'Migration, sustainment and environment control so you can scale without losing visibility.',
+          'Migration, ongoing support and environment control so you can scale without losing visibility.',
         category: 'cloud',
         icon: 'cloud',
       },
@@ -161,9 +161,9 @@ export const enContent: SiteContent = {
   maturity: {
     eyebrow: 'Why companies call us',
     title: 'The difference is not more tools, but',
-    highlight: ' assisted operations',
+    highlight: ' operational support',
     description:
-      'Once the foundation is organized, IT stops consuming energy through repeated fire-fighting and starts supporting growth, security and productivity.',
+      'Once the foundation is organized, IT stops consuming energy through repeated firefighting and starts supporting growth, security and productivity.',
     principles: [
       {
         id: '01',
@@ -195,7 +195,7 @@ export const enContent: SiteContent = {
     eyebrow: 'How we lead the change',
     title: 'From assessment to continuous operations',
     description:
-      'Our process is designed to build confidence from the start: understand the environment, correct the foundation and sustain evolution without improvisation.',
+      'Our process is designed to build confidence from the start: understand the environment, stabilize the foundation and sustain improvement without improvisation.',
     steps: [
       {
         id: '01',
@@ -238,14 +238,14 @@ export const enContent: SiteContent = {
     eyebrow: 'Where this model fits best',
     title: 'Operation profiles that benefit most from managed support',
     description:
-      'Communication gets stronger when the visitor recognizes themselves. These are scenarios where MAGINF tends to create value faster.',
+      'The message gets stronger when visitors recognize themselves in the scenario. These are the profiles where MAGINF tends to create value faster.',
     items: [
       {
         ...SECTOR_BACKGROUNDS[0],
         title: 'Corporate offices',
         detail: 'Distributed teams and strong dependence on continuity',
         description:
-          'Operations with hybrid teams, meeting rooms, IP telephony and users who need to work without recurring failures.',
+          'Environments with hybrid teams, meeting rooms, IP telephony and users who need to work without recurring failures.',
       },
       {
         ...SECTOR_BACKGROUNDS[1],
@@ -268,7 +268,7 @@ export const enContent: SiteContent = {
     title: 'Discover your current operational level in a few minutes and move forward with an',
     highlight: ' online assessment',
     description:
-      'Visitors answer objective questions, receive an immediate maturity reading and can continue to WhatsApp with a ready-to-send summary for the commercial conversation.',
+      'Visitors answer objective questions, receive an immediate maturity reading and can continue on WhatsApp with a ready-to-send summary for the next conversation.',
     startLabel: 'Start assessment',
     progressLabel: 'Assessment progress',
     questionLabel: 'Questions answered',
@@ -284,7 +284,7 @@ export const enContent: SiteContent = {
     },
     summaryTitle: 'Live summary',
     summaryDescription:
-      'The score builds with every answer to signal whether the operation is reactive, being structured or ready to optimize.',
+      'The score builds with every answer to show whether the operation is reactive, in a structuring phase or ready to optimize.',
     rangesTitle: 'Maturity ranges',
     deliverables: [
       {
@@ -295,7 +295,7 @@ export const enContent: SiteContent = {
       {
         title: 'Qualified lead',
         description:
-          'The final form captures the essential details so the commercial team receives context already filtered.',
+          'The final form captures the essential details so the sales team receives the context already filtered.',
       },
       {
         title: 'WhatsApp with context',
@@ -517,7 +517,7 @@ export const enContent: SiteContent = {
         minScore: 7,
         maxScore: 12,
         label: 'Range 2',
-        title: 'Operation being structured',
+        title: 'Operation in structuring phase',
         description:
           'There is already a foundation to evolve, but recurring bottlenecks and dependencies still limit predictability.',
         recommendations: [
@@ -542,9 +542,9 @@ export const enContent: SiteContent = {
       },
     ],
     leadForm: {
-      title: 'Receive the reading and take the summary straight to the commercial team',
+      title: 'Get the assessment and take the summary straight to the sales team',
       description:
-        'After the answers, we only ask for the essential details to register the lead, send the context and open the conversation faster.',
+        'After the answers, we only ask for the essential details needed to register the lead, send the context and open the conversation faster.',
       fields: {
         name: 'Name',
         company: 'Company',
@@ -555,7 +555,7 @@ export const enContent: SiteContent = {
       notesPlaceholder:
         'Briefly describe the main issue today: support, network, growth, security or any other relevant point.',
       privacyNote:
-        'We use this information only to contact you back about the submitted assessment.',
+        'We use this information only to follow up on the assessment you submitted.',
       submitLabel: 'See result and send lead',
       submittingLabel: 'Sending assessment',
       requiredMessage: 'Fill in name, company, email and WhatsApp before continuing.',
@@ -564,7 +564,7 @@ export const enContent: SiteContent = {
     result: {
       title: 'Immediate recommendations',
       description:
-        'This result helps the commercial and technical teams start the conversation with maturity context, likely bottlenecks and the suggested next step.',
+        'This result helps the sales and technical teams start the conversation with maturity context, likely bottlenecks and the suggested next step.',
       scoreLabel: 'Score',
       levelLabel: 'Detected level',
       recommendationsLabel: 'Recommendations',
@@ -584,13 +584,13 @@ export const enContent: SiteContent = {
     meta: {
       title: 'MAGINF Support | Download the official remote client',
       description:
-        'MAGINF support center for remote client download, quick guidance and direct access to official support channels.',
+        'MAGINF support center for downloading the remote client, with quick guidance and direct access to official support channels.',
     },
     eyebrow: 'Support center',
     title: 'Download the remote client and get',
-    highlight: ' assisted support in minutes',
+    highlight: ' guided support in minutes',
     description:
-      'Download the client, run it on the device that needs help and contact the MAGINF technical team through the official support channel.',
+      'Download the client, run it on the device that needs support and contact the MAGINF technical team through the official support channel.',
     downloadLabel: 'Download remote client',
     alternativeLabel: 'Talk to support',
     homeLabel: 'Back to website',
@@ -598,7 +598,7 @@ export const enContent: SiteContent = {
     copySuccessLabel: 'Link copied',
     callLabel: 'Call support',
     remoteBadge: 'Remote access',
-    launcherTitle: 'MAGINF Support Launcher',
+    launcherTitle: 'MAGINF Support Client',
     downloadPath: '/downloads/maginf-cliente-remoto.exe',
     downloadFileName: 'maginf-cliente-remoto.exe',
     downloadStatusChecking: 'Checking availability',
@@ -609,19 +609,19 @@ export const enContent: SiteContent = {
     unavailableMessage:
       'The support page is live, but the executable still needs to be published at this URL. In the meantime, contact technical support.',
     note:
-      'Use this client only during an assisted support session with the MAGINF team.',
+      'Use this client only during a guided support session with the MAGINF team.',
     metrics: [
-      { value: '24/7', label: 'Window prepared for monitored support' },
+      { value: '24/7', label: 'Support-ready flow for monitored sessions' },
       { value: '< 2 min', label: 'Flow designed to start support quickly' },
-      { value: '1 link', label: 'Centralized distribution in one address' },
+      { value: '1 link', label: 'Centralized distribution from a single link' },
     ],
     downloadMeta: [
       { label: 'Platform', value: 'Windows' },
-      { label: 'Format', value: 'Assisted remote client' },
+      { label: 'Format', value: 'Remote support client' },
       { label: 'Delivery', value: 'Official MAGINF domain' },
     ],
     stepsTitle: 'Fast support flow',
-    stepsDescription: 'Everything the user needs is in one place.',
+    stepsDescription: 'Everything needed to start the session is right here.',
     steps: [
       {
         id: '01',
@@ -639,7 +639,7 @@ export const enContent: SiteContent = {
         id: '03',
         title: 'Talk to the analyst',
         description:
-          'Share the access code through WhatsApp, phone or email.',
+          'Share the access code via WhatsApp, phone or email.',
       },
     ],
     quickActionsTitle: 'Support channels',
@@ -678,7 +678,7 @@ export const enContent: SiteContent = {
       {
         title: 'More confidence',
         description:
-          'Contact channels, guidance and file delivery live together in one strong MAGINF-branded interface.',
+          'Contact channels, guidance and the download link live together in a single MAGINF-branded interface.',
       },
     ],
     supportDeskTitle: 'MAGINF support desk',
@@ -686,14 +686,14 @@ export const enContent: SiteContent = {
       'If the download does not start, use one of the channels below and the team will guide the session right away.',
   },
   contact: {
-    eyebrow: 'Commercial contact',
-    title: 'When the conversation needs to move forward, reach the team through',
+    eyebrow: 'Sales contact',
+    title: 'When you are ready to move the conversation forward, reach the team through',
     highlight: ' direct channels',
     description:
-      'If you already recognize this scenario in your company, you can contact us right now through WhatsApp, phone or email. We keep the main channels highly visible to speed up the next step.',
+      'If you already recognize this scenario in your company, you can contact us right now through WhatsApp, phone or email. We keep the main channels visible to speed up the next step.',
     actions: [
       {
-        label: 'Commercial WhatsApp',
+        label: 'Sales WhatsApp',
         href: 'https://wa.me/5511351429330',
         tone: 'primary',
       },
@@ -709,15 +709,15 @@ export const enContent: SiteContent = {
       },
     ],
     badges: [
-      { value: 'Guarulhos, SP', label: 'Business base' },
-      { value: '8:30-17:30', label: 'Commercial hours' },
+      { value: 'Guarulhos, SP', label: 'Business location' },
+      { value: '8:30-17:30', label: 'Business hours' },
       { value: '24/7', label: 'Operations monitoring' },
     ],
     cards: [
       {
         label: 'WhatsApp',
         value: '+55 (11) 3514-2933',
-        description: 'Fastest channel for an initial assessment and commercial alignment.',
+        description: 'Fastest channel for an initial assessment and alignment.',
         href: 'https://wa.me/5511351429330',
         icon: 'whatsapp',
         featured: true,
@@ -725,7 +725,7 @@ export const enContent: SiteContent = {
       {
         label: 'Phone',
         value: '+55 (11) 4610-6363',
-        description: 'Commercial line available during business hours.',
+        description: 'Sales line available during business hours.',
         href: 'tel:+551146106363',
         icon: 'phone',
       },
@@ -746,12 +746,12 @@ export const enContent: SiteContent = {
       {
         label: 'Hours',
         value: 'Mon-Fri 8:30-17:30',
-        description: 'Commercial support during business hours.',
+        description: 'Sales assistance during business hours.',
         icon: 'hours',
       },
     ],
     note:
-      'This contact block is based on MAGINF public contact channels published on the official website.',
+      "This contact block is based on MAGINF's public contact channels published on the official website.",
   },
   footer: {
     description:
@@ -765,8 +765,8 @@ export const enContent: SiteContent = {
         items: [
           'Risk-based technical assessment',
           'Prioritized action plan',
-          'Continuous monitoring and sustainment',
-          'Evolution with capacity visibility',
+          'Continuous monitoring and ongoing support',
+          'Evolution guided by capacity visibility',
         ],
       },
       {
