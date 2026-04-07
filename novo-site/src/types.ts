@@ -262,6 +262,60 @@ export interface CTAContent {
   result: AssessmentResultContent;
 }
 
+export interface SupportMetric {
+  value: string;
+  label: string;
+}
+
+export interface SupportStep {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export interface SupportBenefit {
+  title: string;
+  description: string;
+}
+
+export interface SupportDownloadMeta {
+  label: string;
+  value: string;
+}
+
+export interface SupportContent {
+  meta: MetaContent;
+  eyebrow: string;
+  title: string;
+  highlight: string;
+  description: string;
+  downloadLabel: string;
+  alternativeLabel: string;
+  homeLabel: string;
+  copyLinkLabel: string;
+  copySuccessLabel: string;
+  callLabel: string;
+  remoteBadge: string;
+  launcherTitle: string;
+  downloadPath: string;
+  downloadFileName: string;
+  downloadStatusChecking: string;
+  downloadStatusReady: string;
+  downloadStatusUnavailable: string;
+  readyMessage: string;
+  unavailableMessage: string;
+  note: string;
+  metrics: SupportMetric[];
+  downloadMeta: SupportDownloadMeta[];
+  stepsTitle: string;
+  stepsDescription: string;
+  steps: SupportStep[];
+  benefitsTitle: string;
+  benefits: SupportBenefit[];
+  supportDeskTitle: string;
+  supportDeskDescription: string;
+}
+
 export interface FooterGroup {
   title: string;
   items: string[];
@@ -324,6 +378,7 @@ export interface SiteContent {
   flow: FlowContent;
   sectors: SectorsContent;
   cta: CTAContent;
+  support: SupportContent;
   contact: ContactContent;
   footer: FooterContent;
 }

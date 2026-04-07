@@ -580,6 +580,90 @@ export const enContent: SiteContent = {
         'The lead could not be sent automatically. The result remains available and can still be shared through WhatsApp or email.',
     },
   },
+  support: {
+    meta: {
+      title: 'MAGINF Support | Download the official remote client',
+      description:
+        'MAGINF support center for remote client download, quick guidance and direct access to official support channels.',
+    },
+    eyebrow: 'Support center',
+    title: 'Download the remote client and get',
+    highlight: ' assisted support in minutes',
+    description:
+      'This page was designed to speed up assisted support. Users download the remote client, launch the access and continue the session with the MAGINF team through official channels.',
+    downloadLabel: 'Download remote client',
+    alternativeLabel: 'Talk to support',
+    homeLabel: 'Back to website',
+    copyLinkLabel: 'Copy link',
+    copySuccessLabel: 'Link copied',
+    callLabel: 'Call support',
+    remoteBadge: 'Remote access',
+    launcherTitle: 'MAGINF Support Launcher',
+    downloadPath: '/downloads/maginf-cliente-remoto.exe',
+    downloadFileName: 'maginf-cliente-remoto.exe',
+    downloadStatusChecking: 'Checking availability',
+    downloadStatusReady: 'File ready for download',
+    downloadStatusUnavailable: 'File pending publication',
+    readyMessage:
+      'The executable was found on this domain. Download it, run it and share the displayed code with the MAGINF analyst.',
+    unavailableMessage:
+      'The support center is live, but the executable still needs to be published at this URL. In the meantime, contact support and share this page.',
+    note:
+      'The remote client should be executed only during an assisted support session and distributed through official MAGINF channels.',
+    metrics: [
+      { value: '24/7', label: 'Window prepared for monitored support' },
+      { value: '< 2 min', label: 'Flow designed to start support quickly' },
+      { value: '1 link', label: 'Centralized distribution in one address' },
+    ],
+    downloadMeta: [
+      { label: 'Platform', value: 'Windows' },
+      { label: 'Format', value: 'Assisted remote client' },
+      { label: 'Delivery', value: 'Official MAGINF domain' },
+    ],
+    stepsTitle: 'Fast support flow',
+    stepsDescription: 'Your remote support session starts in three simple moves.',
+    steps: [
+      {
+        id: '01',
+        title: 'Download the executable',
+        description:
+          'Use the main button to download the remote client from this official MAGINF domain.',
+      },
+      {
+        id: '02',
+        title: 'Run the file',
+        description:
+          'Open the remote client on the computer that needs support and wait for the connection or identification screen.',
+      },
+      {
+        id: '03',
+        title: 'Talk to the analyst',
+        description:
+          'Share the code, confirm the session via WhatsApp, phone or email and continue with guided assistance.',
+      },
+    ],
+    benefitsTitle: 'Why use this support page',
+    benefits: [
+      {
+        title: 'Official distribution',
+        description:
+          'The download is concentrated in its own page to reduce confusion and avoid unsupported file sharing.',
+      },
+      {
+        title: 'Guided session',
+        description:
+          'The experience was built to move the user from download to analyst contact with minimal friction.',
+      },
+      {
+        title: 'More confidence',
+        description:
+          'Contact channels, guidance and file delivery live together in one strong MAGINF-branded interface.',
+      },
+    ],
+    supportDeskTitle: 'MAGINF support desk',
+    supportDeskDescription:
+      'If the download does not start or the user is on another device, use one of the channels below for immediate guidance.',
+  },
   contact: {
     eyebrow: 'Commercial contact',
     title: 'When the conversation needs to move forward, reach the team through',

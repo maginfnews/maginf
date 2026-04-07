@@ -6,6 +6,7 @@ interface BrandMarkProps {
   compact?: boolean;
   tone?: 'dark' | 'light';
   content: BrandContent;
+  href?: string;
 }
 
 export default function BrandMark({
@@ -13,6 +14,7 @@ export default function BrandMark({
   compact = false,
   tone = 'dark',
   content,
+  href = '#inicio',
 }: BrandMarkProps) {
   const imageHeightClass = compact ? 'h-8 sm:h-9' : 'h-10 sm:h-11';
   const containerClass =
@@ -22,7 +24,7 @@ export default function BrandMark({
 
   return (
     <a
-      href="#inicio"
+      href={href}
       aria-label={content.homeAriaLabel}
       className={`inline-flex items-center ${className}`.trim()}
     >

@@ -580,6 +580,90 @@ export const ptBRContent: SiteContent = {
         'Nao foi possivel enviar o lead automaticamente. O resultado continua disponivel e pode ser compartilhado pelo WhatsApp ou por e-mail.',
     },
   },
+  support: {
+    meta: {
+      title: 'MAGINF Suporte | Baixe o cliente remoto oficial',
+      description:
+        'Central de suporte MAGINF para download do cliente remoto, orientacao rapida e acesso aos canais oficiais de atendimento.',
+    },
+    eyebrow: 'Central de suporte',
+    title: 'Baixe o cliente remoto e entre em',
+    highlight: ' atendimento em poucos minutos',
+    description:
+      'Esta pagina foi pensada para acelerar o suporte assistido. O usuario baixa o cliente remoto, executa o acesso e segue a sessao com a equipe MAGINF pelos canais oficiais.',
+    downloadLabel: 'Baixar cliente remoto',
+    alternativeLabel: 'Falar com suporte',
+    homeLabel: 'Voltar ao site',
+    copyLinkLabel: 'Copiar link',
+    copySuccessLabel: 'Link copiado',
+    callLabel: 'Ligar para suporte',
+    remoteBadge: 'Acesso remoto',
+    launcherTitle: 'MAGINF Support Launcher',
+    downloadPath: '/downloads/maginf-cliente-remoto.exe',
+    downloadFileName: 'maginf-cliente-remoto.exe',
+    downloadStatusChecking: 'Verificando disponibilidade',
+    downloadStatusReady: 'Arquivo pronto para download',
+    downloadStatusUnavailable: 'Arquivo em preparacao',
+    readyMessage:
+      'O executavel foi localizado neste dominio. Baixe, execute e informe o codigo exibido ao analista da MAGINF.',
+    unavailableMessage:
+      'A central ja esta ativa, mas o executavel ainda precisa ser publicado nesta URL. Enquanto isso, acione o suporte e compartilhe esta pagina.',
+    note:
+      'O cliente remoto deve ser executado apenas durante o atendimento assistido e enviado sempre pelos canais oficiais da MAGINF.',
+    metrics: [
+      { value: '24/7', label: 'Janela preparada para suporte monitorado' },
+      { value: '< 2 min', label: 'Fluxo pensado para iniciar o atendimento rapido' },
+      { value: '1 link', label: 'Distribuicao centralizada em um unico endereco' },
+    ],
+    downloadMeta: [
+      { label: 'Plataforma', value: 'Windows' },
+      { label: 'Modelo', value: 'Cliente remoto assistido' },
+      { label: 'Entrega', value: 'Dominio oficial MAGINF' },
+    ],
+    stepsTitle: 'Fluxo rapido de atendimento',
+    stepsDescription: 'Seu acesso remoto comeca em tres movimentos simples.',
+    steps: [
+      {
+        id: '01',
+        title: 'Baixe o executavel',
+        description:
+          'Use o botao principal para baixar o cliente remoto a partir deste dominio oficial da MAGINF.',
+      },
+      {
+        id: '02',
+        title: 'Execute o arquivo',
+        description:
+          'Abra o cliente remoto no computador que precisa de suporte e aguarde a tela de conexao ou identificacao.',
+      },
+      {
+        id: '03',
+        title: 'Fale com o analista',
+        description:
+          'Envie o codigo, confirme a sessao por WhatsApp, telefone ou e-mail e siga com o atendimento assistido.',
+      },
+    ],
+    benefitsTitle: 'Por que usar esta central',
+    benefits: [
+      {
+        title: 'Distribuicao oficial',
+        description:
+          'O download fica concentrado em uma pagina propria para reduzir duvidas e evitar arquivos enviados sem contexto.',
+      },
+      {
+        title: 'Sessao guiada',
+        description:
+          'A experiencia foi montada para conduzir o usuario do download ao contato com a equipe sem atrito.',
+      },
+      {
+        title: 'Mais confianca',
+        description:
+          'Contato, orientacao e arquivo ficam reunidos em uma unica interface com identidade visual forte da MAGINF.',
+      },
+    ],
+    supportDeskTitle: 'Mesa de suporte MAGINF',
+    supportDeskDescription:
+      'Se o download nao iniciar ou o usuario estiver em outro dispositivo, use um dos canais abaixo para receber orientacao imediata.',
+  },
   contact: {
     eyebrow: 'Contato comercial',
     title: 'Quando a conversa precisa avancar, fale com a equipe por canais',
