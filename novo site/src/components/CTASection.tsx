@@ -36,8 +36,6 @@ interface LeadState {
 }
 
 const DEFAULT_CONTACT_ENDPOINT = '/api/contact';
-const LEAD_WEBHOOK_URL = import.meta.env.VITE_LEAD_WEBHOOK_URL?.trim();
-const LEAD_WEBHOOK_TOKEN = import.meta.env.VITE_LEAD_WEBHOOK_TOKEN?.trim();
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function getMaxScore(questions: AssessmentQuestion[]) {
@@ -223,21 +221,18 @@ export default function CTASection({ content, contact, language }: CTASectionPro
         answers: answerSnapshot,
       },
     };
-    const endpoint = LEAD_WEBHOOK_URL || DEFAULT_CONTACT_ENDPOINT;
-    const isDefaultEndpoint = !LEAD_WEBHOOK_URL;
 
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch(DEFAULT_CONTACT_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          ...(LEAD_WEBHOOK_TOKEN ? { Authorization: `Bearer ${LEAD_WEBHOOK_TOKEN}` } : {}),
         },
         body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
-        if (isDefaultEndpoint && (response.status === 404 || response.status === 405)) {
+        if (response.status === 404 || response.status === 405) {
           setSubmitState('fallback');
           return;
         }
@@ -248,7 +243,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
       setSubmitState('success');
     } catch (error) {
       console.error('Lead submission failed', error);
-      setSubmitState(isDefaultEndpoint ? 'fallback' : 'error');
+      setSubmitState('error');
     } finally {
       setStage('result');
     }

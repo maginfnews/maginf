@@ -22,11 +22,12 @@ Landing page institucional da MAGINF construída com React, Vite e Tailwind CSS 
 - `src/content`: conteúdo bilíngue da página
 - `src/constants.ts`: agregador de conteúdo e constantes compartilhadas
 - `src/index.css`: tema global e utilitários do projeto
+- `api/contact.ts`: API própria do projeto para receber o lead do diagnóstico e enviar via Resend
 
 ## Observações
 
 - O projeto não exige variáveis de ambiente para rodar localmente.
 - Os textos e links estão preparados para `Português (Brasil)` e `English`.
-- Sem `VITE_LEAD_WEBHOOK_URL`, o diagnóstico tenta enviar para `/api/contact` no mesmo domínio antes de cair no fluxo manual.
-- O bloco de diagnóstico online funciona sem backend, mas o envio automático do lead depende de `VITE_LEAD_WEBHOOK_URL`.
-- Quando o webhook não está configurado, o site ainda gera o resultado e monta o resumo para WhatsApp e e-mail.
+- O diagnóstico usa a API local em `/api/contact` dentro do próprio projeto.
+- Em produção, configure `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_FROM_NAME` e `RESEND_CONTACT_TO` no projeto `novo site` do Vercel.
+- Se a API local não estiver disponível em ambiente de preview local, o site ainda gera o resultado e monta o resumo para WhatsApp e e-mail.
