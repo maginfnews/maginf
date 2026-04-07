@@ -29,5 +29,5 @@ Landing page institucional da MAGINF construída com React, Vite e Tailwind CSS 
 - O projeto não exige variáveis de ambiente para rodar localmente.
 - Os textos e links estão preparados para `Português (Brasil)` e `English`.
 - O diagnóstico usa a API local em `/api/contact` dentro do próprio projeto.
-- Em produção, configure `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_FROM_NAME` e `RESEND_CONTACT_TO` no projeto `novo site` do Vercel.
+- Em produção, configure `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_FROM_NAME` e `RESEND_CONTACT_TO` no projeto `novo-site` do Vercel.
 - Se a API local não estiver disponível em ambiente de preview local, o site ainda gera o resultado e monta o resumo para WhatsApp e e-mail.
