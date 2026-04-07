@@ -125,11 +125,17 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       });
     }
 
-    if (!process.env.RESEND_API_KEY) {
+    const missingConfig = [
+      !process.env.RESEND_API_KEY ? 'RESEND_API_KEY' : null,
+      !resendFromEmail ? 'RESEND_FROM_EMAIL' : null,
+      !resendContactTo ? 'RESEND_CONTACT_TO' : null,
+    ].filter(Boolean);
+
+    if (missingConfig.length > 0) {
       return res.status(500).json({
         ok: false,
         success: false,
-        error: 'RESEND_API_KEY nao configurada',
+        error: `Configuracao ausente: ${missingConfig.join(', ')}`,
       });
     }
 
@@ -200,7 +206,8 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     });
 
     if (data.error) {
-      return res.status(502).json({
+      console.error('Resend provider error', data.error);
+      return res.status(500).json({
         ok: false,
         success: false,
         error: data.error.message || 'Falha ao enviar email pelo provedor',
@@ -211,6 +218,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     return res.status(200).json({ ok: true, success: true, data });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Erro ao enviar email';
+    console.error('Unhandled contact API error', error);
     return res.status(500).json({ ok: false, success: false, error: message });
   }
 }

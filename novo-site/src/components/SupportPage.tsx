@@ -3,24 +3,17 @@ import { motion } from 'motion/react';
 import {
   ArrowDownToLine,
   ArrowLeft,
-  CheckCircle2,
-  Clock3,
   Copy,
   Download,
   Headset,
   LifeBuoy,
   Mail,
-  MapPin,
   Phone,
   ShieldCheck,
   Smartphone,
-  TimerReset,
-  Waypoints,
 } from 'lucide-react';
 import type {
   BrandContent,
-  ContactContent,
-  ContactCardIcon,
   Language,
   NavbarContent,
   SupportContent,
@@ -32,47 +25,18 @@ interface SupportPageProps {
   brand: BrandContent;
   nav: NavbarContent;
   support: SupportContent;
-  contact: ContactContent;
   language: Language;
   onLanguageChange: (language: Language) => void;
 }
 
 type DownloadState = 'checking' | 'ready' | 'unavailable';
 
-function getActionHref(contact: ContactContent, match: 'whatsapp' | 'email' | 'phone') {
-  if (match === 'whatsapp') {
-    return (
-      contact.actions.find((action) => action.href.includes('wa.me'))?.href ??
-      contact.cards.find((card) => card.icon === 'whatsapp')?.href ??
-      '#contato'
-    );
-  }
-
-  if (match === 'email') {
-    return (
-      contact.actions.find((action) => action.href.startsWith('mailto:'))?.href ??
-      contact.cards.find((card) => card.icon === 'email')?.href ??
-      'mailto:contato@maginf.com.br'
-    );
-  }
-
-  return (
-    contact.actions.find((action) => action.href.startsWith('tel:'))?.href ??
-    contact.cards.find((card) => card.icon === 'phone')?.href ??
-    'tel:+551146106363'
-  );
-}
-
-function getCardIcon(icon: ContactCardIcon) {
+function getActionIcon(icon: 'whatsapp' | 'phone' | 'email') {
   switch (icon) {
     case 'whatsapp':
       return Smartphone;
     case 'email':
       return Mail;
-    case 'location':
-      return MapPin;
-    case 'hours':
-      return Clock3;
     case 'phone':
     default:
       return Phone;
@@ -83,7 +47,6 @@ export default function SupportPage({
   brand,
   nav,
   support,
-  contact,
   language,
   onLanguageChange,
 }: SupportPageProps) {
@@ -136,9 +99,10 @@ export default function SupportPage({
   const statusMessage =
     downloadState === 'ready' ? support.readyMessage : support.unavailableMessage;
 
-  const whatsappHref = getActionHref(contact, 'whatsapp');
-  const emailHref = getActionHref(contact, 'email');
-  const phoneHref = getActionHref(contact, 'phone');
+  const whatsappAction =
+    support.quickActions.find((action) => action.icon === 'whatsapp') ?? support.quickActions[0];
+  const phoneAction =
+    support.quickActions.find((action) => action.icon === 'phone') ?? support.quickActions[1];
 
   const handleCopyLink = async () => {
     try {
@@ -207,9 +171,20 @@ export default function SupportPage({
                 {support.description}
               </p>
 
+              <div className="mt-6 flex flex-wrap gap-3">
+                {support.downloadMeta.map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 font-headline text-[10px] font-bold uppercase tracking-[0.2em] text-white/76"
+                  >
+                    {item.value}
+                  </div>
+                ))}
+              </div>
+
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
-                  href={downloadState === 'ready' ? support.downloadPath : whatsappHref}
+                  href={downloadState === 'ready' ? support.downloadPath : whatsappAction.href}
                   download={downloadState === 'ready' ? '' : undefined}
                   target={downloadState === 'ready' ? undefined : '_blank'}
                   rel={downloadState === 'ready' ? undefined : 'noreferrer'}
@@ -219,7 +194,7 @@ export default function SupportPage({
                   {support.downloadLabel}
                 </a>
                 <a
-                  href={whatsappHref}
+                  href={whatsappAction.href}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-3 rounded-sm border border-white/12 bg-white/6 px-8 py-4 font-headline text-[12px] font-black uppercase tracking-[0.22em] text-white transition-all hover:bg-white/10"
@@ -234,21 +209,6 @@ export default function SupportPage({
                   <ArrowLeft size={16} />
                   {support.homeLabel}
                 </a>
-              </div>
-
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                {support.metrics.map((metric, index) => (
-                  <motion.div
-                    key={metric.label}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.12 + index * 0.08 }}
-                    className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm"
-                  >
-                    <div className="font-headline text-3xl font-black text-white">{metric.value}</div>
-                    <div className="mt-2 text-sm leading-relaxed text-white/58">{metric.label}</div>
-                  </motion.div>
-                ))}
               </div>
             </motion.div>
 
@@ -281,24 +241,10 @@ export default function SupportPage({
 
                 <p className="mt-5 text-sm leading-relaxed text-white/62">{statusMessage}</p>
 
-                <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                  {support.downloadMeta.map((item) => (
-                    <div
-                      key={item.label}
-                      className="rounded-2xl border border-white/10 bg-black/22 px-4 py-4"
-                    >
-                      <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/38">
-                        {item.label}
-                      </div>
-                      <div className="mt-2 text-sm font-semibold text-white">{item.value}</div>
-                    </div>
-                  ))}
-                </div>
-
                 <div className="mt-6 rounded-[1.5rem] border border-tertiary/25 bg-tertiary/10 p-5">
                   <div className="flex items-start gap-3">
                     <ShieldCheck className="mt-0.5 text-tertiary" size={18} />
-                      <div>
+                    <div>
                       <div className="font-headline text-sm font-black uppercase tracking-[0.18em] text-white">
                         {support.launcherTitle}
                       </div>
@@ -309,7 +255,7 @@ export default function SupportPage({
 
                 <div className="mt-6 flex flex-col gap-3">
                   <a
-                    href={downloadState === 'ready' ? support.downloadPath : whatsappHref}
+                    href={downloadState === 'ready' ? support.downloadPath : whatsappAction.href}
                     download={downloadState === 'ready' ? '' : undefined}
                     target={downloadState === 'ready' ? undefined : '_blank'}
                     rel={downloadState === 'ready' ? undefined : 'noreferrer'}
@@ -320,7 +266,7 @@ export default function SupportPage({
                   </a>
                   <div className="grid gap-3 sm:grid-cols-2">
                     <a
-                      href={phoneHref}
+                      href={phoneAction.href}
                       className="inline-flex items-center justify-center gap-2 rounded-sm border border-white/12 bg-white/6 px-5 py-3 font-headline text-[11px] font-black uppercase tracking-[0.2em] text-white transition-all hover:bg-white/10"
                     >
                       <Phone size={16} />
@@ -342,7 +288,7 @@ export default function SupportPage({
         </section>
 
         <section className="mx-auto max-w-7xl px-6 pb-14 md:pb-18">
-          <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -350,33 +296,25 @@ export default function SupportPage({
               transition={{ duration: 0.65 }}
               className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm md:p-8"
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/25 px-4 py-2 font-headline text-[10px] font-black uppercase tracking-[0.2em] text-white/60">
-                <Waypoints size={15} className="text-tertiary" />
+              <div className="font-headline text-[10px] font-black uppercase tracking-[0.26em] text-tertiary">
                 {support.stepsTitle}
               </div>
-              <h2 className="mt-6 font-headline text-3xl font-black text-white md:text-4xl">
+              <h2 className="mt-4 font-headline text-3xl font-black text-white md:text-4xl">
                 {support.stepsDescription}
               </h2>
-              <div className="mt-8 space-y-4">
-                {support.steps.map((step, index) => (
+              <div className="mt-6 grid gap-4 md:grid-cols-3">
+                {support.steps.map((step) => (
                   <div
                     key={step.id}
-                    className="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-black/20 p-5"
+                    className="rounded-[1.6rem] border border-white/10 bg-black/20 p-5"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-tertiary font-headline text-sm font-black text-white">
-                        {step.id}
-                      </div>
-                      <div>
-                        <div className="font-headline text-lg font-black text-white">{step.title}</div>
-                        <p className="mt-2 text-sm leading-relaxed text-white/60">
-                          {step.description}
-                        </p>
-                      </div>
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-tertiary font-headline text-sm font-black text-white">
+                      {step.id}
                     </div>
-                    {index < support.steps.length - 1 ? (
-                      <div className="pointer-events-none absolute left-10 top-[calc(100%-1px)] h-6 w-px bg-gradient-to-b from-tertiary/50 to-transparent" />
-                    ) : null}
+                    <div className="mt-4 font-headline text-lg font-black text-white">{step.title}</div>
+                    <p className="mt-2 text-sm leading-relaxed text-white/60">
+                      {step.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -387,90 +325,46 @@ export default function SupportPage({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.65, delay: 0.08 }}
-              className="grid gap-6"
+              className="rounded-[2rem] border border-white/10 bg-[linear-gradient(160deg,rgba(255,107,0,0.16),rgba(255,255,255,0.04))] p-6 md:p-8"
             >
-              <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(145deg,rgba(255,107,0,0.18),rgba(255,255,255,0.04))] p-6 md:p-8">
-                <div className="font-headline text-[11px] font-black uppercase tracking-[0.24em] text-white/42">
-                  {support.benefitsTitle}
-                </div>
-                <div className="mt-6 grid gap-4 md:grid-cols-3">
-                  {support.benefits.map((benefit, index) => {
-                    const Icon =
-                      index === 0 ? TimerReset : index === 1 ? ShieldCheck : CheckCircle2;
-
-                    return (
-                      <div
-                        key={benefit.title}
-                        className="rounded-[1.6rem] border border-white/10 bg-black/22 p-5"
-                      >
-                        <Icon className="text-tertiary" size={20} />
-                        <div className="mt-4 font-headline text-lg font-black text-white">
-                          {benefit.title}
-                        </div>
-                        <p className="mt-2 text-sm leading-relaxed text-white/60">
-                          {benefit.description}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
+              <div className="font-headline text-[10px] font-black uppercase tracking-[0.26em] text-tertiary">
+                {support.quickActionsTitle}
               </div>
+              <h2 className="mt-4 font-headline text-3xl font-black text-white md:text-4xl">
+                {support.supportDeskTitle}
+              </h2>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/62">
+                {support.supportDeskDescription}
+              </p>
+              <div className="mt-6 grid gap-4">
+                {support.quickActions.map((action) => {
+                  const Icon = getActionIcon(action.icon);
 
-              <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm md:p-8">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <div className="font-headline text-[11px] font-black uppercase tracking-[0.24em] text-white/42">
-                      {support.supportDeskTitle}
-                    </div>
-                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
-                      {support.supportDeskDescription}
-                    </p>
-                  </div>
-                  <a
-                    href={emailHref}
-                    className="inline-flex items-center gap-2 rounded-sm border border-white/12 bg-white/6 px-4 py-3 font-headline text-[11px] font-black uppercase tracking-[0.2em] text-white transition-all hover:bg-white/10"
-                  >
-                    <Mail size={16} />
-                    {contact.actions[1]?.label ?? 'E-mail'}
-                  </a>
-                </div>
-
-                <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                  {contact.cards.slice(0, 5).map((card) => {
-                    const Icon = getCardIcon(card.icon);
-
-                    return (
-                      <a
-                        key={`${card.label}-${card.value}`}
-                        href={card.href ?? '#'}
-                        target={card.href?.startsWith('http') ? '_blank' : undefined}
-                        rel={card.href?.startsWith('http') ? 'noreferrer' : undefined}
-                        className={`group rounded-[1.6rem] border p-5 transition-all hover:-translate-y-0.5 ${
-                          card.featured
-                            ? 'border-tertiary/35 bg-tertiary/10'
-                            : 'border-white/10 bg-black/20'
-                        }`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/8 text-tertiary">
-                            <Icon size={20} />
+                  return (
+                    <a
+                      key={`${action.label}-${action.value}`}
+                      href={action.href}
+                      target={action.href.startsWith('http') ? '_blank' : undefined}
+                      rel={action.href.startsWith('http') ? 'noreferrer' : undefined}
+                      className="flex items-center justify-between gap-4 rounded-[1.5rem] border border-white/10 bg-black/22 px-5 py-4 transition-all hover:border-tertiary/35 hover:bg-black/28"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-tertiary text-white">
+                          <Icon size={18} />
+                        </div>
+                        <div>
+                          <div className="font-headline text-[11px] font-black uppercase tracking-[0.2em] text-white/42">
+                            {action.label}
                           </div>
-                          <div>
-                            <div className="font-headline text-[11px] font-black uppercase tracking-[0.2em] text-white/42">
-                              {card.label}
-                            </div>
-                            <div className="mt-1 text-sm font-semibold text-white">
-                              {card.value}
-                            </div>
+                          <div className="mt-1 text-sm font-semibold text-white">
+                            {action.value}
                           </div>
                         </div>
-                        <p className="mt-4 text-sm leading-relaxed text-white/60">
-                          {card.description}
-                        </p>
-                      </a>
-                    );
-                  })}
-                </div>
+                      </div>
+                      <Headset size={18} className="text-white/34" />
+                    </a>
+                  );
+                })}
               </div>
             </motion.div>
           </div>

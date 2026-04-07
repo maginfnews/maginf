@@ -283,6 +283,13 @@ export interface SupportDownloadMeta {
   value: string;
 }
 
+export interface SupportQuickAction {
+  label: string;
+  value: string;
+  href: string;
+  icon: 'whatsapp' | 'phone' | 'email';
+}
+
 export interface SupportContent {
   meta: MetaContent;
   eyebrow: string;
@@ -310,6 +317,8 @@ export interface SupportContent {
   stepsTitle: string;
   stepsDescription: string;
   steps: SupportStep[];
+  quickActionsTitle: string;
+  quickActions: SupportQuickAction[];
   benefitsTitle: string;
   benefits: SupportBenefit[];
   supportDeskTitle: string;

@@ -590,7 +590,7 @@ export const enContent: SiteContent = {
     title: 'Download the remote client and get',
     highlight: ' assisted support in minutes',
     description:
-      'This page was designed to speed up assisted support. Users download the remote client, launch the access and continue the session with the MAGINF team through official channels.',
+      'Download the client, run it on the device that needs help and contact the MAGINF technical team through the official support channel.',
     downloadLabel: 'Download remote client',
     alternativeLabel: 'Talk to support',
     homeLabel: 'Back to website',
@@ -607,9 +607,9 @@ export const enContent: SiteContent = {
     readyMessage:
       'The executable was found on this domain. Download it, run it and share the displayed code with the MAGINF analyst.',
     unavailableMessage:
-      'The support center is live, but the executable still needs to be published at this URL. In the meantime, contact support and share this page.',
+      'The support page is live, but the executable still needs to be published at this URL. In the meantime, contact technical support.',
     note:
-      'The remote client should be executed only during an assisted support session and distributed through official MAGINF channels.',
+      'Use this client only during an assisted support session with the MAGINF team.',
     metrics: [
       { value: '24/7', label: 'Window prepared for monitored support' },
       { value: '< 2 min', label: 'Flow designed to start support quickly' },
@@ -621,25 +621,46 @@ export const enContent: SiteContent = {
       { label: 'Delivery', value: 'Official MAGINF domain' },
     ],
     stepsTitle: 'Fast support flow',
-    stepsDescription: 'Your remote support session starts in three simple moves.',
+    stepsDescription: 'Everything the user needs is in one place.',
     steps: [
       {
         id: '01',
         title: 'Download the executable',
         description:
-          'Use the main button to download the remote client from this official MAGINF domain.',
+          'Click the main button and download the remote client from this official domain.',
       },
       {
         id: '02',
         title: 'Run the file',
         description:
-          'Open the remote client on the computer that needs support and wait for the connection or identification screen.',
+          'Open the file on the computer that needs support.',
       },
       {
         id: '03',
         title: 'Talk to the analyst',
         description:
-          'Share the code, confirm the session via WhatsApp, phone or email and continue with guided assistance.',
+          'Share the access code through WhatsApp, phone or email.',
+      },
+    ],
+    quickActionsTitle: 'Support channels',
+    quickActions: [
+      {
+        label: 'Technical WhatsApp',
+        value: '+55 (11) 4610-6363',
+        href: 'https://wa.me/551146106363',
+        icon: 'whatsapp',
+      },
+      {
+        label: 'Phone',
+        value: '+55 (11) 4610-6363',
+        href: 'tel:+551146106363',
+        icon: 'phone',
+      },
+      {
+        label: 'Email',
+        value: 'suporte@maginf.com.br',
+        href: 'mailto:suporte@maginf.com.br?subject=MAGINF%20technical%20support',
+        icon: 'email',
       },
     ],
     benefitsTitle: 'Why use this support page',
@@ -662,7 +683,7 @@ export const enContent: SiteContent = {
     ],
     supportDeskTitle: 'MAGINF support desk',
     supportDeskDescription:
-      'If the download does not start or the user is on another device, use one of the channels below for immediate guidance.',
+      'If the download does not start, use one of the channels below and the team will guide the session right away.',
   },
   contact: {
     eyebrow: 'Commercial contact',

@@ -3,41 +3,41 @@ import { SECTOR_BACKGROUNDS } from './shared';
 
 export const ptBRContent: SiteContent = {
   meta: {
-    title: 'MAGINF Tecnologia | TI gerenciada para operacao estavel',
+    title: 'MAGINF Tecnologia | TI gerenciada para operação estável',
     description:
       'A MAGINF ajuda empresas a tirar a TI do modo reativo e operar com mais estabilidade, visibilidade e previsibilidade.',
   },
   brand: {
-    homeAriaLabel: 'MAGINF Tecnologia, voltar ao inicio',
+    homeAriaLabel: 'MAGINF Tecnologia, voltar ao início',
     logoAlt: 'Logotipo da MAGINF Tecnologia',
   },
   nav: {
     languageLabel: 'Idioma',
     cta: 'Falar com consultor',
-    mobileCta: 'Agendar diagnostico',
+    mobileCta: 'Agendar diagnóstico',
     openMenuLabel: 'Abrir menu',
     closeMenuLabel: 'Fechar menu',
     links: [
-      { label: 'Inicio', href: '#inicio' },
-      { label: 'Servicos', href: '#servicos' },
-      { label: 'Solucoes', href: '#solucoes' },
+      { label: 'Início', href: '#inicio' },
+      { label: 'Serviços', href: '#servicos' },
+      { label: 'Soluções', href: '#solucoes' },
       { label: 'Setores', href: '#setores' },
-      { label: 'Diagnostico', href: '#diagnostico' },
+      { label: 'Diagnóstico', href: '#diagnostico' },
       { label: 'Contato', href: '#contato' },
     ],
   },
   hero: {
-    eyebrow: 'Para empresas que nao podem parar',
-    title: 'A MAGINF assume a operacao de TI para sua empresa ganhar ',
+    eyebrow: 'Para empresas que não podem parar',
+    title: 'A MAGINF assume a operação de TI para sua empresa ganhar ',
     highlight: 'estabilidade e previsibilidade',
     description:
-      'Quando a tecnologia vira gargalo, a equipe perde tempo, produtividade e confianca. Entramos para organizar o ambiente, reduzir incidentes e sustentar a operacao com monitoramento, rotina e resposta tecnica.',
-    primaryCta: 'Solicitar diagnostico',
+      'Quando a tecnologia vira gargalo, a equipe perde tempo, produtividade e confiança. Entramos para organizar o ambiente, reduzir incidentes e sustentar a operação com monitoramento, rotina e resposta técnica.',
+    primaryCta: 'Solicitar diagnóstico',
     secondaryCta: 'Ver entregas',
     stats: [
       { tag: 'LIVE', value: '99,9%', label: 'Uptime sustentado' },
-      { tag: '-30%', value: 'Reducao', label: 'Incidentes criticos' },
-      { tag: '+150', value: 'Ativos', label: 'Sob gestao continua' },
+      { tag: '-30%', value: 'Redução', label: 'Incidentes críticos' },
+      { tag: '+150', value: 'Ativos', label: 'Sob gestão contínua' },
       { tag: 'SLA', value: '24/7', label: 'Monitoramento ativo' },
     ],
   },
@@ -46,57 +46,57 @@ export const ptBRContent: SiteContent = {
       'Menos parada',
       'Mais previsibilidade',
       'Resposta proativa',
-      'Seguranca assistida',
+      'Segurança assistida',
       'Crescimento com controle',
     ],
   },
   challenges: {
-    eyebrow: 'Quando a TI vira urgencia',
-    title: 'Os sinais aparecem antes da parada, mas costumam ser tratados so quando viram',
+    eyebrow: 'Quando a TI vira urgência',
+    title: 'Os sinais aparecem antes da parada, mas costumam ser tratados só quando viram',
     highlight: ' improviso',
     description:
-      'E ai que surgem custos invisiveis: equipe interrompida, chamados recorrentes, risco operacional e falta de clareza para priorizar o que realmente importa.',
+      'E aí que surgem custos invisíveis: equipe interrompida, chamados recorrentes, risco operacional e falta de clareza para priorizar o que realmente importa.',
     items: [
       {
         title: 'Chamados repetidos consumindo a equipe',
         description:
-          'Usuarios param pela mesma causa, o suporte reage tarde e o time perde tempo produtivo em interrupcoes evitaveis.',
-        impact: 'Impacto: operacao mais lenta e percepcao de desorganizacao.',
+          'Usuários param pela mesma causa, o suporte reage tarde e o time perde tempo produtivo em interrupções evitáveis.',
+        impact: 'Impacto: operação mais lenta e percepção de desorganização.',
       },
       {
-        title: 'Infraestrutura crescendo sem padrao',
+        title: 'Infraestrutura crescendo sem padrão',
         description:
-          'Novos acessos, equipamentos e filiais sao adicionados sem processo consistente, aumentando fragilidade tecnica.',
-        impact: 'Impacto: mais risco, mais retrabalho e mais dependencia de improviso.',
+          'Novos acessos, equipamentos e filiais são adicionados sem processo consistente, aumentando fragilidade técnica.',
+        impact: 'Impacto: mais risco, mais retrabalho e mais dependência de improviso.',
       },
       {
-        title: 'Backup e seguranca tratados como tarefa paralela',
+        title: 'Backup e segurança tratados como tarefa paralela',
         description:
-          'Protecao, retencao e resposta a incidentes ficam dispersas entre ferramentas e rotinas incompletas.',
-        impact: 'Impacto: maior exposicao a perda de dados e indisponibilidade.',
+          'Proteção, retenção e resposta a incidentes ficam dispersas entre ferramentas e rotinas incompletas.',
+        impact: 'Impacto: maior exposição a perda de dados e indisponibilidade.',
       },
       {
         title: 'Falta de visibilidade para decidir',
         description:
-          'Sem monitoramento confiavel e priorizacao tecnica, cada problema parece urgente e nenhuma melhoria ganha sequencia.',
-        impact: 'Impacto: o negocio cresce sem confianca na base de TI.',
+          'Sem monitoramento confiável e priorização técnica, cada problema parece urgente e nenhuma melhoria ganha sequência.',
+        impact: 'Impacto: o negócio cresce sem confiança na base de TI.',
       },
     ],
     conclusion:
-      'A MAGINF entra justamente nesse ponto: para tirar a TI do modo reativo, organizar a base e sustentar a operacao com metodo.',
+      'A MAGINF entra justamente nesse ponto: para tirar a TI do modo reativo, organizar a base e sustentar a operação com método.',
   },
   services: {
-    eyebrow: 'O que muda na pratica',
-    title: 'Entregas que reduzem ruido operacional e aumentam controle',
+    eyebrow: 'O que muda na prática',
+    title: 'Entregas que reduzem ruído operacional e aumentam controle',
     description:
-      'Nao entregamos pecas soltas. Organizamos suporte, infraestrutura, cloud, backup e monitoramento para atacar a causa dos problemas e devolver previsibilidade para a operacao.',
+      'Não entregamos peças soltas. Organizamos suporte, infraestrutura, cloud, backup e monitoramento para atacar a causa dos problemas e devolver previsibilidade para a operação.',
     ctaLabel: 'Conversar',
     filters: [
       { id: 'all', label: 'Todos' },
       { id: 'infra', label: 'Infra' },
       { id: 'suporte', label: 'Suporte' },
-      { id: 'operacoes', label: 'Operacoes' },
-      { id: 'seguranca', label: 'Seguranca' },
+      { id: 'operacoes', label: 'Operações' },
+      { id: 'seguranca', label: 'Segurança' },
       { id: 'cloud', label: 'Cloud' },
     ],
     categoryLabels: {
@@ -104,15 +104,15 @@ export const ptBRContent: SiteContent = {
       suporte: 'Suporte',
       cloud: 'Cloud',
       network: 'Redes',
-      operacoes: 'Operacoes',
-      seguranca: 'Seguranca',
+      operacoes: 'Operações',
+      seguranca: 'Segurança',
     },
     items: [
       {
         id: '1',
-        title: 'Suporte que reduz interrupcoes',
+        title: 'Suporte que reduz interrupções',
         description:
-          'Atendimento gerenciado para usuarios, endpoints e servidores com foco em resolucao consistente e continuidade.',
+          'Atendimento gerenciado para usuários, endpoints e servidores com foco em resolução consistente e continuidade.',
         category: 'suporte',
         icon: 'engineering',
       },
@@ -120,13 +120,13 @@ export const ptBRContent: SiteContent = {
         id: '2',
         title: 'Infraestrutura pronta para crescer',
         description:
-          'Arquitetura, padronizacao e documentacao para ambientes menos frageis e mais escalaveis.',
+          'Arquitetura, padronização e documentação para ambientes menos frágeis e mais escaláveis.',
         category: 'infra',
         icon: 'settings_input_component',
       },
       {
         id: '3',
-        title: 'Wi-Fi corporativo com cobertura confiavel',
+        title: 'Wi-Fi corporativo com cobertura confiável',
         description:
           'Projeto e ajuste de rede sem fio para manter equipes, salas e filiais conectadas com estabilidade.',
         category: 'network',
@@ -136,23 +136,23 @@ export const ptBRContent: SiteContent = {
         id: '4',
         title: 'Monitoramento que antecipa falhas',
         description:
-          'Visibilidade 24/7 sobre ativos e servicos para agir antes que o problema pare a operacao.',
+          'Visibilidade 24/7 sobre ativos e serviços para agir antes que o problema pare a operação.',
         category: 'operacoes',
         icon: 'monitoring',
       },
       {
         id: '5',
-        title: 'Backup e continuidade com rotina seria',
+        title: 'Backup e continuidade com rotina séria',
         description:
-          'Protecao, retencao e recuperacao desenhadas para reduzir exposicao e acelerar resposta.',
+          'Proteção, retenção e recuperação desenhadas para reduzir exposição e acelerar resposta.',
         category: 'seguranca',
         icon: 'backup',
       },
       {
         id: '6',
-        title: 'Microsoft 365 e cloud com governanca',
+        title: 'Microsoft 365 e cloud com governança',
         description:
-          'Migracao, sustentacao e controle de ambiente para escalar sem perder visibilidade.',
+          'Migração, sustentação e controle de ambiente para escalar sem perder visibilidade.',
         category: 'cloud',
         icon: 'cloud',
       },
@@ -160,338 +160,338 @@ export const ptBRContent: SiteContent = {
   },
   maturity: {
     eyebrow: 'Por que as empresas nos chamam',
-    title: 'A diferenca nao esta em mais ferramenta, mas em',
-    highlight: ' operacao assistida',
+    title: 'A diferença não está em mais ferramenta, mas em',
+    highlight: ' operação assistida',
     description:
-      'Quando a base e organizada, a TI deixa de consumir energia em incendios recorrentes e passa a apoiar crescimento, seguranca e produtividade.',
+      'Quando a base é organizada, a TI deixa de consumir energia em incêndios recorrentes e passa a apoiar crescimento, segurança e produtividade.',
     principles: [
       {
         id: '01',
-        title: 'Menos reacao, mais prevencao',
+        title: 'Menos reação, mais prevenção',
         description:
-          'Monitoramento e rotina tecnica substituem o ciclo de apagar incendio.',
+          'Monitoramento e rotina técnica substituem o ciclo de apagar incêndio.',
       },
       {
         id: '02',
         title: 'Ambiente mais padronizado',
         description:
-          'A infraestrutura ganha documentacao, criterio e menos dependencia de solucoes improvisadas.',
+          'A infraestrutura ganha documentação, critério e menos dependência de soluções improvisadas.',
       },
       {
         id: '03',
-        title: 'Decisao com mais clareza',
+        title: 'Decisão com mais clareza',
         description:
-          'Prioridades ficam visiveis e as proximas mudancas passam a ter sequencia logica.',
+          'Prioridades ficam visíveis e as próximas mudanças passam a ter sequência lógica.',
       },
     ],
     metrics: [
-      { value: '30%', label: 'Menos incidentes criticos', highlight: true },
+      { value: '30%', label: 'Menos incidentes críticos', highlight: true },
       { value: '24/7', label: 'Visibilidade operacional' },
       { value: '100%', label: 'Continuidade assistida', highlight: true },
       { value: '+150', label: 'Ativos acompanhados' },
     ],
   },
   flow: {
-    eyebrow: 'Como conduzimos a mudanca',
-    title: 'Do diagnostico a operacao continua',
+    eyebrow: 'Como conduzimos a mudança',
+    title: 'Do diagnóstico à operação contínua',
     description:
-      'Nosso processo existe para gerar confianca logo no inicio: entender o cenario, corrigir a base e sustentar a evolucao sem improviso.',
+      'Nosso processo existe para gerar confiança logo no início: entender o cenário, corrigir a base e sustentar a evolução sem improviso.',
     steps: [
       {
         id: '01',
-        title: '01. Diagnostico',
+        title: '01. Diagnóstico',
         description:
-          'Levantamos gargalos, riscos e dependencias que hoje afetam produtividade, seguranca e continuidade.',
+          'Levantamos gargalos, riscos e dependências que hoje afetam produtividade, segurança e continuidade.',
         icon: 'biotech',
       },
       {
         id: '02',
-        title: '02. Padronizacao',
+        title: '02. Padronização',
         description:
-          'Ajustamos o que esta fora de padrao para reduzir fragilidade operacional.',
+          'Ajustamos o que está fora de padrão para reduzir fragilidade operacional.',
         icon: 'rule',
       },
       {
         id: '03',
         title: '03. Monitoramento',
         description:
-          'Colocamos visibilidade sobre ativos, servicos e recorrencias para agir antes do impacto.',
+          'Colocamos visibilidade sobre ativos, serviços e recorrências para agir antes do impacto.',
         icon: 'speed',
       },
       {
         id: '04',
-        title: '04. Sustentacao',
+        title: '04. Sustentação',
         description:
-          'Assumimos uma rotina tecnica recorrente com suporte, manutencao e resposta.',
+          'Assumimos uma rotina técnica recorrente com suporte, manutenção e resposta.',
         icon: 'support_agent',
       },
       {
         id: '05',
-        title: '05. Evolucao',
+        title: '05. Evolução',
         description:
-          'Priorizamos melhorias com base em risco, capacidade e objetivos do negocio.',
+          'Priorizamos melhorias com base em risco, capacidade e objetivos do negócio.',
         icon: 'auto_graph',
       },
     ],
   },
   sectors: {
     eyebrow: 'Onde esse modelo faz mais sentido',
-    title: 'Perfis de operacao que ganham mais com suporte gerenciado',
+    title: 'Perfis de operação que ganham mais com suporte gerenciado',
     description:
-      'A comunicacao fica mais forte quando o visitante se reconhece. Estes sao cenarios em que a MAGINF tende a gerar valor mais rapido.',
+      'A comunicação fica mais forte quando o visitante se reconhece. Estes são cenários em que a MAGINF tende a gerar valor mais rápido.',
     items: [
       {
         ...SECTOR_BACKGROUNDS[0],
-        title: 'Escritorios corporativos',
-        detail: 'Equipes distribuidas e alta dependencia de continuidade',
+        title: 'Escritórios corporativos',
+        detail: 'Equipes distribuídas e alta dependência de continuidade',
         description:
-          'Ambientes com operacao hibrida, salas, telefonia IP e usuarios que precisam trabalhar sem parar por falhas recorrentes.',
+          'Ambientes com operação híbrida, salas, telefonia IP e usuários que precisam trabalhar sem parar por falhas recorrentes.',
       },
       {
         ...SECTOR_BACKGROUNDS[1],
-        title: 'Empresas em expansao',
+        title: 'Empresas em expansão',
         detail: 'Crescimento sem perder controle operacional',
         description:
-          'Cenarios com novas unidades, mais usuarios e necessidade de padronizar a base antes que a complexidade aumente.',
+          'Cenários com novas unidades, mais usuários e necessidade de padronizar a base antes que a complexidade aumente.',
       },
       {
         ...SECTOR_BACKGROUNDS[2],
-        title: 'Ambientes criticos de rede',
+        title: 'Ambientes críticos de rede',
         detail: 'Conectividade, visibilidade e desempenho',
         description:
-          'Operacoes que dependem de rede estavel para trabalhar, vender, atender e integrar servicos sem interrupcao.',
+          'Operações que dependem de rede estável para trabalhar, vender, atender e integrar serviços sem interrupção.',
       },
     ],
   },
   cta: {
-    eyebrow: 'Proximo passo',
-    title: 'Descubra em poucos minutos o nivel atual da sua operacao e avance com um',
-    highlight: ' diagnostico online',
+    eyebrow: 'Próximo passo',
+    title: 'Descubra em poucos minutos o nível atual da sua operação e avance com um',
+    highlight: ' diagnóstico online',
     description:
-      'O visitante responde perguntas objetivas, recebe uma leitura imediata da maturidade operacional e ja pode seguir para o WhatsApp com um resumo pronto para conversa comercial.',
-    startLabel: 'Iniciar diagnostico',
-    progressLabel: 'Andamento do diagnostico',
+      'O visitante responde perguntas objetivas, recebe uma leitura imediata da maturidade operacional e já pode seguir para o WhatsApp com um resumo pronto para conversa comercial.',
+    startLabel: 'Iniciar diagnóstico',
+    progressLabel: 'Andamento do diagnóstico',
     questionLabel: 'Perguntas respondidas',
-    nextLabel: 'Proxima pergunta',
+    nextLabel: 'Próxima pergunta',
     lastQuestionLabel: 'Continuar para contato',
     previousLabel: 'Voltar',
     answerRequiredMessage: 'Selecione uma resposta para continuar.',
     stages: {
       intro: 'Leitura inicial',
-      questions: 'Questionario',
+      questions: 'Questionário',
       lead: 'Dados de contato',
       result: 'Resultado',
     },
     summaryTitle: 'Resumo em tempo real',
     summaryDescription:
-      'A pontuacao vai se formando a cada resposta para sinalizar se a operacao esta reativa, em estruturacao ou pronta para otimizar.',
+      'A pontuação vai se formando a cada resposta para sinalizar se a operação está reativa, em estruturação ou pronta para otimizar.',
     rangesTitle: 'Faixas de maturidade',
     deliverables: [
       {
-        title: 'Pontuacao imediata',
+        title: 'Pontuação imediata',
         description:
           'Cada resposta soma um score e mostra rapidamente em qual faixa operacional a empresa se encontra.',
       },
       {
         title: 'Lead qualificado',
         description:
-          'O formulario final captura os dados essenciais para o comercial receber o contexto ja filtrado.',
+          'O formulário final captura os dados essenciais para o comercial receber o contexto já filtrado.',
       },
       {
         title: 'WhatsApp com contexto',
         description:
-          'O resultado ja sai pronto para seguir no WhatsApp com score, nivel e recomendacoes iniciais.',
+          'O resultado já sai pronto para seguir no WhatsApp com score, nível e recomendações iniciais.',
       },
     ],
     questions: [
       {
         id: 'support',
-        prompt: 'Como os chamados e problemas de TI sao tratados hoje?',
+        prompt: 'Como os chamados e problemas de TI são tratados hoje?',
         helper:
-          'Olhe para a rotina real da equipe: tempo de resposta, recorrencia e nivel de organizacao do atendimento.',
+          'Olhe para a rotina real da equipe: tempo de resposta, recorrência e nível de organização do atendimento.',
         options: [
           {
             label: 'Tudo acontece no improviso',
             description:
-              'A equipe aciona pessoas diferentes, sem registro confiavel nem prioridade clara.',
+              'A equipe aciona pessoas diferentes, sem registro confiável nem prioridade clara.',
             score: 0,
           },
           {
-            label: 'Existe um atendimento basico',
+            label: 'Existe um atendimento básico',
             description:
-              'Os chamados sao registrados em alguns casos, mas o retorno ainda depende muito de urgencia.',
+              'Os chamados são registrados em alguns casos, mas o retorno ainda depende muito de urgência.',
             score: 1,
           },
           {
-            label: 'Ja ha processo com certa consistencia',
+            label: 'Já há processo com certa consistência',
             description:
               'Existe fila, prioridades e acompanhamento, mesmo com pontos de melhoria.',
             score: 2,
           },
           {
-            label: 'Atendimento estruturado e previsivel',
+            label: 'Atendimento estruturado e previsível',
             description:
-              'Os chamados sao acompanhados com SLA, historico e aprendizado continuo.',
+              'Os chamados são acompanhados com SLA, histórico e aprendizado contínuo.',
             score: 3,
           },
         ],
       },
       {
         id: 'visibility',
-        prompt: 'Qual e o nivel de visibilidade sobre ativos, falhas e desempenho?',
+        prompt: 'Qual é o nível de visibilidade sobre ativos, falhas e desempenho?',
         helper:
-          'Considere servidores, links, Wi-Fi, usuarios, equipamentos e qualquer servico critico da operacao.',
+          'Considere servidores, links, Wi-Fi, usuários, equipamentos e qualquer serviço crítico da operação.',
         options: [
           {
             label: 'Quase nenhuma visibilidade',
             description:
-              'Normalmente o problema so aparece quando alguem para de trabalhar.',
+              'Normalmente o problema só aparece quando alguém para de trabalhar.',
             score: 0,
           },
           {
             label: 'Visibilidade parcial',
             description:
-              'Alguns itens sao acompanhados, mas nao existe uma visao consolidada do ambiente.',
+              'Alguns itens são acompanhados, mas não existe uma visão consolidada do ambiente.',
             score: 1,
           },
           {
             label: 'Monitoramento em pontos importantes',
             description:
-              'Os ativos mais sensiveis sao monitorados e ja existe base para agir antes do impacto.',
+              'Os ativos mais sensíveis são monitorados e já existe base para agir antes do impacto.',
             score: 2,
           },
           {
             label: 'Monitoramento recorrente e proativo',
             description:
-              'A operacao acompanha alertas, historico e tendencias com rotina clara de resposta.',
+              'A operação acompanha alertas, histórico e tendências com rotina clara de resposta.',
             score: 3,
           },
         ],
       },
       {
         id: 'standardization',
-        prompt: 'O ambiente de TI cresce com padrao e documentacao?',
+        prompt: 'O ambiente de TI cresce com padrão e documentação?',
         helper:
-          'Pense em acessos, equipamentos, configuracoes, filiais, onboarding e mudancas recentes.',
+          'Pense em acessos, equipamentos, configurações, filiais, onboarding e mudanças recentes.',
         options: [
           {
-            label: 'Cada expansao cria excecoes',
+            label: 'Cada expansão cria exceções',
             description:
-              'Novos acessos e ativos entram sem padrao, o que aumenta dependencia de memoria e retrabalho.',
+              'Novos acessos e ativos entram sem padrão, o que aumenta dependência de memória e retrabalho.',
             score: 0,
           },
           {
-            label: 'Existe alguma organizacao',
+            label: 'Existe alguma organização',
             description:
-              'Parte do ambiente segue padrao, mas ainda ha lacunas grandes de documentacao.',
+              'Parte do ambiente segue padrão, mas ainda há lacunas grandes de documentação.',
             score: 1,
           },
           {
-            label: 'Boa parte do ambiente ja e padronizada',
+            label: 'Boa parte do ambiente já é padronizada',
             description:
-              'Ha criterios definidos, documentacao util e menos improviso em novas demandas.',
+              'Há critérios definidos, documentação útil e menos improviso em novas demandas.',
             score: 2,
           },
           {
             label: 'Crescimento controlado e documentado',
             description:
-              'Mudancas seguem processo, criterio tecnico e documentacao atualizada.',
+              'Mudanças seguem processo, critério técnico e documentação atualizada.',
             score: 3,
           },
         ],
       },
       {
         id: 'security',
-        prompt: 'Backup, acesso e seguranca estao sob controle?',
+        prompt: 'Backup, acesso e segurança estão sob controle?',
         helper:
-          'Considere protecao de dados, retencao, recuperacao, permissao de usuarios e resposta a incidentes.',
+          'Considere proteção de dados, retenção, recuperação, permissão de usuários e resposta a incidentes.',
         options: [
           {
-            label: 'A seguranca e tratada quando aparece um risco',
+            label: 'A segurança é tratada quando aparece um risco',
             description:
-              'Nao ha rotina consistente de backup, revisao de acesso ou plano claro de continuidade.',
+              'Não há rotina consistente de backup, revisão de acesso ou plano claro de continuidade.',
             score: 0,
           },
           {
             label: 'Existem medidas isoladas',
             description:
-              'Algumas rotinas funcionam, mas ainda faltam validacao, governanca e frequencia.',
+              'Algumas rotinas funcionam, mas ainda faltam validação, governança e frequência.',
             score: 1,
           },
           {
-            label: 'O essencial esta em operacao',
+            label: 'O essencial está em operação',
             description:
               'Backups e controles principais existem, embora ainda precisem de refinamento.',
             score: 2,
           },
           {
-            label: 'Seguranca com disciplina operacional',
+            label: 'Segurança com disciplina operacional',
             description:
-              'Backup, acesso e continuidade seguem rotina, teste e criterio definidos.',
+              'Backup, acesso e continuidade seguem rotina, teste e critério definidos.',
             score: 3,
           },
         ],
       },
       {
         id: 'integration',
-        prompt: 'Os setores trabalham com sistemas e informacoes integrados?',
+        prompt: 'Os setores trabalham com sistemas e informações integrados?',
         helper:
-          'Observe se a empresa depende de planilhas soltas, retrabalho manual ou troca de informacao desconectada.',
+          'Observe se a empresa depende de planilhas soltas, retrabalho manual ou troca de informação desconectada.',
         options: [
           {
             label: 'Processos muito fragmentados',
             description:
-              'As equipes dependem de controles paralelos e a informacao fica espalhada.',
+              'As equipes dependem de controles paralelos e a informação fica espalhada.',
             score: 0,
           },
           {
-            label: 'Algumas integracoes existem',
+            label: 'Algumas integrações existem',
             description:
-              'Existem tentativas de centralizacao, mas o retrabalho ainda e frequente.',
+              'Existem tentativas de centralização, mas o retrabalho ainda é frequente.',
             score: 1,
           },
           {
-            label: 'Integracao funcional na maior parte do fluxo',
+            label: 'Integração funcional na maior parte do fluxo',
             description:
-              'Os setores principais conseguem operar com menos ruido e menos duplicidade.',
+              'Os setores principais conseguem operar com menos ruído e menos duplicidade.',
             score: 2,
           },
           {
-            label: 'Informacao conectada para operar e decidir',
+            label: 'Informação conectada para operar e decidir',
             description:
-              'Os dados circulam entre areas com processo definido e baixa friccao operacional.',
+              'Os dados circulam entre áreas com processo definido e baixa fricção operacional.',
             score: 3,
           },
         ],
       },
       {
         id: 'governance',
-        prompt: 'A lideranca consegue decidir o que priorizar na TI?',
+        prompt: 'A liderança consegue decidir o que priorizar na TI?',
         helper:
-          'Considere se existem dados, criterios e previsibilidade para saber o que precisa ser resolvido primeiro.',
+          'Considere se existem dados, critérios e previsibilidade para saber o que precisa ser resolvido primeiro.',
         options: [
           {
-            label: 'As prioridades mudam conforme a urgencia',
+            label: 'As prioridades mudam conforme a urgência',
             description:
-              'Cada problema parece critico e a empresa reage sem clareza do impacto real.',
+              'Cada problema parece crítico e a empresa reage sem clareza do impacto real.',
             score: 0,
           },
           {
-            label: 'Ha alguma nocao de prioridade',
+            label: 'Há alguma noção de prioridade',
             description:
-              'Existe percepcao do que incomoda mais, mas ainda falta consistencia para decidir.',
+              'Existe percepção do que incomoda mais, mas ainda falta consistência para decidir.',
             score: 1,
           },
           {
-            label: 'As decisoes ja seguem algum criterio',
+            label: 'As decisões já seguem algum critério',
             description:
-              'Os gargalos sao conhecidos e a lideranca consegue avaliar riscos com mais seguranca.',
+              'Os gargalos são conhecidos e a liderança consegue avaliar riscos com mais segurança.',
             score: 2,
           },
           {
-            label: 'A governanca e orientada por visibilidade',
+            label: 'A governança é orientada por visibilidade',
             description:
-              'A empresa decide com base em indicadores, contexto tecnico e plano claro de evolucao.',
+              'A empresa decide com base em indicadores, contexto técnico e plano claro de evolução.',
             score: 3,
           },
         ],
@@ -503,12 +503,12 @@ export const ptBRContent: SiteContent = {
         minScore: 0,
         maxScore: 6,
         label: 'Faixa 1',
-        title: 'Operacao reativa',
+        title: 'Operação reativa',
         description:
-          'A empresa ainda depende muito de urgencia, improviso e baixa visibilidade para sustentar a rotina.',
+          'A empresa ainda depende muito de urgência, improviso e baixa visibilidade para sustentar a rotina.',
         recommendations: [
-          'Padronizar os pontos mais instaveis do ambiente para reduzir reincidencia.',
-          'Criar visibilidade minima sobre chamados, ativos e indisponibilidades.',
+          'Padronizar os pontos mais instáveis do ambiente para reduzir reincidência.',
+          'Criar visibilidade mínima sobre chamados, ativos e indisponibilidades.',
           'Definir um plano inicial de suporte, backup e continuidade.',
         ],
       },
@@ -517,13 +517,13 @@ export const ptBRContent: SiteContent = {
         minScore: 7,
         maxScore: 12,
         label: 'Faixa 2',
-        title: 'Operacao em estruturacao',
+        title: 'Operação em estruturação',
         description:
-          'Ja existe base para evoluir, mas ainda ha gargalos recorrentes e dependencias que limitam a previsibilidade.',
+          'Já existe base para evoluir, mas ainda há gargalos recorrentes e dependências que limitam a previsibilidade.',
         recommendations: [
-          'Consolidar monitoramento e documentacao das frentes mais sensiveis.',
-          'Priorizar automacao e padronizacao onde ainda existe retrabalho operacional.',
-          'Transformar praticas isoladas em rotina tecnica recorrente.',
+          'Consolidar monitoramento e documentação das frentes mais sensíveis.',
+          'Priorizar automação e padronização onde ainda existe retrabalho operacional.',
+          'Transformar práticas isoladas em rotina técnica recorrente.',
         ],
       },
       {
@@ -533,10 +533,10 @@ export const ptBRContent: SiteContent = {
         label: 'Faixa 3',
         title: 'Base madura para otimizar',
         description:
-          'A operacao ja tem disciplina suficiente para avancar em ganho de capacidade, seguranca e eficiencia.',
+          'A operação já tem disciplina suficiente para avançar em ganho de capacidade, segurança e eficiência.',
         recommendations: [
           'Expandir o uso de indicadores para orientar crescimento e capacidade.',
-          'Revisar custos, integracoes e oportunidades de ganho continuo.',
+          'Revisar custos, integrações e oportunidades de ganho contínuo.',
           'Acelerar melhorias estruturais com menor risco de ruptura operacional.',
         ],
       },
@@ -553,123 +553,144 @@ export const ptBRContent: SiteContent = {
         notes: 'Contexto adicional',
       },
       notesPlaceholder:
-        'Conte rapidamente o principal problema hoje: chamados, rede, suporte, crescimento, seguranca ou outro ponto relevante.',
+        'Conte rapidamente o principal problema hoje: chamados, rede, suporte, crescimento, segurança ou outro ponto relevante.',
       privacyNote:
-        'Usamos essas informacoes apenas para retorno comercial sobre o diagnostico enviado.',
+        'Usamos essas informações apenas para retorno comercial sobre o diagnóstico enviado.',
       submitLabel: 'Ver resultado e enviar lead',
-      submittingLabel: 'Enviando diagnostico',
+      submittingLabel: 'Enviando diagnóstico',
       requiredMessage: 'Preencha nome, empresa, e-mail e WhatsApp para continuar.',
-      invalidEmailMessage: 'Informe um e-mail valido para receber o retorno.',
+      invalidEmailMessage: 'Informe um e-mail válido para receber o retorno.',
     },
     result: {
-      title: 'Recomendacoes imediatas',
+      title: 'Recomendações imediatas',
       description:
-        'Este resultado ajuda a equipe comercial e tecnica a entrar na conversa ja com contexto de maturidade, gargalos e proximo passo sugerido.',
-      scoreLabel: 'Pontuacao',
-      levelLabel: 'Nivel identificado',
-      recommendationsLabel: 'Recomendacoes',
+        'Este resultado ajuda a equipe comercial e técnica a entrar na conversa já com contexto de maturidade, gargalos e próximo passo sugerido.',
+      scoreLabel: 'Pontuação',
+      levelLabel: 'Nível identificado',
+      recommendationsLabel: 'Recomendações',
       answersLabel: 'Leitura das respostas',
       whatsappLabel: 'Enviar pelo WhatsApp',
       emailLabel: 'Enviar por e-mail',
-      restartLabel: 'Refazer diagnostico',
+      restartLabel: 'Refazer diagnóstico',
       successMessage:
-        'Lead enviado com sucesso. Agora voce pode continuar a conversa pelo WhatsApp com o resumo pronto.',
+        'Lead enviado com sucesso. Agora você pode continuar a conversa pelo WhatsApp com o resumo pronto.',
       fallbackMessage:
-        'O resultado foi gerado, mas nenhum webhook esta configurado neste ambiente. Use o WhatsApp ou o e-mail para encaminhar o resumo agora.',
+        'O resultado foi gerado, mas nenhum webhook está configurado neste ambiente. Use o WhatsApp ou o e-mail para encaminhar o resumo agora.',
       errorMessage:
-        'Nao foi possivel enviar o lead automaticamente. O resultado continua disponivel e pode ser compartilhado pelo WhatsApp ou por e-mail.',
+        'Não foi possível enviar o lead automaticamente. O resultado continua disponível e pode ser compartilhado pelo WhatsApp ou por e-mail.',
     },
   },
   support: {
     meta: {
       title: 'MAGINF Suporte | Baixe o cliente remoto oficial',
       description:
-        'Central de suporte MAGINF para download do cliente remoto, orientacao rapida e acesso aos canais oficiais de atendimento.',
+        'Central de suporte MAGINF para download do cliente remoto, WhatsApp técnico e e-mail suporte@maginf.com.br.',
     },
     eyebrow: 'Central de suporte',
-    title: 'Baixe o cliente remoto e entre em',
-    highlight: ' atendimento em poucos minutos',
+    title: 'Baixe o cliente remoto e receba',
+    highlight: ' suporte assistido em minutos',
     description:
-      'Esta pagina foi pensada para acelerar o suporte assistido. O usuario baixa o cliente remoto, executa o acesso e segue a sessao com a equipe MAGINF pelos canais oficiais.',
+      'Baixe o cliente, execute no equipamento que precisa de suporte e fale com a equipe técnica da MAGINF pelo canal oficial.',
     downloadLabel: 'Baixar cliente remoto',
-    alternativeLabel: 'Falar com suporte',
+    alternativeLabel: 'Falar com o suporte',
     homeLabel: 'Voltar ao site',
     copyLinkLabel: 'Copiar link',
     copySuccessLabel: 'Link copiado',
-    callLabel: 'Ligar para suporte',
+    callLabel: 'Ligar para o suporte',
     remoteBadge: 'Acesso remoto',
-    launcherTitle: 'MAGINF Support Launcher',
+    launcherTitle: 'Cliente de Suporte MAGINF',
     downloadPath: '/downloads/maginf-cliente-remoto.exe',
     downloadFileName: 'maginf-cliente-remoto.exe',
     downloadStatusChecking: 'Verificando disponibilidade',
     downloadStatusReady: 'Arquivo pronto para download',
-    downloadStatusUnavailable: 'Arquivo em preparacao',
+    downloadStatusUnavailable: 'Arquivo aguardando publicação',
     readyMessage:
-      'O executavel foi localizado neste dominio. Baixe, execute e informe o codigo exibido ao analista da MAGINF.',
+      'O executável foi encontrado neste domínio. Baixe, execute e informe o código exibido ao analista da MAGINF.',
     unavailableMessage:
-      'A central ja esta ativa, mas o executavel ainda precisa ser publicado nesta URL. Enquanto isso, acione o suporte e compartilhe esta pagina.',
+      'A página de suporte já está no ar, mas o executável ainda precisa ser publicado nesta URL. Enquanto isso, fale com o suporte técnico.',
     note:
-      'O cliente remoto deve ser executado apenas durante o atendimento assistido e enviado sempre pelos canais oficiais da MAGINF.',
+      'Use este cliente apenas durante uma sessão de suporte assistido com a equipe MAGINF.',
     metrics: [
       { value: '24/7', label: 'Janela preparada para suporte monitorado' },
-      { value: '< 2 min', label: 'Fluxo pensado para iniciar o atendimento rapido' },
-      { value: '1 link', label: 'Distribuicao centralizada em um unico endereco' },
+      { value: '< 2 min', label: 'Fluxo pensado para iniciar o atendimento rápido' },
+      { value: '1 link', label: 'Distribuição centralizada em um único endereço' },
     ],
     downloadMeta: [
       { label: 'Plataforma', value: 'Windows' },
-      { label: 'Modelo', value: 'Cliente remoto assistido' },
-      { label: 'Entrega', value: 'Dominio oficial MAGINF' },
+      { label: 'Formato', value: 'Cliente remoto assistido' },
+      { label: 'Entrega', value: 'Domínio oficial MAGINF' },
     ],
-    stepsTitle: 'Fluxo rapido de atendimento',
-    stepsDescription: 'Seu acesso remoto comeca em tres movimentos simples.',
+    stepsTitle: 'Fluxo rápido de suporte',
+    stepsDescription: 'Tudo o que o usuário precisa está em um só lugar.',
     steps: [
       {
         id: '01',
-        title: 'Baixe o executavel',
+        title: 'Baixe o executável',
         description:
-          'Use o botao principal para baixar o cliente remoto a partir deste dominio oficial da MAGINF.',
+          'Clique no botão principal e baixe o cliente remoto neste domínio oficial.',
       },
       {
         id: '02',
         title: 'Execute o arquivo',
         description:
-          'Abra o cliente remoto no computador que precisa de suporte e aguarde a tela de conexao ou identificacao.',
+          'Abra o arquivo no computador que precisa de suporte.',
       },
       {
         id: '03',
         title: 'Fale com o analista',
         description:
-          'Envie o codigo, confirme a sessao por WhatsApp, telefone ou e-mail e siga com o atendimento assistido.',
+          'Envie o código de acesso por WhatsApp, telefone ou e-mail.',
       },
     ],
-    benefitsTitle: 'Por que usar esta central',
+    quickActionsTitle: 'Canais de suporte',
+    quickActions: [
+      {
+        label: 'WhatsApp técnico',
+        value: '+55 (11) 4610-6363',
+        href: 'https://wa.me/551146106363',
+        icon: 'whatsapp',
+      },
+      {
+        label: 'Telefone',
+        value: '+55 (11) 4610-6363',
+        href: 'tel:+551146106363',
+        icon: 'phone',
+      },
+      {
+        label: 'E-mail',
+        value: 'suporte@maginf.com.br',
+        href: 'mailto:suporte@maginf.com.br?subject=Suporte%20t%C3%A9cnico%20MAGINF',
+        icon: 'email',
+      },
+    ],
+    benefitsTitle: 'Por que usar esta página',
     benefits: [
       {
-        title: 'Distribuicao oficial',
+        title: 'Distribuição oficial',
         description:
-          'O download fica concentrado em uma pagina propria para reduzir duvidas e evitar arquivos enviados sem contexto.',
+          'O download fica concentrado em uma página própria para reduzir dúvidas e evitar o compartilhamento sem contexto.',
       },
       {
-        title: 'Sessao guiada',
+        title: 'Sessão guiada',
         description:
-          'A experiencia foi montada para conduzir o usuario do download ao contato com a equipe sem atrito.',
+          'A experiência foi pensada para levar o usuário do download ao contato com o analista com menos atrito.',
       },
       {
-        title: 'Mais confianca',
+        title: 'Mais confiança',
         description:
-          'Contato, orientacao e arquivo ficam reunidos em uma unica interface com identidade visual forte da MAGINF.',
+          'Canais, orientação e arquivo ficam reunidos em uma interface forte e alinhada à marca MAGINF.',
       },
     ],
     supportDeskTitle: 'Mesa de suporte MAGINF',
     supportDeskDescription:
-      'Se o download nao iniciar ou o usuario estiver em outro dispositivo, use um dos canais abaixo para receber orientacao imediata.',
+      'Se o download não iniciar, use um dos canais abaixo e a equipe orienta a sessão imediatamente.',
   },
   contact: {
     eyebrow: 'Contato comercial',
-    title: 'Quando a conversa precisa avancar, fale com a equipe por canais',
+    title: 'Quando a conversa precisa avançar, fale com a equipe por canais',
     highlight: ' diretos',
     description:
-      'Se voce ja identificou esse cenario na sua empresa, pode chamar agora por WhatsApp, telefone ou e-mail. Deixamos os canais principais bem visiveis para acelerar o proximo passo.',
+      'Se você já identificou esse cenário na sua empresa, pode chamar agora por WhatsApp, telefone ou e-mail. Deixamos os canais principais bem visíveis para acelerar o próximo passo.',
     actions: [
       {
         label: 'WhatsApp comercial',
@@ -678,7 +699,7 @@ export const ptBRContent: SiteContent = {
       },
       {
         label: 'Enviar e-mail',
-        href: 'mailto:contato@maginf.com.br?subject=Diagnostico%20tecnico%20MAGINF',
+        href: 'mailto:contato@maginf.com.br?subject=Diagn%C3%B3stico%20t%C3%A9cnico%20MAGINF',
         tone: 'secondary',
       },
       {
@@ -690,13 +711,13 @@ export const ptBRContent: SiteContent = {
     badges: [
       { value: 'Guarulhos, SP', label: 'Base comercial' },
       { value: '8h30-17h30', label: 'Atendimento comercial' },
-      { value: '24/7', label: 'Monitoramento de operacao' },
+      { value: '24/7', label: 'Monitoramento de operação' },
     ],
     cards: [
       {
         label: 'WhatsApp',
         value: '+55 (11) 3514-2933',
-        description: 'Canal mais rapido para avaliacao inicial e alinhamento comercial.',
+        description: 'Canal mais rápido para avaliação inicial e alinhamento comercial.',
         href: 'https://wa.me/5511351429330',
         icon: 'whatsapp',
         featured: true,
@@ -704,48 +725,48 @@ export const ptBRContent: SiteContent = {
       {
         label: 'Telefone',
         value: '+55 (11) 4610-6363',
-        description: 'Contato comercial durante o horario de atendimento.',
+        description: 'Contato comercial durante o horário de atendimento.',
         href: 'tel:+551146106363',
         icon: 'phone',
       },
       {
         label: 'E-mail',
         value: 'contato@maginf.com.br',
-        description: 'Ideal para escopo, proposta e documentacao inicial.',
-        href: 'mailto:contato@maginf.com.br?subject=Diagnostico%20tecnico%20MAGINF',
+        description: 'Ideal para escopo, proposta e documentação inicial.',
+        href: 'mailto:contato@maginf.com.br?subject=Diagn%C3%B3stico%20t%C3%A9cnico%20MAGINF',
         icon: 'email',
       },
       {
-        label: 'Endereco',
+        label: 'Endereço',
         value: 'Rua Carmela Antonia Fanganiello Cecchinato, 301',
         description: 'Guarulhos, SP. Base comercial divulgada no site institucional.',
         href: 'https://maps.google.com/?q=Rua+Carmela+Antonia+Fanganiello+Cecchinato+301+Guarulhos+SP',
         icon: 'location',
       },
       {
-        label: 'Horario',
+        label: 'Horário',
         value: 'Seg. a Sex. 8h30-17h30',
-        description: 'Atendimento comercial em horario util.',
+        description: 'Atendimento comercial em horário útil.',
         icon: 'hours',
       },
     ],
     note:
-      'Contato integrado com base nos canais publicos oficiais divulgados pela MAGINF.',
+      'Contato integrado com base nos canais públicos oficiais divulgados pela MAGINF.',
   },
   footer: {
     description:
       'Ajudamos empresas a sair da TI reativa e operar com mais estabilidade, visibilidade e previsibilidade.',
     cta: 'Falar com consultor',
     ctaHref: '#contato',
-    navigationTitle: 'Navegacao',
+    navigationTitle: 'Navegação',
     groups: [
       {
         title: 'Entregas',
         items: [
-          'Diagnostico tecnico com leitura de risco',
-          'Plano de acao priorizado',
-          'Monitoramento e sustentacao continua',
-          'Evolucao com visao de capacidade',
+          'Diagnóstico técnico com leitura de risco',
+          'Plano de ação priorizado',
+          'Monitoramento e sustentação contínua',
+          'Evolução com visão de capacidade',
         ],
       },
       {

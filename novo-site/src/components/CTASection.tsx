@@ -35,6 +35,10 @@ interface LeadState {
   notes: string;
 }
 
+interface SubmitErrorResponse {
+  error?: string;
+}
+
 const DEFAULT_CONTACT_ENDPOINT = '/api/contact';
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -142,7 +146,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
     maxScore,
     recommendationLines,
     language === 'pt-BR'
-      ? 'Ola MAGINF, conclui o diagnostico online.'
+      ? 'Olá MAGINF, concluí o diagnóstico online.'
       : 'Hello MAGINF, I completed the online assessment.',
   );
   const leadMessage = formatAssessmentMessage(
@@ -153,7 +157,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
     maxScore,
     recommendationLines,
     language === 'pt-BR'
-      ? 'Diagnostico online enviado pelo site MAGINF.'
+      ? 'Diagnóstico online enviado pelo site MAGINF.'
       : 'Online assessment sent from the MAGINF website.',
   );
   const answerSnapshot = content.questions.map((question) => ({
@@ -166,7 +170,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
   const whatsappHref = buildWhatsappUrl(getContactHref(contact, 'whatsapp'), whatsappText);
   const emailHref = buildMailtoUrl(
     getContactHref(contact, 'email'),
-    `${language === 'pt-BR' ? 'Ola equipe MAGINF,' : 'Hello MAGINF team,'}\n\n${whatsappText}`,
+    `${language === 'pt-BR' ? 'Olá equipe MAGINF,' : 'Hello MAGINF team,'}\n\n${whatsappText}`,
   );
 
   const resetFlow = () => {
@@ -237,7 +241,22 @@ export default function CTASection({ content, contact, language }: CTASectionPro
           return;
         }
 
-        throw new Error(`Webhook error: ${response.status}`);
+        const contentType = response.headers.get('content-type') ?? '';
+        let details = `Webhook error: ${response.status}`;
+
+        if (contentType.includes('application/json')) {
+          const body = (await response.json().catch(() => null)) as SubmitErrorResponse | null;
+          if (body?.error) {
+            details = `${details} - ${body.error}`;
+          }
+        } else {
+          const text = (await response.text()).trim();
+          if (text) {
+            details = `${details} - ${text}`;
+          }
+        }
+
+        throw new Error(details);
       }
 
       setSubmitState('success');
