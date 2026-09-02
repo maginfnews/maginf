@@ -69,7 +69,7 @@ interface VercelLikeResponse {
 const resend = new Resend(process.env.RESEND_API_KEY);
 const resendFromEmail = process.env.RESEND_FROM_EMAIL || 'contato@notificacao.maginf.com.br';
 const resendFromName = process.env.RESEND_FROM_NAME || 'Site MAGINF';
-const resendContactTo = process.env.RESEND_CONTACT_TO || 'maicon@magpass.com.br';
+const resendContactTo = process.env.RESEND_CONTACT_TO || 'site@maginf.com.br';
 
 function parseRequestBody(body: VercelLikeRequest['body']) {
   if (!body) {
