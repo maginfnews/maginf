@@ -24,6 +24,10 @@ function getInitialLanguage(): Language {
     return 'pt-BR';
   }
 
+  if (window.location.pathname === '/en' || window.location.pathname.startsWith('/en/')) {
+    return 'en';
+  }
+
   const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
   return storedLanguage === 'en' ? 'en' : 'pt-BR';
 }

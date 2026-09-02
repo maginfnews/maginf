@@ -11,6 +11,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         suporte: resolve(__dirname, 'suporte/index.html'),
         support: resolve(__dirname, 'support/index.html'),
+        english: resolve(__dirname, 'en/index.html'),
       },
     },
   },

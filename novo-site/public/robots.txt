@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /suporte/
+Disallow: /support/
+
+Sitemap: https://maginf.com.br/sitemap.xml
