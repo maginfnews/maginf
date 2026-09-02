@@ -555,7 +555,7 @@ export const ptBRContent: SiteContent = {
       notesPlaceholder:
         'Conte rapidamente o principal problema hoje: chamados, rede, suporte, crescimento, segurança ou outro ponto relevante.',
       privacyNote:
-        'Usamos essas informações apenas para retorno comercial sobre o diagnóstico enviado.',
+        'Usamos essas informações para gerar uma leitura assistida por IA e fazer o retorno comercial sobre o diagnóstico enviado.',
       submitLabel: 'Ver resultado e enviar lead',
       submittingLabel: 'Enviando diagnóstico',
       requiredMessage: 'Preencha nome, empresa, e-mail e WhatsApp para continuar.',

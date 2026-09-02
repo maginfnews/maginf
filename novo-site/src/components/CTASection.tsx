@@ -39,7 +39,21 @@ interface SubmitErrorResponse {
   error?: string;
 }
 
+interface AiDiagnosis {
+  level: string;
+  score: string;
+  summary: string;
+  risks: string[];
+  priorities: string[];
+  nextStep: string;
+}
+
+interface AiDiagnosisResponse {
+  diagnosis?: AiDiagnosis;
+}
+
 const DEFAULT_CONTACT_ENDPOINT = '/api/contact';
+const AI_DIAGNOSIS_ENDPOINT = '/api/diagnostico';
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function getMaxScore(questions: AssessmentQuestion[]) {
@@ -126,6 +140,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
   const [questionError, setQuestionError] = useState<string | null>(null);
   const [leadError, setLeadError] = useState<string | null>(null);
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
+  const [aiDiagnosis, setAiDiagnosis] = useState<AiDiagnosis | null>(null);
 
   const currentQuestion = content.questions[questionIndex];
   const maxScore = getMaxScore(content.questions);
@@ -181,6 +196,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
     setQuestionError(null);
     setLeadError(null);
     setSubmitState('idle');
+    setAiDiagnosis(null);
   };
 
   const submitLead = async (event: FormEvent<HTMLFormElement>) => {
@@ -198,6 +214,30 @@ export default function CTASection({ content, contact, language }: CTASectionPro
 
     setLeadError(null);
     setSubmitState('submitting');
+
+    let generatedDiagnosis: AiDiagnosis | null = null;
+    try {
+      const diagnosisResponse = await fetch(AI_DIAGNOSIS_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          language,
+          assessment: {
+            totalScore,
+            maxScore,
+            range: resultRange,
+            answers: answerSnapshot,
+          },
+        }),
+      });
+      if (diagnosisResponse.ok) {
+        const diagnosisBody = await diagnosisResponse.json() as AiDiagnosisResponse;
+        if (diagnosisBody.diagnosis) generatedDiagnosis = diagnosisBody.diagnosis;
+      }
+    } catch (error) {
+      console.warn('AI diagnosis unavailable; using score-based result', error);
+    }
+    setAiDiagnosis(generatedDiagnosis);
 
     const payload = {
       source: 'maginf-online-diagnostic',
@@ -223,6 +263,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
         maxScore,
         range: resultRange,
         answers: answerSnapshot,
+        aiDiagnosis: generatedDiagnosis,
       },
     };
 
@@ -464,6 +505,19 @@ export default function CTASection({ content, contact, language }: CTASectionPro
                     <CircleCheckBig className="text-tertiary" size={15} />
                     {content.stages.result}
                   </div>
+                  {aiDiagnosis ? (
+                    <div className="mt-6 rounded-3xl border border-tertiary/25 bg-tertiary/8 p-6" aria-live="polite">
+                      <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">{language === 'pt-BR' ? 'Leitura personalizada por IA' : 'AI-powered assessment'}</div>
+                      <h3 className="mt-3 font-headline text-2xl font-black text-white">{aiDiagnosis.level}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-white/70">{aiDiagnosis.summary}</p>
+                      <div className="mt-5 grid gap-5 md:grid-cols-2">
+                        <div><h4 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/45">{language === 'pt-BR' ? 'Riscos observados' : 'Observed risks'}</h4><ul className="mt-2 space-y-2 text-sm text-white/70">{aiDiagnosis.risks.map((item) => <li key={item}>• {item}</li>)}</ul></div>
+                        <div><h4 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/45">{language === 'pt-BR' ? 'Prioridades' : 'Priorities'}</h4><ul className="mt-2 space-y-2 text-sm text-white/70">{aiDiagnosis.priorities.map((item) => <li key={item}>• {item}</li>)}</ul></div>
+                      </div>
+                      <p className="mt-5 text-sm font-semibold text-white">{language === 'pt-BR' ? 'Próximo passo: ' : 'Next step: '}{aiDiagnosis.nextStep}</p>
+                    </div>
+                  ) : null}
+
                   <div className="mt-6 rounded-3xl border border-tertiary/25 bg-tertiary/8 p-6">
                     <div className="flex flex-wrap items-center justify-between gap-4">
                       <div>

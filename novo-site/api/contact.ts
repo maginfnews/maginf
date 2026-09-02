@@ -14,11 +14,21 @@ interface AssessmentRangePayload {
   description?: string;
 }
 
+interface AiDiagnosisPayload {
+  level?: string;
+  score?: string;
+  summary?: string;
+  risks?: string[];
+  priorities?: string[];
+  nextStep?: string;
+}
+
 interface AssessmentPayload {
   totalScore?: number;
   maxScore?: number;
   range?: AssessmentRangePayload;
   answers?: AssessmentAnswerPayload[];
+  aiDiagnosis?: AiDiagnosisPayload | null;
 }
 
 interface LeadPayload {
@@ -157,6 +167,20 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       assessment?.totalScore !== undefined && assessment?.maxScore !== undefined
         ? `${assessment.totalScore}/${assessment.maxScore}`
         : 'Nao informado';
+    const aiDiagnosis = assessment?.aiDiagnosis;
+    const aiRisksHtml = (aiDiagnosis?.risks ?? []).slice(0, 4).map((risk) => `<li>${escapeHtml(String(risk).slice(0, 220))}</li>`).join('');
+    const aiPrioritiesHtml = (aiDiagnosis?.priorities ?? []).slice(0, 4).map((priority) => `<li>${escapeHtml(String(priority).slice(0, 220))}</li>`).join('');
+    const aiHtml = aiDiagnosis?.summary
+      ? `
+        <h2>Leitura personalizada por IA</h2>
+        <p><b>Nivel:</b> ${escapeHtml(String(aiDiagnosis.level ?? 'Nao informado'))}</p>
+        <p><b>Pontuacao interpretada:</b> ${escapeHtml(String(aiDiagnosis.score ?? assessmentScore))}</p>
+        <p><b>Resumo:</b><br/>${nl2br(String(aiDiagnosis.summary).slice(0, 600))}</p>
+        <p><b>Riscos observados:</b></p><ul>${aiRisksHtml || '<li>Nao informado</li>'}</ul>
+        <p><b>Prioridades:</b></p><ul>${aiPrioritiesHtml || '<li>Nao informado</li>'}</ul>
+        <p><b>Proximo passo:</b> ${escapeHtml(String(aiDiagnosis.nextStep ?? 'Nao informado'))}</p>
+      `
+      : '';
 
     const answersHtml = hasAssessment
       ? `
@@ -194,6 +218,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       <p><b>Data do envio:</b> ${safeSubmittedAt}</p>
       <p><b>Pagina:</b> ${safePageUrl}</p>
       <p><b>Mensagem:</b><br/>${safeMessage}</p>
+      ${aiHtml}
       ${answersHtml}
     `;
 

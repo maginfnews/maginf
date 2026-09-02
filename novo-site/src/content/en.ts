@@ -555,7 +555,7 @@ export const enContent: SiteContent = {
       notesPlaceholder:
         'Briefly describe the main issue today: support, network, growth, security or any other relevant point.',
       privacyNote:
-        'We use this information only to follow up on the assessment you submitted.',
+        'We use this information to generate an AI-assisted assessment and follow up commercially on your submission.',
       submitLabel: 'See result and send lead',
       submittingLabel: 'Sending assessment',
       requiredMessage: 'Fill in name, company, email and WhatsApp before continuing.',
