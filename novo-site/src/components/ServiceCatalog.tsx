@@ -8,6 +8,11 @@ interface ServiceCatalogProps {
   content: ServicesContent;
 }
 
+const servicePaths: Record<string, string> = {
+  '1': '/servicos/suporte-gerenciado/',
+  '5': '/servicos/backup-e-seguranca/',
+};
+
 const iconMap: Record<Service['icon'], LucideIcon> = {
   engineering: Settings,
   settings_input_component: Network,
@@ -103,7 +108,7 @@ export default function ServiceCatalog({ content }: ServiceCatalogProps) {
                       {content.categoryLabels[service.category]}
                     </span>
                     <a
-                      href="#contato"
+                      href={servicePaths[service.id] ?? '#contato'}
                       aria-label={`${content.ctaLabel}: ${service.title}`}
                       className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-tertiary transition-transform group-hover:translate-x-1"
                     >
