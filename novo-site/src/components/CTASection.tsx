@@ -55,6 +55,17 @@ interface AiDiagnosisResponse {
 const DEFAULT_CONTACT_ENDPOINT = '/api/contact';
 const AI_DIAGNOSIS_ENDPOINT = '/api/diagnostico';
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const REQUEST_TIMEOUT_MS = 15_000;
+
+async function fetchWithTimeout(input: RequestInfo | URL, init?: RequestInit) {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  try {
+    return await fetch(input, { ...init, signal: controller.signal });
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
 
 function getMaxScore(questions: AssessmentQuestion[]) {
   return questions.reduce(
@@ -140,6 +151,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
   const [questionError, setQuestionError] = useState<string | null>(null);
   const [leadError, setLeadError] = useState<string | null>(null);
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
+  const [submitErrorDetails, setSubmitErrorDetails] = useState<string | null>(null);
   const [aiDiagnosis, setAiDiagnosis] = useState<AiDiagnosis | null>(null);
 
   const currentQuestion = content.questions[questionIndex];
@@ -196,6 +208,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
     setQuestionError(null);
     setLeadError(null);
     setSubmitState('idle');
+    setSubmitErrorDetails(null);
     setAiDiagnosis(null);
   };
 
@@ -213,11 +226,12 @@ export default function CTASection({ content, contact, language }: CTASectionPro
     }
 
     setLeadError(null);
+    setSubmitErrorDetails(null);
     setSubmitState('submitting');
 
     let generatedDiagnosis: AiDiagnosis | null = null;
     try {
-      const diagnosisResponse = await fetch(AI_DIAGNOSIS_ENDPOINT, {
+      const diagnosisResponse = await fetchWithTimeout(AI_DIAGNOSIS_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -268,7 +282,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
     };
 
     try {
-      const response = await fetch(DEFAULT_CONTACT_ENDPOINT, {
+      const response = await fetchWithTimeout(DEFAULT_CONTACT_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -279,6 +293,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
       if (!response.ok) {
         if (response.status === 404 || response.status === 405) {
           setSubmitState('fallback');
+          setSubmitErrorDetails('A API de contato não está publicada neste deploy. O resultado continua disponível e pode ser enviado por WhatsApp ou e-mail.');
           return;
         }
 
@@ -304,6 +319,9 @@ export default function CTASection({ content, contact, language }: CTASectionPro
     } catch (error) {
       console.error('Lead submission failed', error);
       setSubmitState('error');
+      setSubmitErrorDetails(error instanceof DOMException && error.name === 'AbortError'
+        ? 'O envio demorou mais que o esperado. Verifique a configuração de e-mail na Vercel e tente novamente.'
+        : 'O envio não foi concluído. Verifique a configuração RESEND_API_KEY e RESEND_CONTACT_TO na Vercel e tente novamente.');
     } finally {
       setStage('result');
     }
@@ -557,7 +575,8 @@ export default function CTASection({ content, contact, language }: CTASectionPro
                       </div>
                     </div>
                   </div>
-                  {submitMessage ? <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-sm leading-relaxed text-white/72">{submitMessage}</div> : null}
+                  {submitMessage ? <div role={submitState === 'error' ? 'alert' : undefined} aria-live="polite" className={`mt-6 rounded-2xl border px-5 py-4 text-sm leading-relaxed ${submitState === 'error' ? 'border-[#ffb38a]/40 bg-[#ffb38a]/10 text-[#ffd8c2]' : 'border-white/10 bg-white/[0.04] text-white/72'}`}>{submitMessage}</div> : null}
+                  {submitErrorDetails ? <div role="alert" aria-live="assertive" className="mt-3 rounded-2xl border border-[#ffb38a]/40 bg-[#ffb38a]/10 px-5 py-4 text-sm leading-relaxed text-[#ffd8c2]">{submitErrorDetails}</div> : null}
                   <div className="mt-8 flex flex-wrap gap-4">
                     <a href={whatsappHref} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-sm bg-tertiary px-8 py-4 font-headline text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-2xl shadow-tertiary/20 transition-all hover:brightness-110">
                       <MessageCircleMore size={16} />
