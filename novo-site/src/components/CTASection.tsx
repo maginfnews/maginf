@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
 import { motion } from 'motion/react';
 import {
   ArrowLeft,
@@ -17,6 +17,7 @@ import type {
   ContactContent,
   Language,
 } from '../types';
+import { trackMarketingEvent } from '../lib/marketingEvents';
 
 interface CTASectionProps {
   content: CTAContent;
@@ -153,6 +154,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
   const [submitErrorDetails, setSubmitErrorDetails] = useState<string | null>(null);
   const [aiDiagnosis, setAiDiagnosis] = useState<AiDiagnosis | null>(null);
+  const assessmentCompletedTracked = useRef(false);
 
   const currentQuestion = content.questions[questionIndex];
   const maxScore = getMaxScore(content.questions);
@@ -210,6 +212,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
     setSubmitState('idle');
     setSubmitErrorDetails(null);
     setAiDiagnosis(null);
+    assessmentCompletedTracked.current = false;
   };
 
   const submitLead = async (event: FormEvent<HTMLFormElement>) => {
@@ -315,6 +318,13 @@ export default function CTASection({ content, contact, language }: CTASectionPro
         throw new Error(details);
       }
 
+      trackMarketingEvent('generate_lead', {
+        assessment_score: totalScore,
+        assessment_max_score: maxScore,
+        assessment_level: resultRange.id,
+        ai_diagnosis_available: Boolean(generatedDiagnosis),
+        lead_source: 'online_diagnostic',
+      });
       setSubmitState('success');
     } catch (error) {
       console.error('Lead submission failed', error);
@@ -419,7 +429,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
                     <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/62">{content.summaryDescription}</p>
                   </div>
                   <div className="flex flex-wrap gap-4">
-                    <button type="button" onClick={() => setStage('questions')} className="inline-flex items-center gap-2 rounded-sm bg-tertiary px-8 py-4 font-headline text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-2xl shadow-tertiary/20 transition-all hover:brightness-110">
+                    <button type="button" onClick={() => { trackMarketingEvent('assessment_started', { question_count: content.questions.length, assessment_max_score: maxScore }); setStage('questions'); }} className="inline-flex items-center gap-2 rounded-sm bg-tertiary px-8 py-4 font-headline text-[12px] font-bold uppercase tracking-[0.22em] text-white shadow-2xl shadow-tertiary/20 transition-all hover:brightness-110">
                       {content.startLabel}
                       <ArrowRight size={16} />
                     </button>
@@ -465,7 +475,7 @@ export default function CTASection({ content, contact, language }: CTASectionPro
                       <ArrowLeft size={16} />
                       {content.previousLabel}
                     </button>
-                    <button type="button" onClick={() => { if (answers[currentQuestion.id] === undefined) { setQuestionError(content.answerRequiredMessage); return; } if (questionIndex === content.questions.length - 1) { setStage('lead'); return; } setQuestionIndex((index) => index + 1); }} className="inline-flex items-center gap-2 rounded-sm bg-tertiary px-6 py-3 font-headline text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-lg shadow-tertiary/20 transition-all hover:brightness-110">
+                    <button type="button" onClick={() => { if (answers[currentQuestion.id] === undefined) { setQuestionError(content.answerRequiredMessage); return; } if (questionIndex === content.questions.length - 1) { if (!assessmentCompletedTracked.current) { trackMarketingEvent('assessment_completed', { assessment_score: totalScore, assessment_max_score: maxScore, assessment_level: resultRange.id, question_count: content.questions.length }); assessmentCompletedTracked.current = true; } setStage('lead'); return; } setQuestionIndex((index) => index + 1); }} className="inline-flex items-center gap-2 rounded-sm bg-tertiary px-6 py-3 font-headline text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-lg shadow-tertiary/20 transition-all hover:brightness-110">
                       {questionIndex === content.questions.length - 1 ? content.lastQuestionLabel : content.nextLabel}
                       <ArrowRight size={16} />
                     </button>
