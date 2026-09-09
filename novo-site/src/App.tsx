@@ -12,6 +12,7 @@ import SectorsSection from './components/SectorsSection';
 import CTASection from './components/CTASection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import YellowSeptemberSection from './components/YellowSeptemberSection';
 
 const LANGUAGE_STORAGE_KEY = 'maginf-language';
 
@@ -66,6 +67,7 @@ export default function App() {
       <main>
         <Hero content={content.hero} />
         <FeaturesBar content={content.features} />
+        <YellowSeptemberSection language={language} />
         <ChallengesSection content={content.challenges} />
         <ServiceCatalog content={content.services} />
         <MaturitySection content={content.maturity} />

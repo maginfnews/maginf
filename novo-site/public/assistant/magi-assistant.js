@@ -24,6 +24,7 @@
       quick: ['Quais serviços vocês oferecem?', 'Como reduzir problemas recorrentes de TI?', 'Como funciona o diagnóstico online?'],
       stops: {
         inicio: ['Eu acompanho você. Posso mostrar como a MAGINF organiza a operação de TI.', 'Conhecer serviços', '#servicos'],
+        'setembro-amarelo': ['Setembro Amarelo: escutar também é estar presente. Posso mostrar os canais oficiais de apoio.', 'Ver campanha', '#setembro-amarelo'],
         servicos: ['Aqui estão as frentes que reduzem interrupções e devolvem previsibilidade.', 'Ver soluções', '#solucoes'],
         solucoes: ['Nosso método começa pelo cenário real e evolui para uma rotina técnica contínua.', 'Ver setores', '#setores'],
         setores: ['Se sua empresa depende de disponibilidade, o diagnóstico ajuda a priorizar o próximo passo.', 'Ir ao diagnóstico', '#diagnostico'],
@@ -44,6 +45,7 @@
       quick: ['Which services do you provide?', 'How can we reduce recurring IT problems?', 'How does the online assessment work?'],
       stops: {
         inicio: ['I can guide you through how MAGINF structures reliable IT operations.', 'Explore services', '#servicos'],
+        'setembro-amarelo': ['Yellow September is a reminder that listening is also presence. I can show the official support channels.', 'See campaign', '#setembro-amarelo'],
         servicos: ['These capabilities reduce interruptions and improve operational predictability.', 'See solutions', '#solucoes'],
         solucoes: ['Our method starts with your real environment and evolves into continuous operations.', 'See sectors', '#setores'],
         setores: ['If your business depends on availability, the assessment helps prioritize the next step.', 'Go to assessment', '#diagnostico'],
@@ -249,7 +251,7 @@
   function setupGuide() {
     window.clearTimeout(guideRetryTimer);
     guideObserver?.disconnect();
-    const ids = ['inicio', 'servicos', 'solucoes', 'setores', 'diagnostico', 'contato'];
+    const ids = ['inicio', 'setembro-amarelo', 'servicos', 'solucoes', 'setores', 'diagnostico', 'contato'];
     const available = ids.map((id) => ({ element: document.getElementById(id), stop: stopDefinition(id) })).filter((item) => item.element);
     if (!available.length) {
       guideRetryTimer = window.setTimeout(setupGuide, 500);
