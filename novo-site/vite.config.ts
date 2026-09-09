@@ -20,5 +20,6 @@ export default defineConfig({
   server: {
     // HMR can be disabled through DISABLE_HMR in restricted preview environments.
     hmr: process.env.DISABLE_HMR !== 'true',
+    allowedHosts: ['localhost', '.manus.computer'],
   },
 });
