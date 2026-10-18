@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react';
-import { Menu, X } from 'lucide-react';
+import { ExternalLink, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import type { BrandContent, Language, NavbarContent } from '../types';
 import BrandMark from './BrandMark';
@@ -19,7 +19,7 @@ export default function Navbar({
   onLanguageChange,
 }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const closeMenu = () => setIsOpen(false);
+const closeMenu = () => setIsOpen(false);
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050505]/90 backdrop-blur-xl">
@@ -46,6 +46,14 @@ export default function Navbar({
             onLanguageChange={onLanguageChange}
             label={content.languageLabel}
           />
+          <a
+            href="https://maginf.tomticket.com?account=3634816P30032022123536"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-sm border border-white/20 px-3 py-2 font-headline text-[10px] font-bold uppercase tracking-[0.16em] text-white/75 transition-colors hover:border-white/50 hover:text-white"
+          >
+            {content.clientAreaLabel} <ExternalLink size={13} aria-hidden="true" />
+          </a>
           <a
             href="#diagnostico"
             className="rounded-sm bg-tertiary px-4 py-2 font-headline text-[10px] font-bold uppercase tracking-[0.28em] text-white transition-all hover:brightness-105"
@@ -93,6 +101,15 @@ export default function Navbar({
                 expanded
                 className="pt-2"
               />
+              <a
+                href="https://maginf.tomticket.com?account=3634816P30032022123536"
+                target="_blank"
+                rel="noreferrer"
+                onClick={closeMenu}
+                className="inline-flex w-fit items-center gap-1.5 pt-2 font-headline text-[11px] font-bold uppercase tracking-[0.22em] text-white/70 transition-colors hover:text-white"
+              >
+                {content.clientAreaLabel} <ExternalLink size={14} aria-hidden="true" />
+              </a>
               <a
                 href="#diagnostico"
                 onClick={closeMenu}

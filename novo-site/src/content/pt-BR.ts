@@ -15,6 +15,7 @@ export const ptBRContent: SiteContent = {
     languageLabel: 'Idioma',
     cta: 'Falar com consultor',
     mobileCta: 'Agendar diagnóstico',
+    clientAreaLabel: 'Área do cliente',
     openMenuLabel: 'Abrir menu',
     closeMenuLabel: 'Fechar menu',
     links: [

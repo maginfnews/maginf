@@ -15,6 +15,7 @@ export const enContent: SiteContent = {
     languageLabel: 'Language',
     cta: 'Talk to a consultant',
     mobileCta: 'Schedule assessment',
+    clientAreaLabel: 'Client area',
     openMenuLabel: 'Open menu',
     closeMenuLabel: 'Close menu',
     links: [

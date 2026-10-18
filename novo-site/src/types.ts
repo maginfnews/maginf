@@ -56,6 +56,7 @@ export interface NavbarContent {
   links: NavLink[];
   cta: string;
   mobileCta: string;
+  clientAreaLabel: string;
   languageLabel: string;
   openMenuLabel: string;
   closeMenuLabel: string;
