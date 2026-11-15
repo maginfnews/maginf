@@ -92,7 +92,7 @@ function getContactHref(contact: ContactContent, icon: 'whatsapp' | 'email') {
   const cardHref = contact.cards.find((card) => card.icon === icon)?.href;
   if (cardHref) return cardHref;
   return icon === 'whatsapp'
-    ? contact.actions.find((action) => action.href.includes('wa.me'))?.href ?? 'https://wa.me/5511351429330'
+    ? contact.actions.find((action) => action.href.includes('wa.me'))?.href ?? 'https://wa.me/551146106363'
     : contact.actions.find((action) => action.href.startsWith('mailto:'))?.href ?? 'mailto:contato@maginf.com.br';
 }
 

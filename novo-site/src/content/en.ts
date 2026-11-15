@@ -695,7 +695,7 @@ export const enContent: SiteContent = {
     actions: [
       {
         label: 'Sales WhatsApp',
-        href: 'https://wa.me/5511351429330',
+        href: 'https://wa.me/551146106363',
         tone: 'primary',
       },
       {
@@ -717,9 +717,9 @@ export const enContent: SiteContent = {
     cards: [
       {
         label: 'WhatsApp',
-        value: '+55 (11) 3514-2933',
+        value: '+55 (11) 4610-6363',
         description: 'Fastest channel for an initial assessment and alignment.',
-        href: 'https://wa.me/5511351429330',
+        href: 'https://wa.me/551146106363',
         icon: 'whatsapp',
         featured: true,
       },

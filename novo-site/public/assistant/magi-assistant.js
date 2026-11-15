@@ -5,7 +5,7 @@
   window.__MAGI_ASSISTANT_LOADED__ = true;
 
   const API_PATH = '/api/chat';
-  const WHATSAPP_URL = 'https://wa.me/5511351429330';
+  const WHATSAPP_URL = 'https://wa.me/551146106363';
   const MAX_USER_MESSAGES = 8;
   const MAX_MESSAGE_LENGTH = 600;
   const REQUEST_TIMEOUT_MS = 15000;
