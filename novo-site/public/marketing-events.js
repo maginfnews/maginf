@@ -6,6 +6,10 @@
   window.dataLayer = window.dataLayer || [];
 
   const language = document.documentElement.lang.toLowerCase().startsWith('en') ? 'en' : 'pt-BR';
+  const GOOGLE_ADS_CONVERSIONS = {
+    whatsapp: 'AW-18573668974/WuFUCPPTxrkdEO7kzphF',
+    phone: 'AW-18573668974/LcejCM3Bz7kdEO7kzphF',
+  };
 
   function sanitizeProperties(properties) {
     const safe = {};
@@ -38,6 +42,13 @@
     return section?.id || 'site';
   }
 
+  function trackGoogleAdsConversion(conversion) {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', 'conversion', {
+      send_to: GOOGLE_ADS_CONVERSIONS[conversion],
+    });
+  }
+
   document.addEventListener('click', (event) => {
     const link = event.target.closest('a[href]');
     if (!link) return;
@@ -48,6 +59,7 @@
 
     if (normalizedHref.startsWith('https://wa.me/') || normalizedHref.includes('api.whatsapp.com')) {
       window.maginfTrack('whatsapp_click', { link_placement: placement });
+      trackGoogleAdsConversion('whatsapp');
       return;
     }
 
@@ -58,6 +70,7 @@
 
     if (normalizedHref.startsWith('tel:')) {
       window.maginfTrack('phone_click', { link_placement: placement });
+      trackGoogleAdsConversion('phone');
     }
   }, { capture: true });
 
