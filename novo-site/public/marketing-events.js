@@ -43,10 +43,9 @@
   }
 
   function trackGoogleAdsConversion(conversion) {
-    window.dataLayer.push({
-      0: 'event',
-      1: 'conversion',
-      2: { send_to: GOOGLE_ADS_CONVERSIONS[conversion] },
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', 'conversion', {
+      send_to: GOOGLE_ADS_CONVERSIONS[conversion],
     });
   }
 
