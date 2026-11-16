@@ -43,10 +43,14 @@
   }
 
   function trackGoogleAdsConversion(conversion) {
-    if (typeof window.gtag !== 'function') return;
-    window.gtag('event', 'conversion', {
+    const command = ['event', 'conversion', {
       send_to: GOOGLE_ADS_CONVERSIONS[conversion],
-    });
+    }];
+    if (typeof window.gtag === 'function') {
+      window.gtag(...command);
+      return;
+    }
+    window.dataLayer.push(command);
   }
 
   document.addEventListener('click', (event) => {
