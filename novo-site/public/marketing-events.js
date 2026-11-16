@@ -43,10 +43,11 @@
   }
 
   function trackGoogleAdsConversion(conversion) {
-    const command = ['event', 'conversion', {
-      send_to: GOOGLE_ADS_CONVERSIONS[conversion],
-    }];
-    window.dataLayer.push(command);
+    window.dataLayer.push({
+      0: 'event',
+      1: 'conversion',
+      2: { send_to: GOOGLE_ADS_CONVERSIONS[conversion] },
+    });
   }
 
   document.addEventListener('click', (event) => {
